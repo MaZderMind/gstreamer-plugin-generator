@@ -1,0 +1,33 @@
+#!/usr/bin/tmux source-file
+
+#
+# C-b &   – to quit
+# C-b z   – fullscreen pane (and revert)
+# C-b d   – detach (reattach: tmux attach)
+# C-b q   – list window ids
+#
+
+start
+new-session -d -s gstreamer-plugin-generator
+
+# more history
+set -g history-limit 10000
+
+# allow mouse navigation, allow mousewheel scroll
+set -g mouse on
+
+# show pane name
+set -g pane-border-format "#{pane_index} #{pane_current_command}"
+
+split-window -d -t 0 -h
+
+# left
+send-keys -t 0 "printf '\\033]2;%s\\033\\\\' 'ui-run'" Enter
+send-keys -t 0 'nice -n 19 ionice -c 3 make ui-run' Enter
+
+# right
+send-keys -t 1 "printf '\\033]2;%s\\033\\\\' 'backend-run'" Enter
+send-keys -t 1 'nice -n 10 make backend-run' Enter
+
+select-pane -t 1
+attach

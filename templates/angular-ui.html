@@ -1,0 +1,16 @@
+{% extends '_base.html' %}
+
+{% block scripts %}
+	<script src="{{ url_for('static', filename='ui/runtime.js') }}"></script>
+	<script src="{{ url_for('static', filename='ui/polyfills.js') }}"></script>
+	<script src="{{ url_for('static', filename='ui/vendor.js') }}"></script>
+	<script src="{{ url_for('static', filename='ui/main.js') }}"></script>
+{% endblock %}
+
+{% block styles %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='ui/styles.css') }}">
+{% endblock %}
+
+{% block content %}
+	<app-root></app-root>
+{% endblock %}
