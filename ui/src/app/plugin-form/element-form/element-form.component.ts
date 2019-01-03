@@ -27,7 +27,7 @@ export class ElementFormComponent implements OnInit {
       return;
     }
 
-    this.element.identifier = this.generateIdentifierFromName(this.element.name)
+    this.element.identifier = this.generateIdentifierFromName(this.element.name || '');
     this.identifier.control.markAsTouched();
   }
 

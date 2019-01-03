@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {Plugin} from "src/app/model/plugin"
 import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
@@ -14,6 +14,9 @@ export class PluginFormComponent implements OnInit {
 
   @Input()
   plugin: Plugin;
+
+  @Output()
+  generate = new EventEmitter<Plugin>();
 
   @ViewChild('pluginForm')
   pluginForm: NgForm;
@@ -40,11 +43,18 @@ export class PluginFormComponent implements OnInit {
     return this.plugin.elements.length > 1;
   }
 
-  generate() {
-    console.log(this.plugin);
-  }
-
   revealInvalidControls() {
     this.revealControlValidity = true;
+  }
+
+  onGenerateClicked() {
+    this.revealInvalidControls();
+    if (this.pluginForm.valid) {
+      this.triggerDownload()
+    }
+  }
+
+  private triggerDownload() {
+    this.generate.emit(this.plugin);
   }
 }

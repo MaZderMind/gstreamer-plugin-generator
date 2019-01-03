@@ -3,7 +3,7 @@
   <h1>GStreamer Plugin Generator</h1>
   <p>Generate the Skeleton of a GStreamer Plugin.</p>
 
-  <app-plugin-form [plugin]="plugin"></app-plugin-form>
+  <app-plugin-form [plugin]="plugin" (generate)="generateZip()"></app-plugin-form>
 
   <pre>{{ plugin | json }}</pre>
 </div>

@@ -8,6 +8,7 @@ import {PreventDefaultDirective} from './utils/prevent-default.directive';
 import {ElementFormComponent} from './plugin-form/element-form/element-form.component';
 import {LastIdPipe} from "src/app/utils/id-pipe/last-id-pipe";
 import {NewIdPipe} from "src/app/utils/id-pipe/new-id-pipe";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import {NewIdPipe} from "src/app/utils/id-pipe/new-id-pipe";
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
