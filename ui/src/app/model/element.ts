@@ -8,8 +8,8 @@ export class Element {
   archetype: Archetype = Archetype.byName('TRANSFORM');
   classifications: Classification[] = [Classification.byName('Filter')];
 
+  identifier: string;
   name: string;
-  longName: string;
 
   properties: Property[] = [];
   pads: Pad[] = [];
@@ -17,12 +17,10 @@ export class Element {
   constructor(element?: Element) {
     if (element) {
       this.archetype = Archetype.byName(element.archetype);
-      this.classifications = element.classifications.map(classification =>
-        Classification.byName(classification));
+      this.classifications = element.classifications.map(classification => Classification.byName(classification));
 
+      this.identifier = element.identifier;
       this.name = element.name;
-      this.longName = element.longName;
-
     }
   }
 }

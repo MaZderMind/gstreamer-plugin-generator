@@ -7,7 +7,7 @@ import {removeElement} from "src/app/utils/removeElement";
 @Component({
   selector: 'app-plugin-form',
   templateUrl: './plugin-form.component.html',
-  styleUrls: ['./plugin-form.component.sass']
+  styleUrls: ['./plugin-form.component.scss']
 })
 export class PluginFormComponent implements OnInit {
 

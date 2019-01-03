@@ -1,17 +1,18 @@
-<div class="card mb-3">
-  <div class="card-header">
-    Plugin Informstion
-  </div>
-  <div class="card-body">
-    <form>
-
+<form #form="ngForm">
+  valid: {{ form.valid }}
+  <div class="card mb-3">
+    <div class="card-header">
+      Plugin Informstion
+    </div>
+    <div class="card-body">
       <div class="form-group row">
-        <label for="name" class="col-lg-2 col-sm-12 col-form-label">Plugin-Name</label>
+        <label for="name" class="col-lg-2 col-sm-12 col-form-label">Plugin Name</label>
         <div class="col-lg-10 col-sm-12">
           <input
             type="text" class="form-control"
             id="name" name="mame"
             [(ngModel)]="plugin.name"
+            required
             placeholder="Fancy Video Tools Library"
           >
         </div>
@@ -25,6 +26,7 @@
             type="text" class="form-control"
             id="author" name="author"
             [(ngModel)]="plugin.author"
+            required
             placeholder="Jane Doe"
           >
         </div>
@@ -35,6 +37,7 @@
             type="text" class="form-control"
             id="authorEmail" name="authorEmail"
             [(ngModel)]="plugin.authorEmail"
+            required
             placeholder="jane.doe@example.com"
           >
         </div>
@@ -69,24 +72,24 @@
         </div>
       </div>
 
-    </form>
+    </div>
   </div>
-</div>
 
-<div class="card mb-3" *ngFor="let element of plugin.elements">
-  <div class="card-header">
-    <a href class="float-right close-icon" (click)="removeElement(element)" appPreventDefault>
-      <i class="fa fa-times"></i>
-    </a>
+  <div class="card mb-3" *ngFor="let element of plugin.elements">
+    <div class="card-header">
+      <a href class="float-right close-icon" (click)="removeElement(element)" appPreventDefault>
+        <i class="fa fa-times"></i>
+      </a>
 
-    Element
-    <ng-container *ngIf="element.name">: {{ element.name }}</ng-container>
+      Element
+      <ng-container *ngIf="element.identifier">: {{ element.name }}</ng-container>
+    </div>
+    <div class="card-body">
+      <app-element-form [element]="element"></app-element-form>
+    </div>
   </div>
-  <div class="card-body">
-    Element form here
-  </div>
-</div>
 
-<a href (click)="addElement()" appPreventDefault>
-  <i class="fa fa-plus-circle"></i> Add Element
-</a>
+  <a href (click)="addElement()" appPreventDefault>
+    <i class="fa fa-plus-circle"></i> Add Element
+  </a>
+</form>

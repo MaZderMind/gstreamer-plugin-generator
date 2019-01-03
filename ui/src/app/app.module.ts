@@ -5,14 +5,14 @@ import {AppComponent} from './app.component';
 import {PluginFormComponent} from './plugin-form/plugin-form.component';
 import {FormsModule} from "@angular/forms";
 import {PreventDefaultDirective} from './utils/prevent-default.directive';
-import { DefaultPipe } from './utils/default.pipe';
+import {ElementFormComponent} from './plugin-form/element-form/element-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PluginFormComponent,
     PreventDefaultDirective,
-    DefaultPipe
+    ElementFormComponent
   ],
   imports: [
     BrowserModule,
