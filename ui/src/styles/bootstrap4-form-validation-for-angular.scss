@@ -1,0 +1,153 @@
+@import "variables";
+
+@mixin bootstrap4-form-validation-for-angular($state, $color) {
+  .form-control .ng-touched:#{$state},
+  .form-control.ng-touched.ng-#{$state},
+  .form-control.ng-dirty.ng-#{$state},
+  form.is-submitted .form-control.ng-#{$state} {
+    border-color: $color;
+
+    @if $enable-validation-icons {
+      padding-right: $input-height-inner;
+      background-repeat: no-repeat;
+      background-position: center right calc(#{$input-height-inner} / 4);
+      background-size: calc(#{$input-height-inner} / 2) calc(#{$input-height-inner} / 2);
+
+      @if $state == "valid" {
+        background-image: $form-feedback-icon-valid;
+      } @else {
+        background-image: $form-feedback-icon-invalid;
+      }
+    }
+
+    &:focus {
+      border-color: $color;
+      box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+    }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+  }
+
+  // stylelint-disable-next-line selector-no-qualifying-type
+  textarea.form-control .ng-touched:#{$state},
+  textarea.form-control.ng-touched.ng-#{$state},
+  textarea.form-control .ng-dirty.ng-#{$state},
+  form.is-submitted .form-control.ng-#{$state} {
+    @if $enable-validation-icons {
+      padding-right: $input-height-inner;
+      background-position: top calc(#{$input-height-inner} / 4) right calc(#{$input-height-inner} / 4);
+    }
+  }
+
+  .custom-select {
+    .ng-touched:#{$state},
+    &.ng-touched.ng-#{$state},
+    &.ng-dirty.ng-#{$state} {
+      border-color: $color;
+
+      @if $enable-validation-icons {
+        $form-feedback-icon: if($state == "valid", $form-feedback-icon-valid, $form-feedback-icon-invalid);
+        padding-right: $custom-select-feedback-icon-padding-right;
+        background: $custom-select-background, $form-feedback-icon no-repeat $custom-select-feedback-icon-position / $custom-select-feedback-icon-size;
+      }
+
+      &:focus {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
+      ~ .#{$state}-feedback,
+      ~ .#{$state}-tooltip {
+        display: block;
+      }
+    }
+  }
+
+
+  .form-control-file .ng-touched:#{$state},
+  .form-control-file .ng-touched.ng-#{$state},
+  .form-control-file .ng-dirty.ng-#{$state},
+  form.is-submitted .form-control-file.ng-#{$state} {
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+  }
+
+  .form-check-input .ng-touched:#{$state},
+  .form-check-input.ng-touched.ng-#{$state},
+  .form-check-input.ng-dirty.ng-#{$state},
+  form.is-submitted .form-check-input.ng-#{$state} {
+    ~ .form-check-label {
+      color: $color;
+    }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+  }
+
+  .custom-control-input .ng-touched:#{$state},
+  .custom-control-input.ng-touched.ng-#{$state},
+  .custom-control-input.ng-dirty.ng-#{$state},
+  form.is-submitted .custom-control-input.ng-#{$state} {
+    ~ .custom-control-label {
+      color: $color;
+
+      &::before {
+        border-color: $color;
+      }
+    }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+
+    &:checked {
+      ~ .custom-control-label::before {
+        border-color: lighten($color, 10%);
+        @include gradient-bg(lighten($color, 10%));
+      }
+    }
+
+    &:focus {
+      ~ .custom-control-label::before {
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+
+      &:not(:checked) ~ .custom-control-label::before {
+        border-color: $color;
+      }
+    }
+  }
+
+  // custom file
+  .custom-file-input.ng-touched:#{$state},
+  .custom-file-input.ng-touched.ng-#{$state},
+  .custom-file-input.ng-dirty.ng-#{$state},
+  form.is-submitted .custom-file-input.ng-#{$state} {
+    ~ .custom-file-label {
+      border-color: $color;
+    }
+
+    ~ .#{$state}-feedback,
+    ~ .#{$state}-tooltip {
+      display: block;
+    }
+
+    &:focus {
+      ~ .custom-file-label {
+        border-color: $color;
+        box-shadow: 0 0 0 $input-focus-width rgba($color, .25);
+      }
+    }
+  }
+}
+
+@include bootstrap4-form-validation-for-angular("valid", $form-feedback-valid-color);
+@include bootstrap4-form-validation-for-angular("invalid", $form-feedback-invalid-color);

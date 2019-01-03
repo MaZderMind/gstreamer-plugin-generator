@@ -6,13 +6,18 @@ import {PluginFormComponent} from './plugin-form/plugin-form.component';
 import {FormsModule} from "@angular/forms";
 import {PreventDefaultDirective} from './utils/prevent-default.directive';
 import {ElementFormComponent} from './plugin-form/element-form/element-form.component';
+import {LastIdPipe} from "src/app/utils/id-pipe/last-id-pipe";
+import {NewIdPipe} from "src/app/utils/id-pipe/new-id-pipe";
 
 @NgModule({
   declarations: [
     AppComponent,
     PluginFormComponent,
     PreventDefaultDirective,
-    ElementFormComponent
+    ElementFormComponent,
+
+    NewIdPipe,
+    LastIdPipe,
   ],
   imports: [
     BrowserModule,

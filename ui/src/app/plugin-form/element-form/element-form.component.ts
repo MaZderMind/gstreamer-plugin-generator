@@ -23,11 +23,12 @@ export class ElementFormComponent implements OnInit {
   }
 
   generateIdentifier() {
-    if (this.identifier.control.touched) {
+    if (this.identifier.control.dirty) {
       return;
     }
 
     this.element.identifier = this.generateIdentifierFromName(this.element.name)
+    this.identifier.control.markAsTouched();
   }
 
   private generateIdentifierFromName(name: string) {

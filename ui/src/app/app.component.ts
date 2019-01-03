@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Plugin} from "./model/plugin";
+import {Element} from "./model/element";
 
 @Component({
   selector: 'app-root',
@@ -11,5 +12,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.plugin = new Plugin();
+    this.plugin.elements.push(new Element());
   }
 }

@@ -1,16 +1,16 @@
-<form #form="ngForm">
-  valid: {{ form.valid }}
+<form #pluginForm="ngForm" [class.is-submitted]="revealControlValidity ">
+  valid: {{ pluginForm.valid }}
   <div class="card mb-3">
     <div class="card-header">
       Plugin Informstion
     </div>
     <div class="card-body">
       <div class="form-group row">
-        <label for="name" class="col-lg-2 col-sm-12 col-form-label">Plugin Name</label>
+        <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Plugin Name</label>
         <div class="col-lg-10 col-sm-12">
           <input
             type="text" class="form-control"
-            id="name" name="mame"
+            id="{{ 'name' | lastId }}" name="mame"
             [(ngModel)]="plugin.name"
             required
             placeholder="Fancy Video Tools Library"
@@ -20,22 +20,22 @@
 
 
       <div class="form-group row">
-        <label for="author" class="col-lg-2 col-sm-12 col-form-label">Author</label>
+        <label for="{{ 'author' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Author</label>
         <div class="col-lg-4 col-sm-12 mb-3 mb-lg-0">
           <input
             type="text" class="form-control"
-            id="author" name="author"
+            id="{{ 'author' | lastId }}" name="author"
             [(ngModel)]="plugin.author"
             required
             placeholder="Jane Doe"
           >
         </div>
 
-        <label for="author" class="col-lg-2 col-sm-12 col-form-label">Author E-Mail</label>
+        <label for="{{ 'authorEmail' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Author E-Mail</label>
         <div class="col-lg-4 col-sm-12">
           <input
             type="text" class="form-control"
-            id="authorEmail" name="authorEmail"
+            id="{{ 'authorEmail' | lastId }}" name="authorEmail"
             [(ngModel)]="plugin.authorEmail"
             required
             placeholder="jane.doe@example.com"
@@ -45,12 +45,9 @@
 
 
       <div class="form-group row">
-        <label for="author" class="col-lg-2 col-sm-12 col-form-label">License</label>
+        <label for="{{ 'license' | newId }}" class="col-lg-2 col-sm-12 col-form-label">License</label>
         <div class="col-lg-3 col-sm-12">
-          <select class="form-control"
-                  id="license" name="license"
-            [(ngModel)]="plugin.license"
-          >
+          <select class="form-control" id="{{ 'license' | lastId }}" name="license" [(ngModel)]="plugin.license">
             <option *ngFor="let license of licenses" [ngValue]="license">{{ license.name }}</option>
           </select>
         </div>
@@ -61,11 +58,11 @@
       </div>
 
       <div class="form-group row">
-        <label for="author" class="col-lg-2 col-sm-12 col-form-label">URL</label>
+        <label for="{{ 'url' | newId }}" class="col-lg-2 col-sm-12 col-form-label">URL</label>
         <div class="col-lg-10 col-sm-12">
           <input
             type="text" class="form-control"
-            id="url" name="url"
+            id="{{ 'url' | lastId }}" name="url"
             [(ngModel)]="plugin.url"
             placeholder="https://github.com/…"
           >
@@ -77,7 +74,8 @@
 
   <div class="card mb-3" *ngFor="let element of plugin.elements">
     <div class="card-header">
-      <a href class="float-right close-icon" (click)="removeElement(element)" appPreventDefault>
+      <a href class="float-right close-icon" (click)="removeElement(element)"
+         appPreventDefault *ngIf="canRemoveElement">
         <i class="fa fa-times"></i>
       </a>
 
@@ -89,7 +87,23 @@
     </div>
   </div>
 
-  <a href (click)="addElement()" appPreventDefault>
-    <i class="fa fa-plus-circle"></i> Add Element
-  </a>
+  <div class="row mb-3">
+    <div class="col">
+      <a href (click)="addElement()" appPreventDefault>
+        <i class="fa fa-plus-circle"></i> Add Element
+      </a></div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <button
+        type="button"
+        class="btn btn-primary"
+        (click)="revealInvalidControls()"
+        appPreventDefault
+      >
+        <i class="fa fa-download"></i> Generate
+      </button>
+    </div>
+  </div>
 </form>
