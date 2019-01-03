@@ -1,3 +1,92 @@
-<p>
-  plugin-form works!
-</p>
+<div class="card mb-3">
+  <div class="card-header">
+    Plugin Informstion
+  </div>
+  <div class="card-body">
+    <form>
+
+      <div class="form-group row">
+        <label for="name" class="col-lg-2 col-sm-12 col-form-label">Plugin-Name</label>
+        <div class="col-lg-10 col-sm-12">
+          <input
+            type="text" class="form-control"
+            id="name" name="mame"
+            [(ngModel)]="plugin.name"
+            placeholder="Fancy Video Tools Library"
+          >
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="author" class="col-lg-2 col-sm-12 col-form-label">Author</label>
+        <div class="col-lg-4 col-sm-12 mb-3 mb-lg-0">
+          <input
+            type="text" class="form-control"
+            id="author" name="author"
+            [(ngModel)]="plugin.author"
+            placeholder="Jane Doe"
+          >
+        </div>
+
+        <label for="author" class="col-lg-2 col-sm-12 col-form-label">Author E-Mail</label>
+        <div class="col-lg-4 col-sm-12">
+          <input
+            type="text" class="form-control"
+            id="authorEmail" name="authorEmail"
+            [(ngModel)]="plugin.authorEmail"
+            placeholder="jane.doe@example.com"
+          >
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label for="author" class="col-lg-2 col-sm-12 col-form-label">License</label>
+        <div class="col-lg-3 col-sm-12">
+          <select class="form-control"
+                  id="license" name="license"
+            [(ngModel)]="plugin.license"
+          >
+            <option *ngFor="let license of licenses" [ngValue]="license">{{ license.name }}</option>
+          </select>
+        </div>
+        <div class="col-lg-7 col-sm-12 mt-2">
+          <i class="fa fa-info-circle"></i> {{ plugin.license.description }}.
+          <a href="{{ plugin.license.url }}" target="_blank">Read more…</a>
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label for="author" class="col-lg-2 col-sm-12 col-form-label">URL</label>
+        <div class="col-lg-10 col-sm-12">
+          <input
+            type="text" class="form-control"
+            id="url" name="url"
+            [(ngModel)]="plugin.url"
+            placeholder="https://github.com/…"
+          >
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<div class="card mb-3" *ngFor="let element of plugin.elements">
+  <div class="card-header">
+    <a href class="float-right close-icon" (click)="removeElement(element)" appPreventDefault>
+      <i class="fa fa-times"></i>
+    </a>
+
+    Element
+    <ng-container *ngIf="element.name">: {{ element.name }}</ng-container>
+  </div>
+  <div class="card-body">
+    Element form here
+  </div>
+</div>
+
+<a href (click)="addElement()" appPreventDefault>
+  <i class="fa fa-plus-circle"></i> Add Element
+</a>

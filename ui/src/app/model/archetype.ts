@@ -29,8 +29,8 @@ export class Archetype {
 
   // TODO add GstBaseParse
 
-  name: string;
-  description: string;
+  readonly name: string;
+  readonly description: string;
 
   constructor(name, description) {
     this.name = name;
@@ -41,11 +41,11 @@ export class Archetype {
     return this.name;
   }
 
-  static fromDescriptor(descriptor: any): Archetype {
-    if (descriptor.hasOwnProperty('name')) {
-      return Archetype.fromDescriptor(descriptor.name);
-    }
+  toJSON() {
+    return this.name;
+  }
 
-    return Archetype.ARCHETYPES.find(archetype => archetype.name == descriptor);
+  static byName(name: any): Archetype {
+    return Archetype.ARCHETYPES.find(archetype => archetype.name == name);
   }
 }

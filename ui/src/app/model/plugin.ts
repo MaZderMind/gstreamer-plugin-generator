@@ -7,7 +7,7 @@ export class Plugin {
   author: string;
   authorEmail: string;
 
-  license: License = License.NONE;
+  license: License = License.byName('LGPL');
   url: string;
 
   elements: Element[] = [];

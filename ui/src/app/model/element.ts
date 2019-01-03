@@ -5,8 +5,8 @@ import {Pad} from "./pad";
 
 
 export class Element {
-  archetype: Archetype = Archetype.fromDescriptor('TRANSFORM');
-  classifications: Classification[] = [Classification.fromDescriptor('Filter')];
+  archetype: Archetype = Archetype.byName('TRANSFORM');
+  classifications: Classification[] = [Classification.byName('Filter')];
 
   name: string;
   longName: string;
@@ -16,9 +16,9 @@ export class Element {
 
   constructor(element?: Element) {
     if (element) {
-      this.archetype = Archetype.fromDescriptor(element.archetype);
+      this.archetype = Archetype.byName(element.archetype);
       this.classifications = element.classifications.map(classification =>
-        Classification.fromDescriptor(classification));
+        Classification.byName(classification));
 
       this.name = element.name;
       this.longName = element.longName;

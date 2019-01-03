@@ -30,9 +30,9 @@ export class Classification {
     new Classification('Media Type', 'Debug', 'intended usage is more for debugging purposes.'),
   ];
 
-  category: string;
-  name: string;
-  description: string;
+  readonly category: string;
+  readonly name: string;
+  readonly description: string;
 
   constructor(category: string, name: string, description: string) {
     this.category = category;
@@ -44,12 +44,11 @@ export class Classification {
     return this.name;
   }
 
+  toJSON() {
+    return this.name;
+  }
 
-  static fromDescriptor(descriptor: any): Classification {
-    if (descriptor.hasOwnProperty('name')) {
-      return Classification.fromDescriptor(descriptor.name);
-    }
-
-    return Classification.CLASSIFICATIONS.find(classification => classification.name == descriptor);
+  static byName(name: any): Classification {
+    return Classification.CLASSIFICATIONS.find(classification => classification.name == name);
   }
 }
