@@ -12,6 +12,7 @@ def generate_plugin_boilerplate(plugin_info):
 
 	yield 'README', render_template('boilerplate/README.j2', **context)
 	yield 'AUTHORS', render_template('boilerplate/AUTHORS.j2', **context)
+	yield 'NEWS', render_template('boilerplate/NEWS.j2', **context)
 	yield 'ChangeLog', render_template('boilerplate/ChangeLog.j2', **context)
 
 	yield 'Makefile.am', render_template('boilerplate/Makefile.am.j2', **context)
