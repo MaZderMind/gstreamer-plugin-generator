@@ -13,11 +13,26 @@
             id="{{ 'name' | lastId }}" name="mame"
             [(ngModel)]="plugin.name"
             required
-            placeholder="Fancy Video Tools Library"
+            (keydown)="generateIdentifier()"
+            placeholder="Fancy Video Tools"
           >
         </div>
       </div>
 
+      <div class="form-group row">
+        <label for="{{ 'identifier' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Plugin Identifier</label>
+        <div class="col-lg-10 col-sm-12">
+          <input
+            #identifier="ngModel"
+            pattern="[a-z][a-z0-9]*"
+            required
+            type="text" class="form-control"
+            id="{{ 'identifier' | lastId }}" name="{{ 'identifier' | lastId }}"
+            [(ngModel)]="plugin.identifier"
+            placeholder="fancyvideotools"
+          >
+        </div>
+      </div>
 
       <div class="form-group row">
         <label for="{{ 'author' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Author</label>

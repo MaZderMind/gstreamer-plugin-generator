@@ -1,9 +1,13 @@
 #!/usr/bin/env python3
+import json
+import re
+
 from flask import Flask, render_template, Response, stream_with_context, request
 
-from zip_generator import zip_generator
+from plugin_zip_generator import plugin_zip_generator
 
 app = Flask(__name__)
+app.jinja_env.keep_trailing_newline = True
 
 
 @app.route('/')
@@ -13,11 +17,13 @@ def root():
 
 @app.route('/generate', methods=['POST'])
 def generate():
-	request_json = request.json or request.form['json']
-	# validate request_json
+	plugin_info = request.json or json.loads(request.form['json'])
+	# validate plugin_info
 
-	generator = stream_with_context(zip_generator(request_json))
+	filename = re.sub(r'/[^a-z0-9]/g', '', plugin_info['identifier']) + ".zip"
+
+	generator = stream_with_context(plugin_zip_generator(plugin_info))
 	response = Response(generator)
 	response.headers['Content-Type'] = 'application/zip'
-	response.headers['Content-Disposition'] = 'attachment; filename=lala.zip'
+	response.headers['Content-Disposition'] = 'attachment; filename=' + filename
 	return response

@@ -9,6 +9,7 @@ import {ElementFormComponent} from './plugin-form/element-form/element-form.comp
 import {LastIdPipe} from "src/app/utils/id-pipe/last-id-pipe";
 import {NewIdPipe} from "src/app/utils/id-pipe/new-id-pipe";
 import {HttpClientModule} from "@angular/common/http";
+import {GstBaseTransformFormComponent} from './plugin-form/element-form/gst-base-transform-form/gst-base-transform-form.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import {HttpClientModule} from "@angular/common/http";
 
     NewIdPipe,
     LastIdPipe,
+    GstBaseTransformFormComponent,
   ],
   imports: [
     BrowserModule,

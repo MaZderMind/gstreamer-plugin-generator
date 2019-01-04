@@ -3,6 +3,7 @@ import {Element} from "./element";
 
 export class Plugin {
   name: string;
+  identifier: string;
 
   author: string;
   authorEmail: string;

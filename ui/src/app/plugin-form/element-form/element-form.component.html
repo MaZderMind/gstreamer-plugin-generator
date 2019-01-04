@@ -9,7 +9,6 @@
         required
         [(ngModel)]="element.name"
         (keydown)="generateIdentifier()"
-        (keyup)="generateIdentifier()"
         placeholder="Some Video-Tool"
       >
     </div>
@@ -45,12 +44,22 @@
     </div>
   </div>
 
-  <div class="row" *ngIf="element.archetype">
-    <div class="col">
-      <i class="fa fa-info-circle mr-1"></i>
-      <strong>{{ element.archetype.name }}:</strong>
-      {{ element.archetype.description }}
+  <ng-container *ngIf="element.archetype">
+    <div class="row">
+      <div class="col">
+        <i class="fa fa-info-circle mr-1"></i>
+        <strong>{{ element.archetype.name }}:</strong>
+        {{ element.archetype.description }}
+      </div>
     </div>
-  </div>
+
+    <hr>
+
+    <app-gst-base-transform-form
+      *ngIf="element.archetype.name == 'GstBaseTransform'"
+      [element]="element"
+    ></app-gst-base-transform-form>
+
+  </ng-container>
 
 </div>

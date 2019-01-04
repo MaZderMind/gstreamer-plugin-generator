@@ -1,0 +1,16 @@
+{{ plugin.name }}
+{{ '=' * (plugin.name | length) }}
+{% if plugin.url %}URL: {{ plugin.url }}{% endif %}
+
+Boilerplate generated with {{ generator }}
+
+Getting-Started
+---------------
+cd {{ plugin.identifier }}
+git init
+git submodules init
+./autogen.sh
+
+cd examples
+./inspect.sh
+./run.sh
