@@ -8,6 +8,7 @@
     "build": "ng build --extract-css --output-hashing=none",
     "build-watch": "ng build --watch --extract-css --output-hashing=none",
     "test": "ng test",
+    "test-watch": "ng test --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -23,6 +24,8 @@
     "@angular/router": "~7.1.0",
     "bootstrap": "^4.2.1",
     "core-js": "^2.5.4",
+    "karma-mocha-reporter": "^2.2.5",
+    "ng2-mock-component": "^0.1.1",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
@@ -40,7 +43,7 @@
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~3.1.1",
-    "karma-chrome-launcher": "~2.2.0",
+    "karma-chrome-launcher": "^2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",

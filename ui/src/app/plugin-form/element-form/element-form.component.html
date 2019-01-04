@@ -8,26 +8,16 @@
         id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
         required
         [(ngModel)]="element.name"
-        (keydown)="generateIdentifier()"
-        (keyup)="generateIdentifier()"
         placeholder="Some Video-Tool"
       >
     </div>
   </div>
 
   <div class="form-group row">
-    <label for="{{ 'identifier' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Element Identifier</label>
-    <div class="col-lg-10 col-sm-12">
-      <input
-        #identifier="ngModel"
-        pattern="[a-z][a-z0-9]*"
-        required
-        type="text" class="form-control"
-        id="{{ 'identifier' | lastId }}" name="{{ 'identifier' | lastId }}"
-        [(ngModel)]="element.identifier"
-        placeholder="somevideotool"
-      >
-    </div>
+    <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenations in the Code</label>
+    <div class="col-lg-2 col-sm-12 mt-1"><code>{{ element.name | allLowerCase }}</code></div>
+    <div class="col-lg-2 col-sm-12 mt-1"><code>{{ element.name | upperSnakeCase }}</code></div>
+    <div class="col-lg-2 col-sm-12 mt-1"><code>{{ element.name | pascalCase }}</code></div>
   </div>
 
   <div class="form-group row">

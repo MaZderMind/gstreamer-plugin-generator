@@ -13,25 +13,27 @@
             id="{{ 'name' | lastId }}" name="mame"
             [(ngModel)]="plugin.name"
             required
-            (keydown)="generateIdentifier()"
-            (keyup)="generateIdentifier()"
             placeholder="Fancy Video Tools"
           >
         </div>
       </div>
 
       <div class="form-group row">
-        <label for="{{ 'identifier' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Plugin Identifier</label>
+        <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenations in the Code</label>
+        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | allLowerCase }}</code></div>
+        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | upperSnakeCase }}</code></div>
+        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | pascalCase }}</code></div>
+      </div>
+
+      <div class="form-group row">
+        <label for="{{ 'description' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Description</label>
         <div class="col-lg-10 col-sm-12">
-          <input
-            #identifier="ngModel"
-            pattern="[a-z][a-z0-9]*"
-            required
-            type="text" class="form-control"
-            id="{{ 'identifier' | lastId }}" name="{{ 'identifier' | lastId }}"
-            [(ngModel)]="plugin.identifier"
-            placeholder="fancyvideotools"
-          >
+          <textarea
+            class="form-control"
+            id="{{ 'description' | lastId }}" name="{{ 'description' | lastId }}"
+            [(ngModel)]="plugin.description"
+            placeholder="Fancy Video Tools is a set of Tools intended to produce fancy results."
+          ></textarea>
         </div>
       </div>
 

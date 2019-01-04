@@ -8,7 +8,6 @@ export class Element {
   archetype: Archetype = Archetype.byName('TRANSFORM');
   classifications: Classification[] = [Classification.byName('Filter')];
 
-  identifier: string;
   name: string;
 
   properties: Property[] = [];
@@ -19,7 +18,6 @@ export class Element {
       this.archetype = Archetype.fromJson(element.archetype);
       this.classifications = element.classifications.map(classification => Classification.fromJson(classification));
 
-      this.identifier = element.identifier;
       this.name = element.name;
     }
   }

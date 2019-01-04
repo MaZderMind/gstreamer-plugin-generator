@@ -3,7 +3,7 @@ import {Element} from "./element";
 
 export class Plugin {
   name: string;
-  identifier: string;
+  description: string;
 
   author: string;
   authorEmail: string;
@@ -16,7 +16,7 @@ export class Plugin {
   constructor(plugin?: Plugin) {
     if (plugin) {
       this.name = plugin.name;
-      this.identifier = plugin.identifier;
+      this.description = plugin.description;
 
       this.author = plugin.author;
       this.authorEmail = plugin.authorEmail;

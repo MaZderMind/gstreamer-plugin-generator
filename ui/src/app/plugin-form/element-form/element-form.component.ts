@@ -2,7 +2,6 @@ import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import {Element} from 'src/app/model/element';
 import {ControlContainer, NgForm, NgModel} from "@angular/forms";
 import {Archetype} from "src/app/model/archetype";
-import {generateIdentifier} from "src/app/utils/generate-identifier";
 
 @Component({
   selector: 'app-element-form',
@@ -24,14 +23,5 @@ export class ElementFormComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  generateIdentifier() {
-    if (this.identifier.control.dirty) {
-      return;
-    }
-
-    this.element.identifier = generateIdentifier(this.element.name || '');
-    this.identifier.control.markAsTouched();
   }
 }

@@ -4,7 +4,6 @@ import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
 import {removeElement} from "src/app/utils/removeElement";
 import {NgForm, NgModel} from "@angular/forms";
-import {generateIdentifier} from "src/app/utils/generate-identifier";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -48,15 +47,6 @@ export class PluginFormComponent implements AfterContentChecked {
 
   get canRemoveElement(): boolean {
     return this.plugin.elements.length > 1;
-  }
-
-  generateIdentifier() {
-    if (this.identifier.control.dirty) {
-      return;
-    }
-
-    this.plugin.identifier = generateIdentifier(this.plugin.name || '');
-    this.identifier.control.markAsTouched();
   }
 
   revealInvalidControls() {
