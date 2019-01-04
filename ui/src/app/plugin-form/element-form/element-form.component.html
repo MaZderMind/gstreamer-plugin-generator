@@ -29,4 +29,27 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label for="{{ 'archetype' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Archetype</label>
+    <div class="col-lg-10 col-sm-12">
+      <select
+        required
+        class="form-control"
+        id="{{ 'archetype' | lastId }}" name="archetype"
+        [(ngModel)]="element.archetype"
+      >
+        <option [value]="null"></option>
+        <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="element.archetype">
+    <div class="col">
+      <i class="fa fa-info-circle mr-1"></i>
+      <strong>{{ element.archetype.name }}:</strong>
+      {{ element.archetype.description }}
+    </div>
+  </div>
+
 </div>
