@@ -5,9 +5,10 @@
     <div class="col-lg-10 col-sm-12">
       <input
         type="text" class="form-control"
-        id="{{ 'name' | lastId }}" name="mame"
+        id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
         required
         [(ngModel)]="element.name"
+        (keydown)="generateIdentifier()"
         (keyup)="generateIdentifier()"
         placeholder="Some Video-Tool"
       >
@@ -22,7 +23,7 @@
         pattern="[a-z][a-z0-9]*"
         required
         type="text" class="form-control"
-        id="{{ 'identifier' | lastId }}" name="identifier"
+        id="{{ 'identifier' | lastId }}" name="{{ 'identifier' | lastId }}"
         [(ngModel)]="element.identifier"
         placeholder="somevideotool"
       >
@@ -35,7 +36,7 @@
       <select
         required
         class="form-control"
-        id="{{ 'archetype' | lastId }}" name="archetype"
+        id="{{ 'archetype' | lastId }}" name="{{ 'archetype' | lastId }}"
         [(ngModel)]="element.archetype"
       >
         <option [value]="null"></option>
