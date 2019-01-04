@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {Plugin} from "./model/plugin";
-import {GenerateZipService} from "src/app/service/generate-zip.service";
-import {StoreService} from "src/app/service/store.service";
+import {Plugin} from './model/plugin';
+import {GenerateZipService} from 'src/app/service/generate-zip.service';
+import {StoreService} from 'src/app/service/store.service';
 
 @Component({
   selector: 'app-root',
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
     let plugin = this.storeService.load();
     console.log('load', plugin);
     if (!plugin) {
-      plugin = new Plugin()
+      plugin = new Plugin();
     }
 
     plugin.addElementIfEmpty();
@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
   }
 
   generateZip() {
-    this.generateZipService.generateZip(this.plugin)
+    this.generateZipService.generateZip(this.plugin);
   }
 
   storeChangedData() {

@@ -1,7 +1,7 @@
-import {Archetype} from "./archetype";
-import {Classification} from "./classification";
-import {Property} from "./property";
-import {Pad} from "./pad";
+import {Archetype} from './archetype';
+import {Classification} from './classification';
+import {Property} from './property';
+import {Pad} from './pad';
 
 
 export class Element {

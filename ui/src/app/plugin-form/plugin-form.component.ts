@@ -1,10 +1,10 @@
 import {AfterContentChecked, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
-import {Plugin} from "src/app/model/plugin"
+import {Plugin} from 'src/app/model/plugin';
 import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
-import {removeElement} from "src/app/utils/removeElement";
-import {NgForm, NgModel} from "@angular/forms";
-import {Subscription} from "rxjs";
+import {removeElement} from 'src/app/utils/removeElement';
+import {NgForm, NgModel} from '@angular/forms';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-plugin-form',
@@ -56,7 +56,7 @@ export class PluginFormComponent implements AfterContentChecked {
   onGenerateClicked() {
     this.revealInvalidControls();
     if (this.pluginForm.valid) {
-      this.triggerDownload()
+      this.triggerDownload();
     }
   }
 

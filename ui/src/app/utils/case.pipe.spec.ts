@@ -1,23 +1,23 @@
-import {AllLowerCasePipe, PascalCasePipe, splitWords, UpperSnakeCasePipe} from "src/app/utils/case.pipe";
+import {AllLowerCasePipe, PascalCasePipe, splitWords, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 
 describe('splitWords', () => {
   it('should split words separated with saces', function () {
-    let words = splitWords('lorem ipsum dolor');
+    const words = splitWords('lorem ipsum dolor');
     expect(words).toEqual(['lorem', 'ipsum', 'dolor']);
   });
 
   it('should split words separated with dashes', function () {
-    let words = splitWords('lorem-ipsum-dolor');
+    const words = splitWords('lorem-ipsum-dolor');
     expect(words).toEqual(['lorem', 'ipsum', 'dolor']);
   });
 
   it('should split words separated with uppercase', function () {
-    let words = splitWords('LoremIpsumDolor');
+    const words = splitWords('LoremIpsumDolor');
     expect(words).toEqual(['Lorem', 'Ipsum', 'Dolor']);
   });
 
   it('should split words separated with multiple markers', function () {
-    let words = splitWords('LoremIpsum dolor-sit Amet');
+    const words = splitWords('LoremIpsum dolor-sit Amet');
     expect(words).toEqual(['Lorem', 'Ipsum', 'dolor', 'sit', 'Amet']);
   });
 });
@@ -29,7 +29,7 @@ describe('AllLowerCasePipe', () => {
   });
 
   it('should create the expected lowercase string', function () {
-    let value = pipe.transform('LoremIpsum dolor-sit');
+    const value = pipe.transform('LoremIpsum dolor-sit');
     expect(value).toEqual('loremipsumdolorsit');
   });
 });
@@ -41,7 +41,7 @@ describe('UpperSnakeCasePipe', () => {
   });
 
   it('should create the expected UPPER_CASE string', function () {
-    let value = pipe.transform('LoremIpsum dolor-sit');
+    const value = pipe.transform('LoremIpsum dolor-sit');
     expect(value).toEqual('LOREM_IPSUM_DOLOR_SIT');
   });
 });
@@ -53,7 +53,7 @@ describe('PascalCasePipe', () => {
   });
 
   it('should create the expected PascalCase string', function () {
-    let value = pipe.transform('LoremIpsum dolor-sit');
+    const value = pipe.transform('LoremIpsum dolor-sit');
     expect(value).toEqual('LoremIpsumDolorSit');
   });
 });

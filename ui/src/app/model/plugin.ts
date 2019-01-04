@@ -1,5 +1,5 @@
-import {License} from "./license";
-import {Element} from "./element";
+import {License} from './license';
+import {Element} from './element';
 
 export class Plugin {
   name: string;
@@ -28,7 +28,7 @@ export class Plugin {
   }
 
   addElementIfEmpty() {
-    if (this.elements.length == 0) {
+    if (this.elements.length === 0) {
       this.elements.push(new Element());
     }
   }

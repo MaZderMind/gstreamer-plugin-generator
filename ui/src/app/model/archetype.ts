@@ -1,4 +1,10 @@
 export class Archetype {
+
+  constructor(name, description) {
+    this.name = name;
+    this.description = description;
+  }
+
   // https://gstreamer.freedesktop.org/data/doc/gstreamer/head/gstreamer-libs/html/GstBaseTransform.html#GstBaseTransform.object-hierarchy
   static readonly ARCHETYPES: Archetype[] = [
     new Archetype(
@@ -32,9 +38,15 @@ export class Archetype {
   readonly name: string;
   readonly description: string;
 
-  constructor(name, description) {
-    this.name = name;
-    this.description = description;
+  static byName(name: string): Archetype {
+    return Archetype.ARCHETYPES.find(archetype => archetype.name === name);
+  }
+
+  static fromJson(archetype: any): Archetype {
+    if (archetype && archetype.name) {
+      return this.byName(archetype.name);
+    }
+    return this.byName(archetype);
   }
 
   toString() {
@@ -43,16 +55,5 @@ export class Archetype {
 
   toJSON() {
     return this.name;
-  }
-
-  static byName(name: string): Archetype {
-    return Archetype.ARCHETYPES.find(archetype => archetype.name == name);
-  }
-
-  static fromJson(archetype: any): Archetype {
-    if (archetype && archetype.name) {
-      return this.byName(archetype.name);
-    }
-    return this.byName(archetype);
   }
 }
