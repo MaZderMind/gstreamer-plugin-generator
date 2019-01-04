@@ -48,7 +48,14 @@ export class Classification {
     return this.name;
   }
 
-  static byName(name: any): Classification {
+  static byName(name: string): Classification {
     return Classification.CLASSIFICATIONS.find(classification => classification.name == name);
+  }
+
+  static fromJson(classification: any) {
+    if (classification && classification.name) {
+      return this.byName(classification.name);
+    }
+    return this.byName(classification);
   }
 }

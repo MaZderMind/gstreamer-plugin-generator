@@ -16,13 +16,20 @@ export class Plugin {
   constructor(plugin?: Plugin) {
     if (plugin) {
       this.name = plugin.name;
+      this.identifier = plugin.identifier;
 
       this.author = plugin.author;
       this.authorEmail = plugin.authorEmail;
 
-      this.license = plugin.license;
+      this.license = License.fromJson(plugin.license);
       this.url = plugin.url;
       this.elements = plugin.elements.map(element => new Element(element));
+    }
+  }
+
+  addElementIfEmpty() {
+    if (this.elements.length == 0) {
+      this.elements.push(new Element());
     }
   }
 }

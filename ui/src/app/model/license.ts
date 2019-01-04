@@ -23,7 +23,14 @@ export class License {
     return this.name;
   }
 
-  static byName(name: any): License {
+  static byName(name: string): License {
     return License.LICENSES.find(llicense => llicense.name == name);
+  }
+
+  static fromJson(license: any) {
+    if (license && license.name) {
+      return this.byName(license.name);
+    }
+    return this.byName(license);
   }
 }

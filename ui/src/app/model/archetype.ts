@@ -45,7 +45,14 @@ export class Archetype {
     return this.name;
   }
 
-  static byName(name: any): Archetype {
+  static byName(name: string): Archetype {
     return Archetype.ARCHETYPES.find(archetype => archetype.name == name);
+  }
+
+  static fromJson(archetype: any): Archetype {
+    if (archetype && archetype.name) {
+      return this.byName(archetype.name);
+    }
+    return this.byName(archetype);
   }
 }

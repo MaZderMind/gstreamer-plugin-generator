@@ -1,23 +1,27 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {AfterContentChecked, Component, EventEmitter, Input, Output, ViewChild} from '@angular/core';
 import {Plugin} from "src/app/model/plugin"
 import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
 import {removeElement} from "src/app/utils/removeElement";
 import {NgForm, NgModel} from "@angular/forms";
 import {generateIdentifier} from "src/app/utils/generate-identifier";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-plugin-form',
   templateUrl: './plugin-form.component.html',
   styleUrls: ['./plugin-form.component.scss']
 })
-export class PluginFormComponent implements OnInit {
+export class PluginFormComponent implements AfterContentChecked {
 
   @Input()
   plugin: Plugin;
 
   @Output()
   generate = new EventEmitter<Plugin>();
+
+  @Output()
+  changed = new EventEmitter<Plugin>();
 
   @ViewChild('pluginForm')
   pluginForm: NgForm;
@@ -29,8 +33,7 @@ export class PluginFormComponent implements OnInit {
 
   revealControlValidity = false;
 
-  ngOnInit() {
-  }
+  private subscription: Subscription;
 
   addElement() {
     this.plugin.elements.push(new Element());
@@ -69,5 +72,9 @@ export class PluginFormComponent implements OnInit {
 
   private triggerDownload() {
     this.generate.emit(this.plugin);
+  }
+
+  ngAfterContentChecked(): void {
+    this.changed.emit(this.plugin);
   }
 }

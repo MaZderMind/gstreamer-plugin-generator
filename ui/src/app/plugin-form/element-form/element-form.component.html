@@ -9,6 +9,7 @@
         required
         [(ngModel)]="element.name"
         (keydown)="generateIdentifier()"
+        (keyup)="generateIdentifier()"
         placeholder="Some Video-Tool"
       >
     </div>
