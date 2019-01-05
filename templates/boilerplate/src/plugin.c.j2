@@ -4,17 +4,17 @@
 #include "config.h"
 #endif
 
-{% for element in plugin.elements -%}
+{% for element in plugin.elements %}
 #include "{{ element.name | all_lower_case }}.h"
-{%- endfor %}
+{% endfor %}
 
 static gboolean
 plugin_init (GstPlugin * plugin)
 {
-{%- for element in plugin.elements %}
+{% for element in plugin.elements %}
 	gst_element_register (plugin, "{{ element.name | all_lower_case }}", GST_RANK_NONE,
 		GST_TYPE_{{ element.name | upper_snake_case }});
-{%- endfor %}
+{% endfor %}
 
 	return TRUE;
 }

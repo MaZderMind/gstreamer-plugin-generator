@@ -7,6 +7,8 @@ from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quot
 env = Environment(
 	loader=FileSystemLoader('templates'),
 	keep_trailing_newline=True,
+	trim_blocks=True,
+	lstrip_blocks=True,
 )
 env.filters['escape_quotes'] = escape_quotes
 env.filters['quote'] = quote
