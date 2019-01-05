@@ -1,30 +1,32 @@
 {# @formatter:off -#}
 {% include 'boilerplate/src/_license-header.c.j2' %}
-#ifndef _GST_LOCAL_SINK_H_
-#define _GST_LOCAL_SINK_H_
+#ifndef _GST_{{ element.name | upper_snake_case }}_H_
+#define _GST_{{ element.name | upper_snake_case }}_H_
 
 #include <gst/base/gstbasetransform.h>
 
 G_BEGIN_DECLS
-#define GST_TYPE_LOCAL_SINK           (gst_local_sink_get_type())
-#define GST_LOCAL_SINK(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), GST_TYPE_LOCAL_SINK, GstLocalSink))
-#define GST_LOCAL_SINK_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST((klass),  GST_TYPE_LOCAL_SINK, GstLocalSinkClass))
-#define GST_IS_LOCAL_SINK(obj)        (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_LOCAL_SINK))
-#define GST_IS_LOCAL_SINK_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE((klass),  GST_TYPE_LOCAL_SINK))
-typedef struct _GstLocalSink GstLocalSink;
-typedef struct _GstLocalSinkClass GstLocalSinkClass;
+#define GST_TYPE_{{ element.name | upper_snake_case }}           (gst_{{ element.name | all_lower_case }}_get_type())
+#define GST_{{ element.name | upper_snake_case }}(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), GST_TYPE_{{ element.name | upper_snake_case }}, Gst{{ element.name | pascal_case }}))
+#define GST_{{ element.name | upper_snake_case }}_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST((klass),  GST_TYPE_{{ element.name | upper_snake_case }}, Gst{{ element.name | pascal_case }}Class))
+#define GST_IS_{{ element.name | upper_snake_case }}(obj)        (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_{{ element.name | upper_snake_case }}))
+#define GST_IS_{{ element.name | upper_snake_case }}_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE((klass),  GST_TYPE_{{ element.name | upper_snake_case }}))
+typedef struct _Gst{{ element.name | pascal_case }} Gst{{ element.name | pascal_case }};
+typedef struct _Gst{{ element.name | pascal_case }}Class Gst{{ element.name | pascal_case }}Class;
 
-struct _GstLocalSink
+struct _Gst{{ element.name | pascal_case }}
 {
-  GstBaseSink base_localsink;
+  GstBaseTransform base_{{ element.name | all_lower_case }};
+
+  gchar *bar;
 };
 
-struct _GstLocalSinkClass
+struct _Gst{{ element.name | pascal_case }}Class
 {
-  GstBaseSinkClass base_localsink_class;
+  GstBaseTransformClass base_{{ element.name | all_lower_case }}_class;
 };
 
-GType gst_local_sink_get_type (void);
+GType gst_{{ element.name | all_lower_case }}_get_type (void);
 
 G_END_DECLS
-#endif
+#endif // _GST_{{ element.name | upper_snake_case }}_H_

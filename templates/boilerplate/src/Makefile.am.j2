@@ -1,0 +1,20 @@
+{# @formatter:off -#}
+plugin_LTLIBRARIES = libgst{{ plugin.name | all_lower_case }}.la
+
+libgst{{ plugin.name | all_lower_case }}_la_SOURCES = \
+        {% for element in plugin.elements %}
+        {{ element.name | all_lower_case }}.c \
+        {{ element.name | all_lower_case }}.h \
+        {% endfor %}
+        {{ plugin.name | all_lower_case }}.c
+
+
+# compiler and linker flags used to compile this plugin, set in configure.ac
+libgst{{ plugin.name | all_lower_case }}_la_CFLAGS = $(GST_CFLAGS)
+libgst{{ plugin.name | all_lower_case }}_la_LIBADD = \
+        $(GST_LIBS) \
+        $(GST_PLUGINS_BASE_LIBS) \
+        -lgstvideo-1.0 \
+        -lgstaudio-1.0
+libgst{{ plugin.name | all_lower_case }}_la_LDFLAGS = $(GST_PLUGIN_LDFLAGS)
+libgst{{ plugin.name | all_lower_case }}_la_LIBTOOLFLAGS = --tag=disable-static

@@ -2,7 +2,7 @@ from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
 
-from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quote, escape_quotes
+from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quote, escape_quotes, lower_snake_case
 
 env = Environment(
 	loader=FileSystemLoader('templates'),
@@ -14,6 +14,7 @@ env.filters['escape_quotes'] = escape_quotes
 env.filters['quote'] = quote
 env.filters['all_lower_case'] = all_lower_case
 env.filters['upper_snake_case'] = upper_snake_case
+env.filters['lower_snake_case'] = lower_snake_case
 env.filters['pascal_case'] = pascal_case
 
 
@@ -46,4 +47,19 @@ def generate_plugin_boilerplate(plugin_info):
 	if plugin_info['license'] == 'LGPL':
 		yield 'COPYING', render('boilerplate/licenses/LGPL.j2', context)
 
+	yield 'src/Makefile.am', render('boilerplate/src/Makefile.am.j2', context)
 	yield 'src/%s.c' % identitfier, render('boilerplate/src/plugin.c.j2', context)
+	for element in plugin_info['elements']:
+		element_identitfier = all_lower_case(element['name'])
+
+		context['element'] = element
+
+		yield 'test-scripts/inspect-%s.sh' % element_identitfier, \
+			render('boilerplate/test-scripts/inspect.sh.j2', context), True
+
+		yield 'test-scripts/run-%s.sh' % element_identitfier, \
+			render('boilerplate/test-scripts/run.sh.j2', context), True
+
+		if element['archetype'] == 'GstBaseTransform':
+			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/gst-base-transform.h.j2', context)
+			yield 'src/%s.c' % element_identitfier, render('boilerplate/src/gst-base-transform.c.j2', context)

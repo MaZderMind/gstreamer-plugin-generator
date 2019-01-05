@@ -1,5 +1,6 @@
 {# @formatter:off -#}
 {% include 'boilerplate/src/_license-header.c.j2' %}
+
 #ifdef HAVE_CONFIG_H
 #include "config.h"
 #endif
@@ -24,4 +25,4 @@ GST_PLUGIN_DEFINE (
 	GST_VERSION_MINOR,
 	{{ plugin.name | all_lower_case }},
 	"{{ plugin.description | escape_quotes }}",
-	plugin_init, VERSION, "{{ plugin.license }}", PACKAGE_NAME, "{{ plugin.url | escape_quotes }}")
+	plugin_init, VERSION, "{{ plugin.license | escape_quotes }}", PACKAGE_NAME, "{{ plugin.url | escape_quotes }}")

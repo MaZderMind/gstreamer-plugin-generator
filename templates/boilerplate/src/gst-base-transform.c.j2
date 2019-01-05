@@ -1,0 +1,182 @@
+{# @formatter:off -#}
+{% include 'boilerplate/src/_license-header.c.j2' %}
+
+#ifdef HAVE_CONFIG_H
+#include "config.h"
+#endif
+
+#include "{{ element.name | all_lower_case }}.h"
+
+/* pad templates */
+static GstStaticPadTemplate sinktemplate = GST_STATIC_PAD_TEMPLATE ("sink",
+    GST_PAD_SINK,
+    GST_PAD_ALWAYS,
+    GST_STATIC_CAPS_ANY);
+
+static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE ("src",
+    GST_PAD_SRC,
+    GST_PAD_ALWAYS,
+    GST_STATIC_CAPS_ANY);
+
+GST_DEBUG_CATEGORY_STATIC (gst_{{ element.name | all_lower_case }}_debug);
+#define GST_CAT_DEFAULT gst_{{ element.name | all_lower_case }}_debug
+
+/* signals */
+enum
+{
+  FOO_SIGNAL,
+  LAST_SIGNAL
+};
+
+/* properties */
+enum
+{
+  PROP_0,
+  PROP_BAR,
+};
+
+/* property defalts */
+#define PROP_BAR_DEFAULT ("barbara")
+
+/* parent class */
+#define gst_{{ element.name | all_lower_case }}_parent_class parent_class
+G_DEFINE_TYPE (Gst{{ element.name | pascal_case }}, gst_{{ element.name | all_lower_case }}, GST_TYPE_BASE_TRANSFORM);
+
+/* GObject member methods */
+static void gst_{{ element.name | all_lower_case }}_set_property (GObject * object, guint prop_id, const GValue * value, GParamSpec * pspec);
+static void gst_{{ element.name | all_lower_case }}_get_property (GObject * object, guint prop_id, GValue * value, GParamSpec * pspec);
+static void gst_{{ element.name | all_lower_case }}_finalize (GObject * obj);
+
+/* GstBaseTransform member methods */
+static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * trans, GstCaps * in, GstCaps * out);
+static gboolean gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * trans);
+static GstFlowReturn gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * trans, GstBuffer * in);
+static gboolean gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * trans, GstEvent * event);
+static void
+
+gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_case }}Class * klass)
+{
+  GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+  GstElementClass *element_class = GST_ELEMENT_CLASS (klass);
+
+  gobject_class->set_property = gst_{{ element.name | all_lower_case }}_set_property;
+  gobject_class->get_property = gst_{{ element.name | all_lower_case }}_get_property;
+  gobject_class->finalize = gst_{{ element.name | all_lower_case }}_finalize;
+
+  GstBaseTransformClass *trans_class = GST_BASE_TRANSFORM_CLASS (klass);
+  trans_class->set_caps = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_set_caps);
+  trans_class->start = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_start);
+  trans_class->transform_ip = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_transform_ip);
+  trans_class->sink_event = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_sink_event);
+  //trans_class->passthrough_on_same_caps = TRUE;
+
+  g_object_class_install_property (gobject_class, PROP_BAR,
+      g_param_spec_string ("bar", "Bar",
+          "Bar bar bar bar",
+          PROP_BAR_DEFAULT, G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS));
+
+  GST_DEBUG_CATEGORY_INIT (gst_{{ element.name | all_lower_case }}_debug, "{{ element.name | all_lower_case }}", 0, "{{ element.name | escape_quotes }}");
+
+  gst_element_class_add_static_pad_template (element_class, &sinktemplate);
+  gst_element_class_add_static_pad_template (element_class, &srctemplate);
+  gst_element_class_set_static_metadata (element_class, "{{ element.name | escape_quotes }}",
+      "Filter/Analyzer/Audio",
+      "RMS/Peak/Decaying Peak Level messager for audio/raw",
+      "Thomas Vander Stichele <thomas at apestaart dot org>");
+}
+
+static void
+gst_{{ element.name | all_lower_case }}_init (Gst{{ element.name | pascal_case }} * {{ element.name | all_lower_case }})
+{
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "init");
+}
+
+void
+gst_{{ element.name | all_lower_case }}_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+
+  switch (property_id) {
+    case PROP_BAR:
+      g_free ({{ element.name | all_lower_case }}->bar);
+      {{ element.name | all_lower_case }}->bar = g_value_dup_string (value);
+      GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "setting bar-property to %s", {{ element.name | all_lower_case }}->bar);
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+  }
+}
+
+void
+gst_{{ element.name | all_lower_case }}_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+
+  switch (property_id) {
+    case PROP_BAR:
+      g_value_set_string (value, {{ element.name | all_lower_case }}->bar);
+      break;
+
+    default:
+      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      break;
+  }
+}
+
+void
+gst_{{ element.name | all_lower_case }}_finalize (GObject * object)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "finalize");
+
+  g_free ({{ element.name | all_lower_case }}->bar);
+
+  G_OBJECT_CLASS (gst_{{ element.name | all_lower_case }}_parent_class)->finalize (object);
+}
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * object, GstCaps * in, GstCaps * out)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "set_caps");
+/*
+  GstAudioInfo info;
+  gint i, channels;
+
+  if (!gst_audio_info_from_caps (&info, in))
+    return FALSE;
+
+  channels = GST_AUDIO_INFO_CHANNELS (&info);
+*/
+  return TRUE;
+}
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * object)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "start");
+
+  return TRUE;
+}
+
+static GstFlowReturn
+gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * object, GstBuffer * in)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "transform_ip");
+
+  return GST_FLOW_OK;
+}
+
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * object, GstEvent * event)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "sink_event");
+
+  return GST_BASE_TRANSFORM_CLASS (parent_class)->sink_event (object, event);
+}
