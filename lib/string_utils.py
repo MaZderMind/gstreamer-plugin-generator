@@ -5,8 +5,8 @@ def split_words(string):
 	if not string:
 		return []
 
-	with_separators = re.sub(r'([A-Z]+)', '-\\1', string)
-	words = re.split(r'[^a-zA-Z]', with_separators)
+	with_separators = re.sub(r'([A-Z0-9]+)', '-\\1', string)
+	words = re.split(r'[^a-zA-Z0-9]', with_separators)
 	return list(filter(lambda word: len(word) > 0, words))
 
 

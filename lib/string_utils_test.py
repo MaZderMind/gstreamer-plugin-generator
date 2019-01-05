@@ -20,6 +20,10 @@ class TestSplitWords(unittest.TestCase):
 		words = split_words('LoremIpsum dolor-sit Amet')
 		self.assertEqual(words, ['Lorem', 'Ipsum', 'dolor', 'sit', 'Amet'])
 
+	def test_keeps_numbers(self):
+		words = split_words('MP4-Muxer')
+		self.assertEqual(words, ['MP4', 'Muxer'])
+
 
 class CaseFilters(unittest.TestCase):
 	def test_all_lower_case(self):

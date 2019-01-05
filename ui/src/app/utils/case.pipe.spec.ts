@@ -20,6 +20,11 @@ describe('splitWords', () => {
     const words = splitWords('LoremIpsum dolor-sit Amet');
     expect(words).toEqual(['Lorem', 'Ipsum', 'dolor', 'sit', 'Amet']);
   });
+
+  it('should keep numbers', function () {
+    const words = splitWords('MP4-Muxer');
+    expect(words).toEqual(['MP4', 'Muxer']);
+  });
 });
 
 describe('AllLowerCasePipe', () => {

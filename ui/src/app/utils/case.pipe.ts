@@ -5,7 +5,7 @@ export function splitWords(value: string): string[] {
     return [];
   }
 
-  return value.replace(/([A-Z]+)/g, '-$1').split(/[^a-zA-Z]/)
+  return value.replace(/([A-Z0-9]+)/g, '-$1').split(/[^a-zA-Z0-9]/)
     .filter(word => word.length > 0);
 }
 
