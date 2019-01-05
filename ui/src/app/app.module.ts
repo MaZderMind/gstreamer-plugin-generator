@@ -10,7 +10,7 @@ import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {GstBaseTransformFormComponent} from 'src/app/plugin-form/element-form/gst-base-transform-form/gst-base-transform-form.component';
-import {AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import {AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/util
     PascalCasePipe,
     AllLowerCasePipe,
     UpperSnakeCasePipe,
+    LowerSnakeCasePipe,
   ],
   imports: [
     BrowserModule,

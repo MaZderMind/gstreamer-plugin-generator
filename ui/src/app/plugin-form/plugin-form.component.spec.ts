@@ -5,7 +5,7 @@ import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {FormsModule} from '@angular/forms';
 import {MockComponent} from 'ng2-mock-component';
-import {AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 
 describe('PluginFormComponent', () => {
   let component: PluginFormComponent;
@@ -16,7 +16,7 @@ describe('PluginFormComponent', () => {
       declarations: [
         PluginFormComponent,
         NewIdPipe, LastIdPipe,
-        AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe,
+        AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
 
         MockComponent({selector: 'app-element-form', inputs: ['element']})
       ],

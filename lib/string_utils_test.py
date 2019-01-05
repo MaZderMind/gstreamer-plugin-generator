@@ -1,6 +1,7 @@
 import unittest
 
-from lib.string_utils import split_words, all_lower_case, upper_snake_case, pascal_case, escape_quotes, quote
+from lib.string_utils import split_words, all_lower_case, upper_snake_case, pascal_case, escape_quotes, quote, \
+	lower_snake_case
 
 
 class TestSplitWords(unittest.TestCase):
@@ -33,6 +34,10 @@ class CaseFilters(unittest.TestCase):
 	def test_upper_snake_case(self):
 		transformed = upper_snake_case('LoremIpsum dolor-sit')
 		self.assertEqual(transformed, 'LOREM_IPSUM_DOLOR_SIT')
+
+	def test_ower_snake_case(self):
+		transformed = lower_snake_case('LoremIpsum dolor-sit')
+		self.assertEqual(transformed, 'lorem_ipsum_dolor_sit')
 
 	def test_pascal_case(self):
 		transformed = pascal_case('LoremIpsum dolor-sit')

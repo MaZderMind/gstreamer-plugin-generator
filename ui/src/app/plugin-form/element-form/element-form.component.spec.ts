@@ -4,7 +4,7 @@ import {ElementFormComponent} from './element-form.component';
 import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {ControlContainer, FormsModule, NgForm} from '@angular/forms';
-import {AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 import {MockComponent} from 'ng2-mock-component';
 
 describe('ElementFormComponent', () => {
@@ -16,7 +16,7 @@ describe('ElementFormComponent', () => {
       declarations: [
         ElementFormComponent,
         NewIdPipe, LastIdPipe,
-        AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe,
+        AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
 
         MockComponent({selector: 'app-gst-base-transform-form', inputs: ['element']}),
       ],

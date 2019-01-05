@@ -24,6 +24,13 @@ def upper_snake_case(string):
 	return '_'.join(lower_words)
 
 
+# 'OneTwo-Three' -> 'one_two_three'
+def lower_snake_case(string):
+	words = split_words(string)
+	lower_words = map(lambda word: word.lower(), words)
+	return '_'.join(lower_words)
+
+
 # 'OneTwo-Three' -> 'OneTwoThree'
 def pascal_case(string):
 	words = split_words(string)

@@ -29,6 +29,16 @@ export class UpperSnakeCasePipe implements PipeTransform {
   }
 }
 
+// 'OneTwo-Three' -> 'ONE_TWO_THREE'
+@Pipe({name: 'lowerSnakeCase'})
+export class LowerSnakeCasePipe implements PipeTransform {
+  transform(value: string): string {
+    return splitWords(value)
+      .map(word => word.toLowerCase())
+      .join('_');
+  }
+}
+
 // 'OneTwo-Three' -> 'OneTwoThree'
 @Pipe({name: 'pascalCase'})
 export class PascalCasePipe implements PipeTransform {
