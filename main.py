@@ -4,10 +4,10 @@ import re
 
 from flask import Flask, render_template, Response, stream_with_context, request
 
-from plugin_zip_generator import plugin_zip_generator
+from lib.plugin_zip_generator import plugin_zip_generator
+from lib.string_utils import pascal_case
 
 app = Flask(__name__)
-app.jinja_env.keep_trailing_newline = True
 
 
 @app.route('/')
@@ -20,7 +20,7 @@ def generate():
 	plugin_info = request.json or json.loads(request.form['json'])
 	# validate plugin_info
 
-	filename = re.sub(r'/[^a-z0-9]/g', '', plugin_info['identifier']) + ".zip"
+	filename = re.sub(r'/[^a-zA-Z0-9]/g', '', pascal_case(plugin_info['name'])) + ".zip"
 
 	generator = stream_with_context(plugin_zip_generator(plugin_info))
 	response = Response(generator)

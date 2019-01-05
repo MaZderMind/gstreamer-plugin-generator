@@ -1,7 +1,8 @@
 import time
 from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
 
-from plugin_boilerplate_generator import generate_plugin_boilerplate
+from lib.plugin_boilerplate_generator import generate_plugin_boilerplate
+from lib.string_utils import pascal_case
 
 
 class StreamFile(object):
@@ -39,7 +40,7 @@ class StreamFile(object):
 
 
 def plugin_zip_generator(plugin_info):
-	rootdir = plugin_info['identifier']
+	rootdir = pascal_case(plugin_info['name'])
 	with StreamFile() as stream_file:
 		with ZipFile(stream_file, "w", ZIP_DEFLATED) as zipfile:
 			for file in generate_plugin_boilerplate(plugin_info):

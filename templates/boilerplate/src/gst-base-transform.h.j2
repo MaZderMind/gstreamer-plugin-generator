@@ -1,0 +1,29 @@
+{% include 'boilerplate/src/_license-header.c.j2' %}
+#ifndef _GST_LOCAL_SINK_H_
+#define _GST_LOCAL_SINK_H_
+
+#include <gst/base/gstbasetransform.h>
+
+G_BEGIN_DECLS
+#define GST_TYPE_LOCAL_SINK           (gst_local_sink_get_type())
+#define GST_LOCAL_SINK(obj)           (G_TYPE_CHECK_INSTANCE_CAST((obj), GST_TYPE_LOCAL_SINK, GstLocalSink))
+#define GST_LOCAL_SINK_CLASS(klass)   (G_TYPE_CHECK_CLASS_CAST((klass),  GST_TYPE_LOCAL_SINK, GstLocalSinkClass))
+#define GST_IS_LOCAL_SINK(obj)        (G_TYPE_CHECK_INSTANCE_TYPE((obj), GST_TYPE_LOCAL_SINK))
+#define GST_IS_LOCAL_SINK_CLASS(obj)  (G_TYPE_CHECK_CLASS_TYPE((klass),  GST_TYPE_LOCAL_SINK))
+typedef struct _GstLocalSink GstLocalSink;
+typedef struct _GstLocalSinkClass GstLocalSinkClass;
+
+struct _GstLocalSink
+{
+  GstBaseSink base_localsink;
+};
+
+struct _GstLocalSinkClass
+{
+  GstBaseSinkClass base_localsink_class;
+};
+
+GType gst_local_sink_get_type (void);
+
+G_END_DECLS
+#endif
