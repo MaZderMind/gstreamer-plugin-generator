@@ -1,2 +1,2 @@
 #!/bin/sh
-GST_PLUGIN_PATH=`dirname $0`/../src/.libs/ gst-launch-1.0 -vm audiotestsrc ! {{ element.name | all_lower_case }} ! autoaudiosink
+GST_PLUGIN_PATH=`dirname $0`/../src/.libs/ GST_DEBUG="*:2,{{ element.name | all_lower_case }}:5" gst-launch-1.0 -vm audiotestsrc ! {{ element.name | all_lower_case }} ! autoaudiosink
