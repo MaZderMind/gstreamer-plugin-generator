@@ -1,7 +1,6 @@
 <form #pluginForm="ngForm" [class.is-submitted]="revealControlValidity ">
-  valid: {{ pluginForm.valid }}
-  <div class="card mb-3">
-    <div class="card-header">
+  <div class="card border-primary mb-3">
+    <div class="card-header bg-primary text-white">
       Plugin Informstion
     </div>
     <div class="card-body">
@@ -31,6 +30,7 @@
         <div class="col-lg-10 col-sm-12">
           <textarea
             class="form-control"
+            rows="4"
             id="{{ 'description' | lastId }}" name="{{ 'description' | lastId }}"
             [(ngModel)]="plugin.description"
             placeholder="Fancy Video Tools is a set of Tools intended to produce fancy results."
@@ -91,15 +91,15 @@
     </div>
   </div>
 
-  <div class="card mb-3" *ngFor="let element of plugin.elements">
-    <div class="card-header">
-      <a href class="float-right close-icon" (click)="removeElement(element)"
+  <div class="card border-secondary mb-3" *ngFor="let element of plugin.elements; let i = index">
+    <div class="card-header bg-secondary text-white">
+      <a href class="float-right close-icon text-white" (click)="removeElement(element)"
          appPreventDefault *ngIf="canRemoveElement">
         <i class="fa fa-times"></i>
       </a>
 
-      Element
-      <ng-container *ngIf="element.identifier">: {{ element.name }}</ng-container>
+      Element #{{ i + 1 }}
+      <ng-container *ngIf="element.name">– {{ element.name }}</ng-container>
     </div>
     <div class="card-body">
       <app-element-form [element]="element"></app-element-form>

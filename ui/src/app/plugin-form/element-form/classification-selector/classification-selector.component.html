@@ -1,0 +1,16 @@
+<ng-multiselect-dropdown
+  [placeholder]="'Select Classification(s)'"
+  [data]="classifications"
+  [(ngModel)]="element.classifications"
+  [settings]="{
+    idField: 'name',
+    textField: 'name',
+    enableCheckAll: false
+  }"
+>
+</ng-multiselect-dropdown>
+<p class="mt-2">
+  <i class="fa fa-info-circle"></i> The Classification is used by pther program to sort, search and find plugins. See <a
+  href="https://gstreamer.freedesktop.org/documentation/design/draft-klass.html">Element Klass
+  definition</a> for an in-depth explanation of each Class.
+</p>

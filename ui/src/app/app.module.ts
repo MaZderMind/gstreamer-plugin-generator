@@ -11,6 +11,8 @@ import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {GstBaseTransformFormComponent} from 'src/app/plugin-form/element-form/gst-base-transform-form/gst-base-transform-form.component';
 import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
+import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe
     AllLowerCasePipe,
     UpperSnakeCasePipe,
     LowerSnakeCasePipe,
+    ClassificationSelectorComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent]

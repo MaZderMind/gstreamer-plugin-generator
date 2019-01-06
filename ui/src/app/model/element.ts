@@ -5,10 +5,11 @@ import {Pad} from './pad';
 
 
 export class Element {
-  archetype: Archetype = Archetype.byName('TRANSFORM');
-  classifications: Classification[] = [Classification.byName('Filter')];
+  archetype: Archetype = Archetype.byName('GstBaseTransform');
+  classifications: Classification[] = [];
 
   name: string;
+  description: string;
 
   properties: Property[] = [];
   pads: Pad[] = [];
@@ -17,6 +18,7 @@ export class Element {
     if (element) {
       this.archetype = Archetype.fromJson(element.archetype);
       this.classifications = element.classifications.map(classification => Classification.fromJson(classification));
+      this.description = element.description;
 
       this.name = element.name;
     }

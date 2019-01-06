@@ -19,6 +19,7 @@ describe('ElementFormComponent', () => {
         AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
 
         MockComponent({selector: 'app-gst-base-transform-form', inputs: ['element']}),
+        MockComponent({selector: 'app-classification-selector', inputs: ['element']}),
       ],
       imports: [FormsModule],
       providers: [

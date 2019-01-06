@@ -6,6 +6,7 @@ export class Classification {
     this.description = description;
   }
 
+  // https://gstreamer.freedesktop.org/documentation/design/draft-klass.html
   static readonly CLASSIFICATIONS: Classification[] = [
     new Classification('Functional', 'Source', 'produces data'),
     new Classification('Functional', 'Sink', 'consumes data'),
