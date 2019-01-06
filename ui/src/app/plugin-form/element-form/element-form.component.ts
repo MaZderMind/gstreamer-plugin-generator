@@ -4,14 +4,18 @@ import {ControlContainer, NgForm, NgModel} from '@angular/forms';
 import {Archetype} from 'src/app/model/archetype';
 import {Property} from 'src/app/model/property';
 import {removeElement} from 'src/app/utils/removeElement';
+import {NavigationService} from 'src/app/navigation/navigation.service';
 
 @Component({
   selector: 'app-element-form',
   templateUrl: './element-form.component.html',
   styleUrls: ['./element-form.component.scss'],
-  viewProviders: [{provide: ControlContainer, useExisting: NgForm}]
+  viewProviders: [{provide: ControlContainer, useExisting: NgForm}],
 })
 export class ElementFormComponent implements OnInit {
+
+  @Input()
+  index: number;
 
   @Input()
   element: Element;
@@ -21,7 +25,7 @@ export class ElementFormComponent implements OnInit {
 
   archetypes = Archetype.ARCHETYPES;
 
-  constructor() {
+  constructor(private navigationService: NavigationService) {
   }
 
   ngOnInit() {
@@ -33,5 +37,21 @@ export class ElementFormComponent implements OnInit {
 
   removeProperty(property: Property) {
     removeElement(this.element.properties, property);
+  }
+
+  enterElement() {
+    this.navigationService.enter(this.elementId());
+  }
+
+  elementId() {
+    return 'element-' + this.index;
+  }
+
+  enterProperty(propertyIndex: number) {
+    this.navigationService.enter(this.propertyId(propertyIndex));
+  }
+
+  propertyId(propertyIndex: number) {
+    return 'element-' + this.index + '-prop-' + propertyIndex;
   }
 }

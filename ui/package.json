@@ -27,6 +27,7 @@
     "karma-mocha-reporter": "^2.2.5",
     "ng-multiselect-dropdown": "^0.2.3",
     "ng2-mock-component": "^0.1.1",
+    "ng2-track-scroll": "^1.1.5",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

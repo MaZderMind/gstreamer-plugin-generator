@@ -1,28 +1,31 @@
 <div ngModelGroup="element">
-
-  <div class="form-group row">
-    <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Element Name</label>
-    <div class="col-lg-10 col-sm-12">
-      <input
-        type="text" class="form-control"
-        id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
-        required
-        [(ngModel)]="element.name"
-        placeholder="Some Video-Tool"
-      >
+  <div
+    [trackScrollConfig]="{ position: 'top' }"
+    trackScroll (trackScrollEnter)="enterElement()" [attr.id]="elementId()"
+  >
+    <div class="form-group row">
+      <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Element Name</label>
+      <div class="col-lg-10 col-sm-12">
+        <input
+          type="text" class="form-control"
+          id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
+          required
+          [(ngModel)]="element.name"
+          placeholder="Some Video-Tool"
+        >
+      </div>
     </div>
-  </div>
 
-  <div class="form-group row">
-    <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenations in the Code</label>
-    <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | allLowerCase }}</code></div>
-    <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | upperSnakeCase }}</code></div>
-    <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | pascalCase }}</code></div>
-  </div>
+    <div class="form-group row">
+      <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenations in the Code</label>
+      <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | allLowerCase }}</code></div>
+      <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | upperSnakeCase }}</code></div>
+      <div class="col-lg-3 col-sm-12 mt-1"><code>{{ element.name | pascalCase }}</code></div>
+    </div>
 
-  <div class="form-group row">
-    <label for="{{ 'description' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Description</label>
-    <div class="col-lg-10 col-sm-12">
+    <div class="form-group row">
+      <label for="{{ 'description' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Description</label>
+      <div class="col-lg-10 col-sm-12">
         <textarea
           class="form-control"
           rows="4"
@@ -30,52 +33,57 @@
           [(ngModel)]="element.description"
           placeholder="Some Video-Tool doing some Video-Processing."
         ></textarea>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label class="col-lg-2 col-sm-12 col-form-label">Classification</label>
-    <div class="col-lg-10 col-sm-12">
-      <app-classification-selector [element]="element"></app-classification-selector>
-    </div>
-  </div>
-
-  <div class="form-group row">
-    <label for="{{ 'archetype' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Archetype</label>
-    <div class="col-lg-10 col-sm-12">
-      <select
-        required
-        class="form-control"
-        id="{{ 'archetype' | lastId }}" name="{{ 'archetype' | lastId }}"
-        [(ngModel)]="element.archetype"
-      >
-        <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.name }}</option>
-      </select>
-    </div>
-  </div>
-
-  <ng-container *ngIf="element.archetype">
-    <div class="row">
-      <div class="col">
-        <i class="fa fa-info-circle mr-1"></i>
-        <strong>{{ element.archetype.name }}:</strong>
-        {{ element.archetype.description }}
       </div>
     </div>
 
-    <hr>
+    <div class="form-group row">
+      <label class="col-lg-2 col-sm-12 col-form-label">Classification</label>
+      <div class="col-lg-10 col-sm-12">
+        <app-classification-selector [element]="element"></app-classification-selector>
+      </div>
+    </div>
 
-    <app-gst-base-transform-form
-      *ngIf="element.archetype.name == 'GstBaseTransform'"
-      [element]="element"
-    ></app-gst-base-transform-form>
-  </ng-container>
+    <div class="form-group row">
+      <label for="{{ 'archetype' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Archetype</label>
+      <div class="col-lg-10 col-sm-12">
+        <select
+          required
+          class="form-control"
+          id="{{ 'archetype' | lastId }}" name="{{ 'archetype' | lastId }}"
+          [(ngModel)]="element.archetype"
+        >
+          <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.name }}</option>
+        </select>
+      </div>
+    </div>
+
+    <ng-container *ngIf="element.archetype">
+      <div class="row">
+        <div class="col">
+          <i class="fa fa-info-circle mr-1"></i>
+          <strong>{{ element.archetype.name }}:</strong>
+          {{ element.archetype.description }}
+        </div>
+      </div>
+
+      <hr>
+
+      <app-gst-base-transform-form
+        *ngIf="element.archetype.name == 'GstBaseTransform'"
+        [element]="element"
+      ></app-gst-base-transform-form>
+    </ng-container>
+  </div>
 
   <hr>
 
-  <div class="card border-info  mb-3" *ngFor="let property of element.properties; let i = index">
+  <div
+    class="card border-info  mb-3" *ngFor="let property of element.properties; let propertyIndex = index"
+    [trackScrollConfig]="{ position: 'top' }"
+    trackScroll (trackScrollEnter)="enterProperty(propertyIndex)" [attr.id]="propertyId(propertyIndex)"
+  >
     <div class="card-header bg-info text-white">
-      Property #{{ i + 1 }}
+      Property #{{ propertyIndex + 1 }}
       <ng-container *ngIf="property.name">– {{ property.name }}</ng-container>
 
       <a href class="float-right text-white close-icon" (click)="removeProperty(property)" appPreventDefault>

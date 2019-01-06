@@ -1,5 +1,5 @@
 <form #pluginForm="ngForm" [class.is-submitted]="revealControlValidity ">
-  <div class="card border-primary mb-3">
+  <div class="card border-primary mb-3" trackScroll (trackScrollEnter)="enterPlugin()" id="plugin">
     <div class="card-header bg-primary text-white">
       Plugin Informstion
     </div>
@@ -90,18 +90,20 @@
     </div>
   </div>
 
-  <div class="card border-secondary mb-3" *ngFor="let element of plugin.elements; let i = index">
+  <div
+    class="card border-secondary mb-3" *ngFor="let element of plugin.elements; let elementIndex = index"
+  >
     <div class="card-header bg-secondary text-white">
       <a href class="float-right close-icon text-white" (click)="removeElement(element)"
          appPreventDefault *ngIf="canRemoveElement">
         <i class="fa fa-times"></i>
       </a>
 
-      Element #{{ i + 1 }}
+      Element #{{ elementIndex + 1 }}
       <ng-container *ngIf="element.name">– {{ element.name }}</ng-container>
     </div>
     <div class="card-body">
-      <app-element-form [element]="element"></app-element-form>
+      <app-element-form [element]="element" [index]="elementIndex"></app-element-form>
     </div>
   </div>
 

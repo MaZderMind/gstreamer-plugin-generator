@@ -4,12 +4,12 @@ import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
 import {removeElement} from 'src/app/utils/removeElement';
 import {NgForm, NgModel} from '@angular/forms';
-import {Subscription} from 'rxjs';
+import {NavigationService} from 'src/app/navigation/navigation.service';
 
 @Component({
   selector: 'app-plugin-form',
   templateUrl: './plugin-form.component.html',
-  styleUrls: ['./plugin-form.component.scss']
+  styleUrls: ['./plugin-form.component.scss'],
 })
 export class PluginFormComponent implements AfterContentChecked {
 
@@ -32,7 +32,8 @@ export class PluginFormComponent implements AfterContentChecked {
 
   revealControlValidity = false;
 
-  private subscription: Subscription;
+  constructor(private navigationService: NavigationService) {
+  }
 
   addElement() {
     this.plugin.elements.push(new Element());
@@ -66,5 +67,9 @@ export class PluginFormComponent implements AfterContentChecked {
 
   ngAfterContentChecked(): void {
     this.changed.emit(this.plugin);
+  }
+
+  enterPlugin() {
+    this.navigationService.enter('plugin');
   }
 }

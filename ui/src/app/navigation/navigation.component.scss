@@ -1,0 +1,25 @@
+@import "~src/styles/variables";
+
+:host {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  border-left: 1px solid $gray-400;
+  margin-top: 20px;
+  width: 300px;
+}
+
+a {
+  color: $gray-400;
+}
+
+a.active,
+a:hover {
+  color: $body-color;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}

@@ -20,6 +20,8 @@ import {
 import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
+import {NavigationComponent} from 'src/app/navigation/navigation.component';
+import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 
 @NgModule({
   declarations: [
@@ -38,12 +40,14 @@ import {PropertyFormComponent} from './plugin-form/element-form/property-form/pr
     KebabCasePipe,
     ClassificationSelectorComponent,
     PropertyFormComponent,
+    NavigationComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
+    Ng2TrackScrollModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

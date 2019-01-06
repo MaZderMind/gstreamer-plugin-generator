@@ -1,0 +1,13 @@
+<ul>
+  <li>
+    <a [attr.href]="'#'+pluginId()" [class.active]="isPluginActive()">Plugin Information</a>
+  </li>
+  <li *ngFor="let element of plugin.elements; let elementIndex = index">
+    <a [attr.href]="'#'+elementId(elementIndex)"  [class.active]="isElementActive(elementIndex)">Element: {{ element.name }}</a>
+    <ul>
+      <li *ngFor="let property of element.properties; let propertyIndex = index">
+        <a [attr.href]="'#'+propertyId(elementIndex, propertyIndex)"  [class.active]="isPropertyActive(elementIndex, propertyIndex)">Property: {{ property.name }}</a>
+      </li>
+    </ul>
+  </li>
+</ul>
