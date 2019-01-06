@@ -20,12 +20,12 @@ class TestPluginZipGenerator(unittest.TestCase):
 		response = test_client.post('/generate', json=test_plugin_info)
 		data = response.data
 		self.assertEqual(response.headers['Content-Type'], 'application/zip')
-		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=WavEncoder.zip')
+		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=Ebur128LoudnessMeter.zip')
 		self.assertGreater(len(data), 0)
 
 	def test_generate_json_arg(self):
 		response = test_client.post('/generate', data={'json': json.dumps(test_plugin_info)})
 		data = response.data
 		self.assertEqual(response.headers['Content-Type'], 'application/zip')
-		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=WavEncoder.zip')
+		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=Ebur128LoudnessMeter.zip')
 		self.assertGreater(len(data), 0)
