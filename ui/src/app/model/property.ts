@@ -45,6 +45,7 @@ export class Property {
   constructor(property?: Property) {
     if (property) {
       this.name = property.name;
+      this.description = property.description;
 
       this.type = property.type;
 

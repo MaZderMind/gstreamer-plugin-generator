@@ -73,26 +73,23 @@
 
   <hr>
 
-  <div class="form-group row">
-    <label for="{{ 'properties' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Properties</label>
-    <div class="col-lg-10 col-sm-12">
-      <div class="mt-2" *ngFor="let property of element.properties; let i = index">
-        <hr *ngIf="i != 0">
+  <div class="card border-info  mb-3" *ngFor="let property of element.properties; let i = index">
+    <div class="card-header bg-info text-white">
+      Property #{{ i + 1 }}
+      <ng-container *ngIf="property.name">– {{ property.name }}</ng-container>
 
-        <a href class="float-right close-icon" (click)="removeProperty(property)" appPreventDefault>
-          <i class="fa fa-times"></i>
-        </a>
-
-        <app-property-form
-          [property]="property"
-        ></app-property-form>
-      </div>
-
-      <div class="mt-2">
-        <a href (click)="addProperty()" appPreventDefault>
-          <i class="fa fa-plus-circle"></i> Add Property
-        </a>
-      </div>
+      <a href class="float-right text-white close-icon" (click)="removeProperty(property)" appPreventDefault>
+        <i class="fa fa-times"></i>
+      </a>
+    </div>
+    <div class="card-body">
+      <app-property-form
+        [property]="property"
+      ></app-property-form>
     </div>
   </div>
+
+  <a href (click)="addProperty()" appPreventDefault>
+    <i class="fa fa-plus-circle"></i> Add Property
+  </a>
 </div>
