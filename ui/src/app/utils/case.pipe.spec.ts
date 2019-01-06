@@ -1,4 +1,4 @@
-import {AllLowerCasePipe, PascalCasePipe, splitWords, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {AllLowerCasePipe, KebabCasePipe, PascalCasePipe, splitWords, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 
 describe('splitWords', () => {
   it('should split words separated with saces', function () {
@@ -60,5 +60,18 @@ describe('PascalCasePipe', () => {
   it('should create the expected PascalCase string', function () {
     const value = pipe.transform('LoremIpsum dolor-sit');
     expect(value).toEqual('LoremIpsumDolorSit');
+  });
+});
+
+
+describe('KebabCasePipe', () => {
+  let pipe: KebabCasePipe;
+  beforeEach(() => {
+    pipe = new KebabCasePipe();
+  });
+
+  it('should create the expected KebabCase string', function () {
+    const value = pipe.transform('LoremIpsum dolor-sit');
+    expect(value).toEqual('lorem-ipsum-dolor-sit');
   });
 });

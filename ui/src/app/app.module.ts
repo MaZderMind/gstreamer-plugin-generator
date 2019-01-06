@@ -10,9 +10,16 @@ import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {HttpClientModule} from '@angular/common/http';
 import {GstBaseTransformFormComponent} from 'src/app/plugin-form/element-form/gst-base-transform-form/gst-base-transform-form.component';
-import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
+import {
+  AllLowerCasePipe,
+  KebabCasePipe,
+  LowerSnakeCasePipe,
+  PascalCasePipe,
+  UpperSnakeCasePipe,
+} from 'src/app/utils/case.pipe';
 import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
 import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
+import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +35,9 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     AllLowerCasePipe,
     UpperSnakeCasePipe,
     LowerSnakeCasePipe,
+    KebabCasePipe,
     ClassificationSelectorComponent,
+    PropertyFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +46,7 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
     NgMultiSelectDropDownModule.forRoot(),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

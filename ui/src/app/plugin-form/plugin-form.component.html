@@ -19,10 +19,9 @@
 
       <div class="form-group row">
         <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenations in the Code</label>
-        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | allLowerCase }}</code></div>
-        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | upperSnakeCase }}</code></div>
-        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | lowerSnakeCase }}</code></div>
-        <div class="col-lg-2 col-sm-12 mt-1"><code>{{ plugin.name | pascalCase }}</code></div>
+        <div class="col-lg-3 col-sm-12 mt-1"><code>{{ plugin.name | allLowerCase }}</code></div>
+        <div class="col-lg-3 col-sm-12 mt-1"><code>{{ plugin.name | upperSnakeCase }}</code></div>
+        <div class="col-lg-3 col-sm-12 mt-1"><code>{{ plugin.name | pascalCase }}</code></div>
       </div>
 
       <div class="form-group row">
@@ -110,7 +109,8 @@
     <div class="col">
       <a href (click)="addElement()" appPreventDefault>
         <i class="fa fa-plus-circle"></i> Add Element
-      </a></div>
+      </a>
+    </div>
   </div>
 
   <div class="row mb-3">

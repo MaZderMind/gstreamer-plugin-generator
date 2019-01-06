@@ -20,12 +20,13 @@ describe('ElementFormComponent', () => {
 
         MockComponent({selector: 'app-gst-base-transform-form', inputs: ['element']}),
         MockComponent({selector: 'app-classification-selector', inputs: ['element']}),
+        MockComponent({selector: 'app-property-form', inputs: ['property']}),
       ],
       imports: [FormsModule],
       providers: [
         ControlContainer,
         NgForm,
-      ]
+      ],
     })
       .compileComponents();
   }));

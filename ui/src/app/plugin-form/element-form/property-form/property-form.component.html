@@ -1,0 +1,21 @@
+<div ngModelGroup="property">
+
+  <div class="form-group row">
+    <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Property Name</label>
+    <div class="col-lg-10 col-sm-12">
+      <input
+        type="text" class="form-control"
+        id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
+        required
+        [(ngModel)]="property.name"
+        placeholder="Some Property"
+      >
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Represenation in the Code</label>
+    <div class="col-lg-3 col-sm-12 mt-1"><code>{{ property.name | kebabCase }}</code></div>
+  </div>
+
+</div>

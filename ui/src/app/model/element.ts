@@ -18,9 +18,11 @@ export class Element {
     if (element) {
       this.archetype = Archetype.fromJson(element.archetype);
       this.classifications = element.classifications.map(classification => Classification.fromJson(classification));
-      this.description = element.description;
 
       this.name = element.name;
+      this.description = element.description;
+
+      this.properties = element.properties ? element.properties.map(property => new Property(property)) : [];
     }
   }
 }

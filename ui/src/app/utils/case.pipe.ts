@@ -48,3 +48,14 @@ export class PascalCasePipe implements PipeTransform {
       .join('');
   }
 }
+
+
+// 'OneTwo-Three' -> 'one-two-three'
+@Pipe({name: 'kebabCase'})
+export class KebabCasePipe implements PipeTransform {
+  transform(value: string): string {
+    return splitWords(value)
+      .map(word => word.toLowerCase())
+      .join('-');
+  }
+}

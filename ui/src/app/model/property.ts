@@ -15,23 +15,46 @@ export enum PropertyType {
 }
 
 export class PropertyEnumItem {
-  value = 0;
-  name = '';
-  description = '';
+  value: number;
+  name: string;
+  description: string;
+
+  constructor(propertyEnumItem?: PropertyEnumItem) {
+    if (propertyEnumItem) {
+      this.value = propertyEnumItem.value;
+      this.name = propertyEnumItem.name;
+      this.description = propertyEnumItem.description;
+    }
+  }
 }
 
 export class Property {
-  name = '';
-  displayName = '';
-  description = '';
+  name: string;
+  description: string;
 
   type: PropertyType;
 
   defaultValue: any;
   min: number;
   max: number;
-  enumValues: PropertyEnumItem[] = [];
+  enumItems: PropertyEnumItem[] = [];
 
   readable: boolean;
   writable: boolean;
+
+  constructor(property?: Property) {
+    if (property) {
+      this.name = property.name;
+
+      this.type = property.type;
+
+      this.defaultValue = property.defaultValue;
+      this.min = property.min;
+      this.max = property.max;
+      this.enumItems = property.enumItems ? property.enumItems.map(enumItem => new PropertyEnumItem(enumItem)) : [];
+
+      this.readable = property.readable;
+      this.writable = property.writable;
+    }
+  }
 }

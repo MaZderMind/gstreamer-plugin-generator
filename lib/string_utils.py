@@ -38,6 +38,13 @@ def pascal_case(string):
 	return ''.join(lower_words)
 
 
+# 'OneTwo-Three' -> 'one-two-three'
+def kebab_case(string):
+	words = split_words(string)
+	lower_words = map(lambda word: word.lower(), words)
+	return '-'.join(lower_words)
+
+
 def escape_quotes(value):
 	return value.replace('"', '\\"')
 

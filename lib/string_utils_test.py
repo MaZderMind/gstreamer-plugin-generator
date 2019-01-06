@@ -1,7 +1,7 @@
 import unittest
 
 from lib.string_utils import split_words, all_lower_case, upper_snake_case, pascal_case, escape_quotes, quote, \
-	lower_snake_case
+	lower_snake_case, kebab_case
 
 
 class TestSplitWords(unittest.TestCase):
@@ -42,6 +42,10 @@ class CaseFilters(unittest.TestCase):
 	def test_pascal_case(self):
 		transformed = pascal_case('LoremIpsum dolor-sit')
 		self.assertEqual(transformed, 'LoremIpsumDolorSit')
+
+	def test_kebab_case(self):
+		transformed = kebab_case('LoremIpsum dolor-sit')
+		self.assertEqual(transformed, 'lorem-ipsum-dolor-sit')
 
 
 class Quoting(unittest.TestCase):
