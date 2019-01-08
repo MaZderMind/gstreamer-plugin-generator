@@ -9,7 +9,6 @@ import {ElementFormComponent} from 'src/app/plugin-form/element-form/element-for
 import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {HttpClientModule} from '@angular/common/http';
-import {GstBaseTransformFormComponent} from 'src/app/plugin-form/element-form/gst-base-transform-form/gst-base-transform-form.component';
 import {
   AllLowerCasePipe,
   KebabCasePipe,
@@ -24,13 +23,13 @@ import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {PadFormComponent} from './plugin-form/element-form/pad-form/pad-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PluginFormComponent,
     PreventDefaultDirective,
-    GstBaseTransformFormComponent,
 
     ElementFormComponent,
     NewIdPipe,
@@ -43,6 +42,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     ClassificationSelectorComponent,
     PropertyFormComponent,
     NavigationComponent,
+    PadFormComponent,
   ],
   imports: [
     BrowserModule,

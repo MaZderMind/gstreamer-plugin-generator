@@ -60,28 +60,33 @@
       </div>
     </div>
 
+    <div class="row" *ngIf="element.archetype">
+      <div class="col">
+        <i class="fa fa-info-circle mr-1"></i>
+        <strong>{{ element.archetype.name }}:</strong>
+        {{ element.archetype.description }}
+      </div>
+    </div>
+
     <ng-container *ngIf="element.archetype">
-      <div class="row">
-        <div class="col">
-          <i class="fa fa-info-circle mr-1"></i>
-          <strong>{{ element.archetype.name }}:</strong>
-          {{ element.archetype.description }}
+      <h2>Pads</h2>
+      <div class="card border-info mb-3" *ngFor="let pad of element.archetype.pads">
+        <div class="card-header bg-info text-white">
+          <code>{{ pad }}</code>-Pad
+        </div>
+        <div class="card-body">
+          <app-pad-form
+            [direction]="pad"
+          ></app-pad-form>
         </div>
       </div>
-
-      <hr>
-
-      <app-gst-base-transform-form
-        *ngIf="element.archetype.name == 'GstBaseTransform'"
-        [element]="element"
-      ></app-gst-base-transform-form>
     </ng-container>
+
+    <h2>Properties</h2>
   </div>
 
-  <hr>
-
   <div
-    class="card border-info  mb-3" *ngFor="let property of element.properties; let propertyIndex = index"
+    class="card border-info mb-3" *ngFor="let property of element.properties; let propertyIndex = index"
     [trackScrollConfig]="{ position: 'top' }"
     trackScroll (trackScrollEnter)="enterProperty(propertyIndex)" [attr.id]="propertyId(propertyIndex)"
   >
