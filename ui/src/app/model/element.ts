@@ -1,12 +1,11 @@
 import {Archetype} from './archetype';
-import {Classification} from './classification';
 import {Property} from './property';
 import {Pad} from './pad';
 
 
 export class Element {
   archetype: Archetype = Archetype.byName('GstBaseTransform');
-  classifications: Classification[] = [];
+  classifications: string[] = [];
 
   name: string;
   description: string;
@@ -17,7 +16,7 @@ export class Element {
   constructor(element?: Element) {
     if (element) {
       this.archetype = Archetype.fromJson(element.archetype);
-      this.classifications = element.classifications.map(classification => Classification.fromJson(classification));
+      this.classifications = element.classifications ? element.classifications : [];
 
       this.name = element.name;
       this.description = element.description;

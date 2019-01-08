@@ -1,23 +1,47 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Classification} from 'src/app/model/classification';
+import {Component, Input} from '@angular/core';
 
 import {Element} from 'src/app/model/element';
 
 @Component({
   selector: 'app-classification-selector',
   templateUrl: './classification-selector.component.html',
-  styleUrls: ['./classification-selector.component.scss']
+  styleUrls: ['./classification-selector.component.scss'],
 })
-export class ClassificationSelectorComponent implements OnInit {
-
+export class ClassificationSelectorComponent {
   @Input()
   element: Element;
 
-  classifications = Classification.CLASSIFICATIONS;
+  @Input()
+  id: string;
 
-  constructor() {
-  }
-
-  ngOnInit() {
-  }
+  classifications = [
+    'Source',
+    'Sink',
+    'Filter',
+    'Effect',
+    'Demuxer',
+    'Muxer',
+    'Decoder',
+    'Encoder',
+    'Mixer',
+    'Converter',
+    'Analyzer',
+    'Control',
+    'Extracter',
+    'Formatter',
+    'Connector',
+    'Audio',
+    'Video',
+    'Image',
+    'Text',
+    'Metadata',
+    'Network',
+    'Protocol',
+    'Payloader',
+    'Depayloader',
+    'RTP',
+    'Device',
+    'Visualisation',
+    'Debug',
+  ];
 }

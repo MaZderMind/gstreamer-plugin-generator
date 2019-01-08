@@ -18,7 +18,6 @@ import {
   UpperSnakeCasePipe,
 } from 'src/app/utils/case.pipe';
 import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
-import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
 import {NavigationComponent} from 'src/app/navigation/navigation.component';
 import {Ng2TrackScrollModule} from 'ng2-track-scroll';
@@ -50,7 +49,6 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule.forRoot(),
     Ng2TrackScrollModule.forRoot(),
     CustomFormsModule,
     TagInputModule,
