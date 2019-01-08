@@ -22,6 +22,9 @@ import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
 import {NavigationComponent} from 'src/app/navigation/navigation.component';
 import {Ng2TrackScrollModule} from 'ng2-track-scroll';
+import {CustomFormsModule} from 'ngx-custom-validators';
+import {TagInputModule} from 'ngx-chips';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -44,10 +47,13 @@ import {Ng2TrackScrollModule} from 'ng2-track-scroll';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
     NgMultiSelectDropDownModule.forRoot(),
     Ng2TrackScrollModule.forRoot(),
+    CustomFormsModule,
+    TagInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

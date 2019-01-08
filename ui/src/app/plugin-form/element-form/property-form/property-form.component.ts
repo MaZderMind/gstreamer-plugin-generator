@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Property} from 'src/app/model/property';
 import {ControlContainer, NgForm} from '@angular/forms';
+import {PropertyType} from 'src/app/model/property-type';
 
 @Component({
   selector: 'app-property-form',
@@ -12,6 +13,8 @@ export class PropertyFormComponent implements OnInit {
 
   @Input()
   property: Property;
+
+  readonly types = PropertyType.PROPERTY_TYPES;
 
   constructor() {
   }

@@ -31,4 +31,36 @@
     </div>
   </div>
 
+  <div class="form-group row">
+    <label for="{{ 'type' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Type</label>
+    <div class="col-lg-10 col-sm-12">
+      <select
+        class="form-control"
+        id="{{ 'type' | lastId }}" name="{{ 'type' | lastId }}"
+        required
+        [(ngModel)]="property.type"
+      >
+        <option *ngFor="let type of types" [ngValue]="type">{{ type.name }}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-group row" *ngIf="property.type?.hasEnumItems">
+    <label for="{{ 'enum_items' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Enumeration-Items</label>
+    <div class="col-lg-10 col-sm-12">
+      <tag-input
+        name="hasEnumItems"
+        [(ngModel)]="property.enumItems"
+        [separatorKeyCodes]="[32]"
+        inputId="{{ 'enum_items' | newId }}"
+        [addOnBlur]="true"
+        [addOnPaste]="true"
+        secondaryPlaceholder="Enter Items"
+        placeholder="+ Item"
+        [modelAsStrings]="true"
+        [animationDuration]="{enter: '0ms', leave: '0ms'}"
+        theme='bootstrap'
+      ></tag-input>
+    </div>
+  </div>
 </div>

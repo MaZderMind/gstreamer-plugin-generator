@@ -28,6 +28,8 @@
     "ng-multiselect-dropdown": "^0.2.3",
     "ng2-mock-component": "^0.1.1",
     "ng2-track-scroll": "^1.1.5",
+    "ngx-chips": "^2.0.0-beta.0",
+    "ngx-custom-validators": "^7.0.0",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
