@@ -2,7 +2,7 @@
   {% for prop in element.properties %}
   g_object_class_install_property (gobject_class, PROP_{{ prop.name | upper_snake_case }},
       g_param_spec_{{ prop.type | lower }} ("{{ prop.name | kebab_case }}", "{{ prop.name | escape_quotes }}",
-          "{{ prop.description | escape_quotes }}",
+          "{{ prop.description | default('') | escape_quotes }}",
           {# min, max #}
           {% if prop.type in ['CHAR'] %}
           0, 255,
