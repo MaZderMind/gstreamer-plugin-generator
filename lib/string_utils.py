@@ -50,4 +50,4 @@ def escape_quotes(value):
 
 
 def quote(value):
-	return '\"' + value.replace('"', '\\"') + '\"'
+	return '\"' + escape_quotes(value) + '\"'
