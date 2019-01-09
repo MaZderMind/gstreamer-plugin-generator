@@ -8,6 +8,8 @@
   border-left: 1px solid $gray-400;
   margin-top: 20px;
   width: 300px;
+
+  background-color: fade_out(white, 0.15);
 }
 
 a {
