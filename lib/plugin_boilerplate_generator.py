@@ -32,7 +32,7 @@ def generate_plugin_boilerplate(plugin_info):
 
 	identitfier = all_lower_case(plugin_info['name'])
 
-	yield 'README', render('boilerplate/README.j2', context)
+	yield 'README', render('boilerplate/README.md.j2', context)
 	yield 'AUTHORS', render('boilerplate/AUTHORS.j2', context)
 	yield 'NEWS', render('boilerplate/NEWS.j2', context)
 	yield 'ChangeLog', render('boilerplate/ChangeLog.j2', context)

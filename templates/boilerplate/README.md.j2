@@ -1,11 +1,20 @@
+{# @formatter:off -#}
 {{ plugin.name }}
 {{ '=' * (plugin.name | length) }}
 {% if plugin.url %}URL: {{ plugin.url }}{% endif %}
+{{ plugin.description }}
 
 Boilerplate generated with {{ generator }}
 
+{% for element in plugin.elements %}
+{{ element.name }}
+{{ '-' * (element.name | length) }}
+{{ element.description }}
+{% endfor %}
+
 Getting-Started
 ---------------
+```
 cd {{ plugin.name | all_lower_case }}
 git init
 git submodules init
@@ -14,3 +23,4 @@ git submodules init
 cd examples
 ./inspect.sh
 ./run.sh
+```
