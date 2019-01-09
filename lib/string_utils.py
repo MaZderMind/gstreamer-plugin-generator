@@ -45,9 +45,13 @@ def kebab_case(string):
 	return '-'.join(lower_words)
 
 
-def escape_quotes(value):
-	return value.replace('"', '\\"')
+def normalize_newlines(value):
+	return value.replace("\r\n", "\n").replace("\r", "\n")
 
 
-def quote(value):
-	return '\"' + escape_quotes(value) + '\"'
+def escape_quotes_for_c(value):
+	return normalize_newlines(value).replace('"', '\\"').replace("\n", " \\\n")
+
+
+def quote_for_c(value):
+	return '\"' + escape_quotes_for_c(value) + '\"'

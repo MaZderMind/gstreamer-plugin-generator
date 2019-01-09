@@ -1,7 +1,8 @@
 import unittest
 
-from lib.string_utils import split_words, all_lower_case, upper_snake_case, pascal_case, escape_quotes, quote, \
-	lower_snake_case, kebab_case
+from lib.string_utils import split_words, all_lower_case, upper_snake_case, pascal_case, escape_quotes_for_c, \
+	quote_for_c, \
+	lower_snake_case, kebab_case, normalize_newlines
 
 
 class TestSplitWords(unittest.TestCase):
@@ -50,9 +51,17 @@ class CaseFilters(unittest.TestCase):
 
 class Quoting(unittest.TestCase):
 	def escape_quotes(self):
-		escaped = escape_quotes('Foo "Bar" Moo \'Foo\' Qoo')
+		escaped = escape_quotes_for_c('Foo "Bar" Moo \'Foo\' Qoo')
 		self.assertEqual(escaped, 'Foo \\"Bar\\" Moo \'Foo\' Qoo')
 
+	def normalize_newlines(self):
+		normaized = normalize_newlines('Foo\rBar\r\nMoo\nNoo')
+		self.assertEqual(normaized, 'Foo\nBar\nMoo\nNoo')
+
+	def escape_multiline(self):
+		escaped = escape_quotes_for_c('Foo\nBar')
+		self.assertEqual(escaped, 'Foo \\\nBar')
+
 	def quote(self):
-		quoted = quote('Foo "Bar" Moo \'Foo\' Qoo')
+		quoted = quote_for_c('Foo "Bar" Moo \'Foo\' Qoo')
 		self.assertEqual(quoted, '"Foo \\"Bar\\" Moo \'Foo\' Qoo"')
