@@ -1,3 +1,4 @@
+import json
 from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
@@ -34,6 +35,7 @@ def generate_plugin_boilerplate(plugin_info):
 
 	identitfier = all_lower_case(plugin_info['name'])
 
+	yield 'boilerplate-config.json', json.dumps(plugin_info, indent="  ", sort_keys=True)
 	yield 'README', render('boilerplate/README.md.j2', context)
 	yield 'AUTHORS', render('boilerplate/AUTHORS.j2', context)
 	yield 'NEWS', render('boilerplate/NEWS.j2', context)
