@@ -1,0 +1,5 @@
+{# @formatter:off #}
+  GObjectClass *gobject_class = G_OBJECT_CLASS (klass);
+  gobject_class->set_property = gst_{{ element.name | all_lower_case }}_set_property;
+  gobject_class->get_property = gst_{{ element.name | all_lower_case }}_get_property;
+  gobject_class->finalize = gst_{{ element.name | all_lower_case }}_finalize;

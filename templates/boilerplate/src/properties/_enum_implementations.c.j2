@@ -1,0 +1,20 @@
+{# @formatter:off #}
+{% for prop in element.properties if prop.type in ['ENUM', 'FLAGS'] %}
+#define GST_TYPE_{{ prop.name | upper_snake_case }} (gst_{{ prop.name | lower_snake_case }}_get_type())
+static GType
+gst_{{ prop.name | lower_snake_case }}_get_type (void)
+{
+  static GType {{ prop.name | lower_snake_case }}_type = 0;
+  static const G{{ prop.type | capitalize }}Value {{ prop.name | lower_snake_case }}[] = {
+    {% for item in prop.enumItems %}
+    {{ '{' }}{{ prop.name | upper_snake_case }}_{{ item | upper_snake_case }}, "Description of {{ item | escape_quotes }}", "{{ item | lower_snake_case }}"{{ '}' }},
+    {% endfor %}
+    {0, NULL, NULL},
+  };
+
+  if (!{{ prop.name | lower_snake_case }}_type) {
+    {{ prop.name | lower_snake_case }}_type = g_{{ prop.type | lower }}_register_static ("Gst{{ prop.name | pascal_case }}", {{ prop.name | lower_snake_case }});
+  }
+  return {{ prop.name | lower_snake_case }}_type;
+}
+{% endfor %}

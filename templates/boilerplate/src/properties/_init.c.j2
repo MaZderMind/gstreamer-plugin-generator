@@ -1,0 +1,8 @@
+{# @formatter:off #}
+{% for prop in element.properties %}
+  {% if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT','BOOLEAN','ENUM','FLAGS'] %}
+    {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }} = PROP_{{ prop.name | upper_snake_case }}_DEFAULT;
+  {% elif prop.type in ['STRING'] %}
+    {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }} = g_strdup(PROP_{{ prop.name | upper_snake_case }}_DEFAULT);
+  {% endif %}
+{% endfor %}

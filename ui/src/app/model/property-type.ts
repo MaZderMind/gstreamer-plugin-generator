@@ -12,7 +12,7 @@ export class PropertyType {
     new PropertyType('FLOAT', true, false),
     new PropertyType('DOUBLE', true, false),
     new PropertyType('ENUM', false, true),
-    new PropertyType('FLAG', false, true),
+    new PropertyType('FLAGS', false, true),
   ];
 
   readonly name: string;

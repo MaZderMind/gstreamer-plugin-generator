@@ -2,7 +2,8 @@ from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
 
-from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quote_for_c, escape_quotes_for_c, lower_snake_case
+from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quote_for_c, escape_quotes_for_c, \
+	lower_snake_case, kebab_case
 
 env = Environment(
 	loader=FileSystemLoader('templates'),
@@ -16,6 +17,7 @@ env.filters['all_lower_case'] = all_lower_case
 env.filters['upper_snake_case'] = upper_snake_case
 env.filters['lower_snake_case'] = lower_snake_case
 env.filters['pascal_case'] = pascal_case
+env.filters['kebab_case'] = kebab_case
 
 
 def render(template, context):
@@ -55,10 +57,10 @@ def generate_plugin_boilerplate(plugin_info):
 		context['element'] = element
 
 		yield 'test-scripts/inspect-%s.sh' % element_identitfier, \
-			render('boilerplate/test-scripts/inspect.sh.j2', context), True
+			  render('boilerplate/test-scripts/inspect.sh.j2', context), True
 
 		yield 'test-scripts/run-%s.sh' % element_identitfier, \
-			render('boilerplate/test-scripts/run.sh.j2', context), True
+			  render('boilerplate/test-scripts/run.sh.j2', context), True
 
 		if element['archetype'] == 'GstBaseTransform':
 			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/gst-base-transform.h.j2', context)

@@ -1,0 +1,4 @@
+{# @formatter:off #}
+{% for prop in element.properties if prop.type in ['STRING'] %}
+  g_free ({{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }});
+{% endfor %}

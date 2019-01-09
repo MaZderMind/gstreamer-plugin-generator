@@ -1,0 +1,11 @@
+{# @formatter:off #}
+{% for prop in element.properties if prop.type in ['ENUM', 'FLAGS'] %}
+typedef enum
+{
+  {% for item in prop.enumItems %}
+  {{ prop.name | upper_snake_case }}_{{ item | upper_snake_case }},
+  {% endfor %}
+}
+Gst{{ prop.name | pascal_case }};
+
+{% endfor %}

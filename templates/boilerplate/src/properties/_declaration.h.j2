@@ -1,0 +1,5 @@
+{# @formatter:off #}
+{% import 'boilerplate/src/properties/_types.c.j2' as types %}
+{% for prop in element.properties %}
+  {{ types.attribute_type(prop) }} {{ prop.name | lower_snake_case }};
+{% endfor %}

@@ -1,0 +1,35 @@
+{# @formatter:off #}
+static void
+gst_{{ element.name | all_lower_case }}_init (Gst{{ element.name | pascal_case }} * {{ element.name | all_lower_case }})
+{
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "init");
+
+  {% include 'boilerplate/src/properties/_init.c.j2' %}
+}
+
+void
+gst_{{ element.name | all_lower_case }}_set_property (GObject * object, guint property_id, const GValue * value, GParamSpec * pspec)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+
+  {% include 'boilerplate/src/properties/_set_property_implementation.c.j2' %}
+}
+
+void
+gst_{{ element.name | all_lower_case }}_get_property (GObject * object, guint property_id, GValue * value, GParamSpec * pspec)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+
+  {% include 'boilerplate/src/properties/_get_property_implementation.c.j2' %}
+}
+
+void
+gst_{{ element.name | all_lower_case }}_finalize (GObject * object)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "finalize");
+
+  {% include 'boilerplate/src/properties/_free.c.j2' %}
+
+  G_OBJECT_CLASS (gst_{{ element.name | all_lower_case }}_parent_class)->finalize (object);
+}

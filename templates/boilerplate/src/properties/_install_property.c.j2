@@ -1,0 +1,23 @@
+{# @formatter:off #}
+  {% for prop in element.properties %}
+  g_object_class_install_property (gobject_class, PROP_{{ prop.name | upper_snake_case }},
+      g_param_spec_{{ prop.type | lower }} ("{{ prop.name | kebab_case }}", "{{ prop.name | escape_quotes }}",
+          "{{ prop.description | escape_quotes }}",
+          {# min, max #}
+          {% if prop.type in ['CHAR'] %}
+          0, 255,
+          {% elif prop.type in ['UINT','ULONG','UINT64'] %}
+          0, G_MAX{{ prop.type }},
+          {% elif prop.type in ['INT','LONG','INT64'] %}
+          G_MIN{{ prop.type }}, G_MAX{{ prop.type }},
+          {% elif prop.type in ['DOUBLE','FLOAT'] %}
+          0.0, 1.0,
+          {% elif prop.type in ['ENUM', 'FLAGS'] %}
+          GST_TYPE_{{ prop.name | upper_snake_case }},
+          {% endif %}
+          PROP_{{ prop.name | upper_snake_case }}_DEFAULT,
+          G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
+          {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT'] %} | GST_PARAM_CONTROLLABLE{% endif -%}
+          ));
+
+  {% endfor %}

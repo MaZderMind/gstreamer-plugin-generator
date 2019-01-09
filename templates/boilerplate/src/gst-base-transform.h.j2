@@ -1,4 +1,4 @@
-{# @formatter:off -#}
+{# @formatter:off #}
 {% include 'boilerplate/src/_license-header.c.j2' %}
 #ifndef _GST_{{ element.name | upper_snake_case }}_H_
 #define _GST_{{ element.name | upper_snake_case }}_H_
@@ -14,11 +14,13 @@ G_BEGIN_DECLS
 typedef struct _Gst{{ element.name | pascal_case }} Gst{{ element.name | pascal_case }};
 typedef struct _Gst{{ element.name | pascal_case }}Class Gst{{ element.name | pascal_case }}Class;
 
+{% include 'boilerplate/src/properties/_enum_declarations.h.j2' %}
+
 struct _Gst{{ element.name | pascal_case }}
 {
   GstBaseTransform base_{{ element.name | all_lower_case }};
 
-  gchar *bar;
+  {% include 'boilerplate/src/properties/_declaration.h.j2' %}
 };
 
 struct _Gst{{ element.name | pascal_case }}Class

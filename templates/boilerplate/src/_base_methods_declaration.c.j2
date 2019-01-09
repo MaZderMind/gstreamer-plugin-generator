@@ -1,0 +1,5 @@
+{# @formatter:off #}
+/* GObject member methods */
+static void gst_{{ element.name | all_lower_case }}_set_property (GObject * object, guint prop_id, const GValue * value, GParamSpec * pspec);
+static void gst_{{ element.name | all_lower_case }}_get_property (GObject * object, guint prop_id, GValue * value, GParamSpec * pspec);
+static void gst_{{ element.name | all_lower_case }}_finalize (GObject * obj);

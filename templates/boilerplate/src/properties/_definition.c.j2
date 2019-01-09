@@ -1,0 +1,15 @@
+{# @formatter:off #}
+{% import 'boilerplate/src/properties/_types.c.j2' as types %}
+/* properties */
+enum
+{
+  PROP_0,
+  {% for prop in element.properties %}
+  PROP_{{ prop.name | upper_snake_case }},
+  {% endfor %}
+};
+
+/* property defaults */
+{% for prop in element.properties %}
+#define PROP_{{ prop.name | upper_snake_case }}_DEFAULT ({{ types.default_value(prop) }})
+{% endfor %}

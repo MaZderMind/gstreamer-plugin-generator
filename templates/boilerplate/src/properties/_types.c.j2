@@ -1,0 +1,23 @@
+{% macro default_value(prop) -%}
+  {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64'] -%}
+    0
+  {%- elif prop.type in ['DOUBLE','FLOAT'] -%}
+    0.0
+  {%- elif prop.type in ['BOOLEAN'] -%}
+    FALSE
+  {%- elif prop.type in ['STRING'] -%}
+    ""
+  {%- elif prop.type in ['ENUM','FLAGS'] -%}
+    {{ prop.name | upper_snake_case }}_{{ prop.enumItems | first | upper_snake_case }}
+  {%- endif -%}
+{%- endmacro %}
+
+{% macro attribute_type(prop) -%}
+  {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT','BOOLEAN'] -%}
+    g{{ prop.type | lower }}
+  {%- elif prop.type in ['STRING'] -%}
+    gchar *
+  {%- elif prop.type in ['ENUM','FLAGS'] -%}
+    Gst{{ prop.name | pascal_case }}
+  {%- endif -%}
+{%- endmacro %}
