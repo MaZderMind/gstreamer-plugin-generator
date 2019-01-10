@@ -1,10 +1,11 @@
 import {async, ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {ClassificationSelectorComponent} from './classification-selector.component';
-import {NgMultiSelectDropDownModule} from 'ng-multiselect-dropdown';
 import {FormsModule} from '@angular/forms';
 
 import {Element} from 'src/app/model/element';
+import {TagInputModule} from 'ngx-chips';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('ClassificationSelectorComponent', () => {
   let component: ClassificationSelectorComponent;
@@ -15,7 +16,8 @@ describe('ClassificationSelectorComponent', () => {
       declarations: [ClassificationSelectorComponent],
       imports: [
         FormsModule,
-        NgMultiSelectDropDownModule.forRoot(),
+        TagInputModule,
+        NoopAnimationsModule,
       ],
     })
       .compileComponents();

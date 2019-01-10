@@ -18,7 +18,7 @@ describe('PluginFormComponent', () => {
         NewIdPipe, LastIdPipe,
         AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
 
-        MockComponent({selector: 'app-element-form', inputs: ['element']})
+        MockComponent({selector: 'app-element-form', inputs: ['element', 'index']})
       ],
       imports: [FormsModule],
     })

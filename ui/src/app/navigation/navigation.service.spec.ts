@@ -1,6 +1,6 @@
 import {TestBed} from '@angular/core/testing';
 
-import {NavigationService} from './navigation-service.service';
+import {NavigationService} from './navigation.service';
 
 describe('NavigationServiceService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));

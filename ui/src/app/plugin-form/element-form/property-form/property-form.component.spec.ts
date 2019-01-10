@@ -6,6 +6,8 @@ import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
 import {KebabCasePipe} from 'src/app/utils/case.pipe';
 import {ControlContainer, FormsModule, NgForm} from '@angular/forms';
+import {TagInputModule} from 'ngx-chips';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 describe('PropertyFormComponent', () => {
   let component: PropertyFormComponent;
@@ -18,7 +20,11 @@ describe('PropertyFormComponent', () => {
         NewIdPipe, LastIdPipe,
         KebabCasePipe,
       ],
-      imports: [FormsModule],
+      imports: [
+        FormsModule,
+        TagInputModule,
+        NoopAnimationsModule,
+      ],
       providers: [
         ControlContainer,
         NgForm,
