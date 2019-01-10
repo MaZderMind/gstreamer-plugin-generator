@@ -2,7 +2,6 @@
   switch (property_id) {
     {% for prop in element.properties %}
     case PROP_{{ prop.name | upper_snake_case }}:
-
       {% if prop.type in ['STRING'] %}
       g_free ({{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }});
       {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }} = g_value_dup_string (value);

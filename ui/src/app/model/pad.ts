@@ -1,17 +1,11 @@
-export enum PadDirection {
-  SOURCE,
-  SINK,
-}
-
-export enum PadPresence {
-  ALWAYS,
-  SOMETIMES,
-  REQUEST,
-}
-
 export class Pad {
-  padname: string;
-  direction: PadDirection;
-  presence: PadPresence;
+  mediaType: string;
   caps: string;
+
+  constructor(pad?: Pad) {
+    if (pad) {
+      this.mediaType = pad.mediaType;
+      this.caps = pad.caps;
+    }
+  }
 }

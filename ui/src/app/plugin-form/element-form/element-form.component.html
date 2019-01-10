@@ -70,13 +70,21 @@
 
     <ng-container *ngIf="element.archetype">
       <h2>Pads</h2>
+      <p>
+        <i class="fa fa-info-circle"></i> Other media-types and more specific restrictions can be configured
+        manually in
+        the generated code.
+      </p>
+
       <div class="card border-info mb-3" *ngFor="let pad of element.archetype.pads">
         <div class="card-header bg-info text-white">
           <code>{{ pad }}</code>-Pad
         </div>
         <div class="card-body">
           <app-pad-form
-            [direction]="pad"
+            [index]="index"
+            [element]="element"
+            [pad]="pad"
           ></app-pad-form>
         </div>
       </div>

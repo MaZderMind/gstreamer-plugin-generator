@@ -38,4 +38,12 @@ export class NavigationComponent {
   isPropertyActive(elementIndex: number, propertyIndex: number) {
     return this.navigationService.activeSection === this.propertyId(elementIndex, propertyIndex);
   }
+
+  padId(elementIndex: number, pad: string) {
+    return 'element-' + elementIndex + '-pad-' + pad;
+  }
+
+  isPadActive(elementIndex: number, pad: string) {
+    return this.navigationService.activeSection === this.padId(elementIndex, pad);
+  }
 }

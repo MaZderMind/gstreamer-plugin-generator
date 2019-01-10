@@ -1,6 +1,5 @@
 import {Archetype} from './archetype';
 import {Property} from './property';
-import {Pad} from './pad';
 
 
 export class Element {
@@ -11,7 +10,10 @@ export class Element {
   description: string;
 
   properties: Property[] = [];
-  pads: Pad[] = [];
+  pads: {
+    src: string,
+    sink: string,
+  };
 
   constructor(element?: Element) {
     if (element) {
@@ -22,6 +24,10 @@ export class Element {
       this.description = element.description;
 
       this.properties = element.properties ? element.properties.map(property => new Property(property)) : [];
+      this.pads = {
+        src: element.pads.src,
+        sink: element.pads.sink,
+      };
     }
   }
 }

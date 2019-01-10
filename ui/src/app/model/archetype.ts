@@ -4,7 +4,7 @@ export class Archetype {
   static readonly ARCHETYPES: Archetype[] = [
     new Archetype(
       'GstBaseTransform',
-      ['src', 'sink'],
+      ['sink', 'src'],
       'Creates an Element based on GstBaseTransform. This base class is for filter elements that process ' +
       'data. Elements that are suitable for implementation using GstBaseTransform are ones where the size and caps ' +
       'of the output is known entirely from the input caps and buffer sizes. These include elements that directly ' +
