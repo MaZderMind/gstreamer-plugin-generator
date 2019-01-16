@@ -23,7 +23,6 @@ import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {PadFormComponent} from './plugin-form/element-form/pad-form/pad-form.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import {PadFormComponent} from './plugin-form/element-form/pad-form/pad-form.com
     ClassificationSelectorComponent,
     PropertyFormComponent,
     NavigationComponent,
-    PadFormComponent,
   ],
   imports: [
     BrowserModule,

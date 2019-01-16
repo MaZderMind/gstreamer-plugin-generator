@@ -68,31 +68,27 @@
       </div>
     </div>
 
-    <ng-container *ngIf="element.archetype">
-      <h2>Pads</h2>
-      <p>
-        <i class="fa fa-info-circle"></i> Other media-types and more specific restrictions can be configured
-        manually in
-        the generated code.
-      </p>
-
-      <div class="card border-info mb-3" *ngFor="let pad of element.archetype.pads">
-        <div class="card-header bg-info text-white">
-          <code>{{ pad }}</code>-Pad
-        </div>
-        <div class="card-body">
-          <app-pad-form
-            [index]="index"
-            [element]="element"
-            [pad]="pad"
-          ></app-pad-form>
-        </div>
+    <h2>Pad(s)</h2>
+    <p>
+      <i class="fa fa-info-circle"></i> Other media-types and more specific restrictions can be configured
+      manually in the generated code.
+    </p>
+    <div class="form-group row">
+      <label for="{{ 'mediatype' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Mediatype</label>
+      <div class="col-lg-10 col-sm-12">
+        <select
+          required
+          class="form-control"
+          id="{{ 'mediatype' | lastId }}" name="{{ 'mediatype' | lastId }}"
+          [(ngModel)]="element.mediatype"
+        >
+          <option *ngFor="let mediatype of ['AUDIO', 'VIDEO', 'OTHER']" [ngValue]="mediatype">{{ mediatype }}</option>
+        </select>
       </div>
-    </ng-container>
-
-    <h2>Properties</h2>
+    </div>
   </div>
 
+  <h2>Properties</h2>
   <div
     class="card border-info mb-3" *ngFor="let property of element.properties; let propertyIndex = index"
     [trackScrollConfig]="{ position: 'top' }"

@@ -1,0 +1,19 @@
+{%- macro testsrc(element) -%}
+	{%- if element.mediatype == 'VIDEO' -%}
+		videotestsrc
+	{%- elif element.mediatype == 'AUDIO' -%}
+		audiotestsrc
+	{%- else -%}
+		filesrc location=/dev/urandom ! application/octet-stream
+	{%- endif -%}
+{%- endmacro -%}
+
+{%- macro testsink(element) -%}
+	{%- if element.mediatype == 'VIDEO' -%}
+		autovideosink
+	{%- elif element.mediatype == 'AUDIO' -%}
+		autoaudiosink
+	{%- else -%}
+		filesink location=/dev/null
+	{%- endif -%}
+{%- endmacro -%}

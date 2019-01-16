@@ -1,8 +1,8 @@
 import {PropertyType} from 'src/app/model/property-type';
 
 export class Property {
-  name: string;
-  description: string;
+  name = '';
+  description = '';
 
   type: PropertyType;
   enumItems: string[] = [];

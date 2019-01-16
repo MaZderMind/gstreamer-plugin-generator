@@ -6,14 +6,11 @@ export class Element {
   archetype: Archetype = Archetype.byName('GstBaseTransform');
   classifications: string[] = [];
 
-  name: string;
-  description: string;
+  name = '';
+  description = '';
 
   properties: Property[] = [];
-  pads: {
-    src: string,
-    sink: string,
-  };
+  mediatype = 'OTHER';
 
   constructor(element?: Element) {
     if (element) {
@@ -24,10 +21,7 @@ export class Element {
       this.description = element.description;
 
       this.properties = element.properties ? element.properties.map(property => new Property(property)) : [];
-      this.pads = {
-        src: element.pads.src,
-        sink: element.pads.sink,
-      };
+      this.mediatype = element.mediatype;
     }
   }
 }

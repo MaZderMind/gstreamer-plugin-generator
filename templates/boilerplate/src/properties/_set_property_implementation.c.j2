@@ -8,12 +8,11 @@
       {% else %}
       {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }} = g_value_get_{{ prop.type | lower }}(value);
       {% endif %}
-
       break;
 
     {% endfor %}
 
     default:
-      G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
+      G_OBJECT_WARN_INVALID_PROPERTY_ID ({{ element.name | all_lower_case }}, property_id, pspec);
       break;
   }

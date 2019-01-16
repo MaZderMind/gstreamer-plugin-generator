@@ -1,0 +1,11 @@
+{# @formatter:off #}
+static GstStaticPadTemplate srctemplate = GST_STATIC_PAD_TEMPLATE ("src",
+    GST_PAD_SRC,
+    GST_PAD_ALWAYS,
+    {% if element.mediatype == 'VIDEO' %}
+    GST_STATIC_CAPS("video/x-raw")
+    {% elif element.mediatype == 'AUDIO' %}
+    GST_STATIC_CAPS("audio/x-raw")
+    {% else %}
+    GST_STATIC_CAPS_ANY
+    {% endif %});

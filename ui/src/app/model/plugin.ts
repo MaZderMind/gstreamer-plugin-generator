@@ -2,14 +2,14 @@ import {License} from './license';
 import {Element} from './element';
 
 export class Plugin {
-  name: string;
-  description: string;
+  name = '';
+  description = '';
 
-  author: string;
-  authorEmail: string;
+  author = '';
+  authorEmail = '';
 
   license: License = License.byName('LGPL');
-  url: string;
+  url = '';
 
   elements: Element[] = [];
 
