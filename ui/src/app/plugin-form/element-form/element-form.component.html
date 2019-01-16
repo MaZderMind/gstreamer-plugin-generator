@@ -68,7 +68,7 @@
       </div>
     </div>
 
-    <h2>Pad(s)</h2>
+    <h2>Pads</h2>
     <p>
       <i class="fa fa-info-circle"></i> Other media-types and more specific restrictions can be configured
       manually in the generated code.
@@ -84,6 +84,27 @@
         >
           <option *ngFor="let mediatype of ['AUDIO', 'VIDEO', 'OTHER']" [ngValue]="mediatype">{{ mediatype }}</option>
         </select>
+      </div>
+    </div>
+
+    <h2>Signals</h2>
+    <div class="form-group row">
+      <label for="{{ 'signals' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Signals</label>
+      <div class="col-lg-10 col-sm-12">
+        <tag-input
+          name="signals"
+          [(ngModel)]="element.signals"
+          [separatorKeyCodes]="[32]"
+          inputId="{{ 'signals' | lastId }}"
+          [addOnBlur]="true"
+          [addOnPaste]="true"
+          secondaryPlaceholder="Signals"
+          placeholder="+ Signal"
+          [modelAsStrings]="true"
+          [animationDuration]="{enter: '0ms', leave: '0ms'}"
+          theme='bootstrap'
+        >
+        </tag-input>
       </div>
     </div>
   </div>

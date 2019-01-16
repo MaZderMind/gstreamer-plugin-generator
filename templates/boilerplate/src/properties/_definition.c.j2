@@ -1,5 +1,6 @@
 {# @formatter:off #}
 {% import 'boilerplate/src/properties/_types.c.j2' as types %}
+{% if element.properties | length > 0 %}
 /* properties */
 enum
 {
@@ -13,3 +14,4 @@ enum
 {% for prop in element.properties %}
 #define PROP_{{ prop.name | upper_snake_case }}_DEFAULT ({{ types.default_value(prop) }})
 {% endfor %}
+{% endif %}

@@ -1,0 +1,15 @@
+{# @formatter:off #}
+{% for signal in element.signals %}
+  gst_{{ element.name | lower_snake_case }}_signals[SIGNAL_{{ signal | upper_snake_case }}] = g_signal_new (
+    /* signal_name */ "{{ signal | kebab_case }}",
+    /* itype */ G_TYPE_FROM_CLASS (klass),
+    /* signal_flags */ G_SIGNAL_RUN_LAST,
+    /* class_offset */ G_STRUCT_OFFSET (Gst{{ element.name | pascal_case }}Class, {{ signal | lower_snake_case }}),
+    /* accumulator */ NULL,
+    /* accu_data */ NULL,
+    /* c_marshaller */ NULL,
+    /* return_type */   G_TYPE_NONE,
+    /* n_params */ 0
+    /* varargs: param types */);
+
+{% endfor %}

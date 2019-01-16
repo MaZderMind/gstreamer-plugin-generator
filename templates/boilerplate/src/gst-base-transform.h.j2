@@ -26,6 +26,8 @@ struct _Gst{{ element.name | pascal_case }}
 struct _Gst{{ element.name | pascal_case }}Class
 {
   GstBaseTransformClass base_{{ element.name | all_lower_case }}_class;
+
+  {% include 'boilerplate/src/signals/_declaration.h.j2' %}
 };
 
 GType gst_{{ element.name | all_lower_case }}_get_type (void);

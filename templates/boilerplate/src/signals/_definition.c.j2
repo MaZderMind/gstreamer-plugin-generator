@@ -1,0 +1,14 @@
+{# @formatter:off #}
+{% if element.signals | length > 0 %}
+/* signals */
+enum
+{
+  {% for signal in element.signals %}
+  SIGNAL_{{ signal | upper_snake_case }},
+  {% endfor %}
+  LAST_SIGNAL
+};
+
+static guint gst_{{ element.name | lower_snake_case }}_signals[LAST_SIGNAL] = { 0, };
+
+{% endif %}

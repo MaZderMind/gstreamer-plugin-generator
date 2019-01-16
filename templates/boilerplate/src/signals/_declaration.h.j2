@@ -1,0 +1,4 @@
+{# @formatter:off #}
+{% for signal in element.signals %}
+  void (*{{ signal | lower_snake_case }}) (GstElement * element);
+{% endfor %}

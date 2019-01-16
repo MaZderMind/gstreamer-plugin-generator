@@ -16,12 +16,7 @@
 GST_DEBUG_CATEGORY_STATIC (gst_{{ element.name | all_lower_case }}_debug);
 #define GST_CAT_DEFAULT gst_{{ element.name | all_lower_case }}_debug
 
-/* signals */
-enum
-{
-  FOO_SIGNAL,
-  LAST_SIGNAL
-};
+{% include 'boilerplate/src/signals/_definition.c.j2' %}
 
 {% include 'boilerplate/src/properties/_definition.c.j2' %}
 
@@ -46,7 +41,9 @@ gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_
 
   {% include 'boilerplate/src/_base_methods_assignment.c.j2' %}
 
-  {% include 'boilerplate/src/properties/_install_property.c.j2' %}
+  {% include 'boilerplate/src/properties/_install_properties.c.j2' %}
+
+  {% include 'boilerplate/src/signals/_install_signals.c.j2' %}
 
   GstBaseTransformClass *trans_class = GST_BASE_TRANSFORM_CLASS (klass);
   trans_class->set_caps = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_set_caps);

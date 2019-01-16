@@ -10,6 +10,7 @@ export class Element {
   description = '';
 
   properties: Property[] = [];
+  signals: string[] = [];
   mediatype = 'OTHER';
 
   constructor(element?: Element) {
@@ -21,6 +22,7 @@ export class Element {
       this.description = element.description;
 
       this.properties = element.properties ? element.properties.map(property => new Property(property)) : [];
+      this.signals = element.signals;
       this.mediatype = element.mediatype;
     }
   }
