@@ -5,7 +5,9 @@
           "{{ prop.description | default('') | escape_quotes }}",
           {# min, max #}
           {% if prop.type in ['CHAR'] %}
-          0, 255,
+          G_MININT8, G_MAXINT8,
+          {% elif prop.type in ['UCHAR'] %}
+          0, G_MAXUINT8,
           {% elif prop.type in ['UINT','ULONG','UINT64'] %}
           0, G_MAX{{ prop.type }},
           {% elif prop.type in ['INT','LONG','INT64'] %}
@@ -17,7 +19,7 @@
           {% endif %}
           PROP_{{ prop.name | upper_snake_case }}_DEFAULT,
           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS
-          {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT'] %} | GST_PARAM_CONTROLLABLE{% endif -%}
+          {%- if prop.type in ['CHAR','UCHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT'] %} | GST_PARAM_CONTROLLABLE{% endif -%}
           ));
 
   {% endfor %}

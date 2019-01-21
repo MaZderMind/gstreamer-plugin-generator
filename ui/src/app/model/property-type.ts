@@ -3,6 +3,7 @@ export class PropertyType {
     new PropertyType('STRING', false, false),
     new PropertyType('BOOLEAN', false, false),
     new PropertyType('CHAR', false, false),
+    new PropertyType('UCHAR', false, false),
     new PropertyType('INT', true, false),
     new PropertyType('UINT', true, false),
     new PropertyType('LONG', true, false),

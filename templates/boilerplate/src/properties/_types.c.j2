@@ -1,5 +1,5 @@
 {% macro default_value(prop) -%}
-  {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64'] -%}
+  {%- if prop.type in ['CHAR','UCHAR','INT','UINT','LONG','ULONG','INT64','UINT64'] -%}
     0
   {%- elif prop.type in ['DOUBLE','FLOAT'] -%}
     0.0
@@ -13,7 +13,7 @@
 {%- endmacro %}
 
 {% macro attribute_type(prop) -%}
-  {%- if prop.type in ['CHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT','BOOLEAN'] -%}
+  {%- if prop.type in ['CHAR','UCHAR','INT','UINT','LONG','ULONG','INT64','UINT64','DOUBLE','FLOAT','BOOLEAN'] -%}
     g{{ prop.type | lower }}
   {%- elif prop.type in ['STRING'] -%}
     gchar *

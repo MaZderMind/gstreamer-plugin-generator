@@ -2,7 +2,11 @@
   switch (property_id) {
     {% for prop in element.properties %}
     case PROP_{{ prop.name | upper_snake_case }}:
+      {% if prop.type in ['CHAR'] %}
+      g_value_set_schar (value, {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }});
+      {% else %}
       g_value_set_{{ prop.type | lower }} (value, {{ element.name | all_lower_case }}->{{ prop.name | lower_snake_case }});
+      {% endif %}
       break;
 
     {% endfor %}
