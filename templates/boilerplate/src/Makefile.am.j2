@@ -6,7 +6,7 @@ libgst{{ plugin.name | all_lower_case }}_la_SOURCES = \
         {{ element.name | all_lower_case }}.c \
         {{ element.name | all_lower_case }}.h \
         {% endfor %}
-        {{ plugin.name | all_lower_case }}.c
+        {{ plugin.name | all_lower_case }}-plugin.c
 
 
 # compiler and linker flags used to compile this plugin, set in configure.ac

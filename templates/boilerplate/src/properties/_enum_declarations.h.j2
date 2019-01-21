@@ -6,6 +6,6 @@ typedef enum
   {{ prop.name | upper_snake_case }}_{{ item | upper_snake_case }},
   {% endfor %}
 }
-Gst{{ prop.name | pascal_case }};
+Gst{{ prop.name | pascal_case }}Enum;
 
 {% endfor %}

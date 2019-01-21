@@ -18,6 +18,6 @@
   {%- elif prop.type in ['STRING'] -%}
     gchar *
   {%- elif prop.type in ['ENUM','FLAGS'] -%}
-    Gst{{ prop.name | pascal_case }}
+    Gst{{ prop.name | pascal_case }}Enum
   {%- endif -%}
 {%- endmacro %}

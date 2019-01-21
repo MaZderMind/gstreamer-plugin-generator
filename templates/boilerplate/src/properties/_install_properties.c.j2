@@ -13,7 +13,7 @@
           {% elif prop.type in ['DOUBLE','FLOAT'] %}
           0.0, 1.0,
           {% elif prop.type in ['ENUM', 'FLAGS'] %}
-          GST_TYPE_{{ prop.name | upper_snake_case }},
+          GST_TYPE_{{ prop.name | upper_snake_case }}_ENUM,
           {% endif %}
           PROP_{{ prop.name | upper_snake_case }}_DEFAULT,
           G_PARAM_READWRITE | G_PARAM_STATIC_STRINGS

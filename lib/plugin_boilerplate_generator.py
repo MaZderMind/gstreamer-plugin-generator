@@ -52,7 +52,7 @@ def generate_plugin_boilerplate(plugin_info):
 		yield 'COPYING', render('boilerplate/licenses/LGPL.j2', context)
 
 	yield 'src/Makefile.am', render('boilerplate/src/Makefile.am.j2', context)
-	yield 'src/%s.c' % identitfier, render('boilerplate/src/plugin.c.j2', context)
+	yield 'src/%s-plugin.c' % identitfier, render('boilerplate/src/plugin.c.j2', context)
 	for element in plugin_info['elements']:
 		element_identitfier = all_lower_case(element['name'])
 
