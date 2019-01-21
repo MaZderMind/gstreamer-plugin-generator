@@ -23,11 +23,11 @@ split-window -d -t 0 -h
 
 # left
 send-keys -t 0 "printf '\\033]2;%s\\033\\\\' 'ui-run'" Enter
-send-keys -t 0 'nice -n 19 ionice -c 3 make ui-run' Enter
+send-keys -t 0 'make ui-run' Enter
 
 # right
 send-keys -t 1 "printf '\\033]2;%s\\033\\\\' 'backend-run'" Enter
-send-keys -t 1 'nice -n 10 make backend-run' Enter
+send-keys -t 1 'make backend-run' Enter
 
 select-pane -t 1
 attach
