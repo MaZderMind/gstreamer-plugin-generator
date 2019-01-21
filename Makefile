@@ -29,8 +29,20 @@ backend-run:
 backend-test:
 	./env/bin/python -m unittest discover -p '*_test.py'
 
+# compiles all build-tests
+build-test:
+	./env/bin/python ./buildtest/buildtest.py
+
+# compiles all build-tests within a debian-docker
+build-test-docker:
+	./buildtest/run-in-docker.sh
+
+# sets up the debian-docker for compile-tests but drops you into an interactive shell
+build-test-docker-shell:
+	./buildtest/run-in-docker.sh --shell
+
 test-all:
-	make ui-test ui-lint backend-test
+	make ui-test ui-lint backend-test build-test
 
 run-tmux:
 	SCREENRC="run-split-tmux"; \
