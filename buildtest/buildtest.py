@@ -45,6 +45,6 @@ if __name__ == '__main__':
 	parser.add_argument('test_cases', metavar='C', type=str, nargs='*',
 						help='restrict to the specified testcases')
 	args = parser.parse_args()
-	logging.debug("calleth with %s", args)
+	logging.debug("called with %s", args)
 
 	main(args.test_cases, args.keep)
