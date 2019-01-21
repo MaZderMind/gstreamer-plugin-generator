@@ -58,6 +58,7 @@ test_cases = {
 				name=TEST_NAME,
 				description=TEST_NAME,
 				signals=[TEST_NAME],
+				classifications=TEST_NAME,
 				properties=[
 					build_property_config(
 						name=TEST_NAME,
@@ -81,6 +82,7 @@ test_cases = {
 				name=WEIRED_CHARS_STRING,
 				description=WEIRED_CHARS_STRING,
 				signals=[WEIRED_CHARS_STRING],
+				classifications=WEIRED_CHARS_STRING,
 				properties=[
 					build_property_config(
 						name=WEIRED_CHARS_STRING,
