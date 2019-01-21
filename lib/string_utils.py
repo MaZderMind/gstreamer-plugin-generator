@@ -53,5 +53,9 @@ def escape_quotes_for_c(value):
 	return normalize_newlines(value).replace('"', '\\"').replace("\n", " \\\n")
 
 
+def escape_comment_for_c(value):
+	return value.replace('*/', '* /')
+
+
 def quote_for_c(value):
 	return '\"' + escape_quotes_for_c(value) + '\"'

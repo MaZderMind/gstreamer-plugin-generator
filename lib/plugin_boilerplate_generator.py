@@ -4,7 +4,7 @@ from datetime import datetime
 from jinja2 import Environment, FileSystemLoader
 
 from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quote_for_c, escape_quotes_for_c, \
-	lower_snake_case, kebab_case
+	lower_snake_case, kebab_case, escape_comment_for_c
 
 env = Environment(
 	loader=FileSystemLoader('templates'),
@@ -13,6 +13,7 @@ env = Environment(
 	lstrip_blocks=True,
 )
 env.filters['escape_quotes'] = escape_quotes_for_c
+env.filters['escape_comment'] = escape_comment_for_c
 env.filters['quote'] = quote_for_c
 env.filters['all_lower_case'] = all_lower_case
 env.filters['upper_snake_case'] = upper_snake_case

@@ -1,6 +1,6 @@
 from buildtest.builder import build_plugin_config, build_element_config, build_property_config
 
-WEIRED_CHARS_STRING = "foo \t bar \n\n\n moo ¡“¶¢]|{}≠¿¥€ quotes \"\' umlauts äöüÄÖÜß emoji 🤔😁 closing comment"
+WEIRED_CHARS_STRING = "foo \t bar \n\n\n moo ¡“¶¢]|{}≠¿¥€ quotes \"\' umlauts äöüÄÖÜß emoji 🤔😁 closing comment */"
 TEST_NAME = 'Test'
 
 test_cases = {
