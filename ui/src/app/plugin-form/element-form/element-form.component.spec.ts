@@ -7,6 +7,8 @@ import {ControlContainer, FormsModule, NgForm} from '@angular/forms';
 import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 import {MockComponent} from 'ng2-mock-component';
 import {Ng2TrackScrollModule} from 'ng2-track-scroll';
+import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {TagInputModule} from 'ngx-chips';
 
 describe('ElementFormComponent', () => {
   let component: ElementFormComponent;
@@ -27,6 +29,8 @@ describe('ElementFormComponent', () => {
       imports: [
         FormsModule,
         Ng2TrackScrollModule.forRoot(),
+        TagInputModule,
+        NoopAnimationsModule,
       ],
       providers: [
         ControlContainer,
