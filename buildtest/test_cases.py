@@ -5,6 +5,7 @@ TEST_NAME = 'Test'
 
 test_cases = {
 	"default_config": build_plugin_config(),
+
 	"multiple_elements": build_plugin_config(
 		elements=[
 			build_element_config(name="Test 1"),
@@ -12,6 +13,13 @@ test_cases = {
 			build_element_config(name="Test 3"),
 		]
 	),
+
+	"multiple_signals": build_plugin_config(
+		elements=[
+			build_element_config(signals=['Foo', 'Bar', 'Moo', 'Noo']),
+		]
+	),
+
 	"property_types": build_plugin_config(elements=[
 		build_element_config(properties=[
 			build_property_config(type='STRING', name='STRING-Property'),
@@ -30,6 +38,15 @@ test_cases = {
 			build_property_config(type='FLAGS', name='FLAGS-Property'),
 		]),
 	]),
+
+	"media_types": build_plugin_config(
+		elements=[
+			build_element_config(mediatype='VIDEO', name="Video"),
+			build_element_config(mediatype='AUDIO', name="Audio"),
+			build_element_config(mediatype='OTHER', name="Other"),
+		]
+	),
+
 	"same_name": build_plugin_config(
 		name=TEST_NAME,
 		description=TEST_NAME,
@@ -52,6 +69,7 @@ test_cases = {
 			)
 		]
 	),
+
 	"weired_chars": build_plugin_config(
 		name=WEIRED_CHARS_STRING,
 		description=WEIRED_CHARS_STRING,
