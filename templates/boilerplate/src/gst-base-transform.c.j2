@@ -33,8 +33,8 @@ static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransfo
 static gboolean gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * trans);
 static GstFlowReturn gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * trans, GstBuffer * in);
 static gboolean gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * trans, GstEvent * event);
-static void
 
+static void
 gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_case }}Class * klass)
 {
   GstElementClass *element_class = GST_ELEMENT_CLASS (klass);
