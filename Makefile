@@ -5,6 +5,9 @@ install-dependencies:
 	./env/bin/pip install -r requirements.txt
 	cd ui/ && npm install
 
+install-build-dependencies:
+	apt install -y build-essential autoconf pkg-config libtool python3 python3-pip gstreamer1.0-tools libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
+
 test:
 	cd ui/ && npm run test
 
