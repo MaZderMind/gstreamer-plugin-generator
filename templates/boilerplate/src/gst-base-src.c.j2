@@ -80,7 +80,20 @@ gst_{{ element.name | all_lower_case }}_fill (GstBaseSrc * base, guint64 offset,
   GstVideoFrame frame;
   gst_video_frame_map (&frame, &awsomefilter->video_info, buffer, GST_MAP_WRITE);
 
-  // fill &frame with video-data here
+  // fill &frame with video-data here (eg.for RGBx, need to check caps
+  guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (&frame, 0);
+  guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (&frame, 0);
+  guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (&frame, 0);
+
+  for (guint h = 0; h < awsomefilter->video_info.height; ++h) {
+    for (guint w = 0; w < awsomefilter->video_info.width; ++w) {
+      guint8 *pixel = pixels + h * stride + w * pixel_stride;
+
+      *(pixel+0) = 255;
+      *(pixel+1) = 0;
+      *(pixel+2) = 0;
+    }
+  }
 
   gst_video_frame_unmap (&frame);
 
