@@ -4,7 +4,12 @@ WEIRED_CHARS_STRING = "foo \t bar \n\n\n moo ¡“¶¢]|{}≠¿¥€ quotes \"\'
 TEST_NAME = 'Test'
 
 test_cases = {
-	"default_config": build_plugin_config(),
+	"default_GstBaseTransform": build_plugin_config(elements=[
+		build_element_config(archetype="GstBaseTransform"),
+	]),
+	"default_GstBaseSrc": build_plugin_config(elements=[
+		build_element_config(archetype="GstBaseSrc"),
+	]),
 
 	"multiple_elements": build_plugin_config(
 		elements=[
