@@ -29,10 +29,10 @@ G_DEFINE_TYPE (Gst{{ element.name | pascal_case }}, gst_{{ element.name | all_lo
 {% include 'boilerplate/src/_base_methods_declaration.c.j2' %}
 
 /* GstBaseTransform member methods */
-static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * trans, GstCaps * in, GstCaps * out);
-static gboolean gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * trans);
-static GstFlowReturn gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * trans, GstBuffer * in);
-static gboolean gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * trans, GstEvent * event);
+static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * base, GstCaps * in, GstCaps * out);
+static gboolean gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * base);
+static GstFlowReturn gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * base, GstBuffer * in);
+static gboolean gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * base, GstEvent * event);
 
 static void
 gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_case }}Class * klass)
@@ -66,37 +66,37 @@ gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_
 {% include 'boilerplate/src/_base_methods_implementation.c.j2' %}
 
 static gboolean
-gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * object, GstCaps * in, GstCaps * out)
+gst_{{ element.name | all_lower_case }}_set_caps (GstBaseTransform * base, GstCaps * in, GstCaps * out)
 {
-  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "set_caps in=%" GST_PTR_FORMAT " out=%" GST_PTR_FORMAT, in, out);
 
   return TRUE;
 }
 
 static gboolean
-gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * object)
+gst_{{ element.name | all_lower_case }}_start (GstBaseTransform * base)
 {
-  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "start");
 
   return TRUE;
 }
 
 static GstFlowReturn
-gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * object, GstBuffer * in)
+gst_{{ element.name | all_lower_case }}_transform_ip (GstBaseTransform * base, GstBuffer * in)
 {
-  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "transform_ip");
 
   return GST_FLOW_OK;
 }
 
 static gboolean
-gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * object, GstEvent * event)
+gst_{{ element.name | all_lower_case }}_sink_event (GstBaseTransform * base, GstEvent * event)
 {
-  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (object);
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "sink_event");
 
-  return GST_BASE_TRANSFORM_CLASS (parent_class)->sink_event (object, event);
+  return GST_BASE_TRANSFORM_CLASS (parent_class)->sink_event (base, event);
 }
