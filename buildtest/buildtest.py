@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
 	parser = argparse.ArgumentParser(description='Build Test-Cases.')
 	parser.add_argument('--keep', help='keep the temp-directories', action='store_true')
-	parser.add_argument('test_cases', metavar='C', type=str, nargs='*',
+	parser.add_argument('test_cases', metavar='TEST', type=str, nargs='*',
 						help='restrict to the specified testcases')
 	args = parser.parse_args()
 	logging.debug("called with %s", args)
