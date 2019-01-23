@@ -55,7 +55,7 @@
           id="{{ 'archetype' | lastId }}" name="{{ 'archetype' | lastId }}"
           [(ngModel)]="element.archetype"
         >
-          <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.name }}</option>
+          <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.displayName }}</option>
         </select>
       </div>
     </div>
