@@ -1,0 +1,20 @@
+{# @formatter:off #}
+  GstVideoFrame frame;
+  gst_video_frame_map (&frame, &{{ element.name | all_lower_case }}->video_info, buffer, GST_MAP_WRITE);
+
+  // fill &frame with video-data here (example given for RGBx, you probably need to check the caps before)
+  guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (&frame, 0);
+  guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (&frame, 0);
+  guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (&frame, 0);
+
+  for (guint h = 0; h < {{ element.name | all_lower_case }}->video_info.height; ++h) {
+    for (guint w = 0; w < {{ element.name | all_lower_case }}->video_info.width; ++w) {
+      guint8 *pixel = pixels + h * stride + w * pixel_stride;
+
+      *(pixel+0) = 255; // R
+      *(pixel+1) = 0;   // G
+      *(pixel+2) = 0;   // B
+    }
+  }
+
+  gst_video_frame_unmap (&frame);

@@ -62,14 +62,10 @@ def generate_plugin_boilerplate(plugin_info):
 		yield 'test-scripts/inspect-%s.sh' % element_identitfier, \
 			  render('boilerplate/test-scripts/inspect.sh.j2', context), True
 
-		if element['archetype'] == 'GstBaseTransform':
-			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/gst-base-transform.h.j2', context)
-			yield 'src/%s.c' % element_identitfier, render('boilerplate/src/gst-base-transform.c.j2', context)
+		known_archetypes = ['GstBaseTransform', 'GstBaseSrc', 'GstPushSrc']
+		if element['archetype'] in known_archetypes:
+			archetype_identifier = kebab_case(element['archetype'])
+			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/%s.h.j2' % archetype_identifier, context)
+			yield 'src/%s.c' % element_identitfier, render('boilerplate/src/%s.c.j2' % archetype_identifier, context)
 			yield 'test-scripts/run-%s.sh' % element_identitfier, \
-				  render('boilerplate/test-scripts/run-gst-base-transform.sh.j2', context), True
-
-		if element['archetype'] == 'GstBaseSrc':
-			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/gst-base-src.h.j2', context)
-			yield 'src/%s.c' % element_identitfier, render('boilerplate/src/gst-base-src.c.j2', context)
-			yield 'test-scripts/run-%s.sh' % element_identitfier, \
-				  render('boilerplate/test-scripts/run-gst-base-src.sh.j2', context), True
+				  render('boilerplate/test-scripts/run-%s.sh.j2' % archetype_identifier, context), True

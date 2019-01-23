@@ -10,6 +10,9 @@ test_cases = {
 	"default_GstBaseSrc": build_plugin_config(elements=[
 		build_element_config(archetype="GstBaseSrc"),
 	]),
+	"default_GstPushSrc": build_plugin_config(elements=[
+		build_element_config(archetype="GstPushSrc"),
+	]),
 
 	"multiple_elements": build_plugin_config(
 		elements=[
