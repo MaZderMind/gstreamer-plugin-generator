@@ -28,9 +28,9 @@ G_DEFINE_TYPE (Gst{{ element.name | pascal_case }}, gst_{{ element.name | all_lo
 /* GstBaseSrc member methods */
 static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseSrc * base, GstCaps * caps);
 static GstFlowReturn gst_{{ element.name | all_lower_case }}_fill (GstBaseSrc * base, guint64 offset, guint size, GstBuffer *buffer);
-//static gboolean gst_{{ element.name | all_lower_case }}_is_seekable (GstBaseSrc * base);
-//static gboolean gst_{{ element.name | all_lower_case }}_query (GstBaseSrc * base, GstQuery * query);
-//static gboolean gst_{{ element.name | all_lower_case }}_do_seek (GstBaseSrc * base, GstSegment * segment);
+static gboolean gst_{{ element.name | all_lower_case }}_is_seekable (GstBaseSrc * base);
+static gboolean gst_{{ element.name | all_lower_case }}_query (GstBaseSrc * base, GstQuery * query);
+static gboolean gst_{{ element.name | all_lower_case }}_do_seek (GstBaseSrc * base, GstSegment * segment);
 // if seeking is never possible, better implement GstPushSrc
 
 static void
@@ -47,6 +47,9 @@ gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_
   GstBaseSrcClass *src_class = GST_BASE_SRC_CLASS (klass);
   src_class->set_caps = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_set_caps);
   src_class->fill = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_fill);
+  src_class->is_seekable = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_is_seekable);
+  src_class->query = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_query);
+  src_class->do_seek = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_do_seek);
 
   GST_DEBUG_CATEGORY_INIT (gst_{{ element.name | all_lower_case }}_debug, "{{ element.name | all_lower_case }}", 0, "{{ element.name | escape_quotes }}");
 
@@ -67,6 +70,31 @@ gst_{{ element.name | all_lower_case }}_set_caps (GstBaseSrc * base, GstCaps * c
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "set_caps caps=%" GST_PTR_FORMAT, caps);
 
   gst_video_info_from_caps (&awsomefilter->video_info, caps);
+
+  return TRUE;
+}
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_is_seekable (GstBaseSrc * base)
+{
+  return TRUE;
+}
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_query (GstBaseSrc * base, GstQuery * query)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
+
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "do_query QUERY_TYPE_NAME=%s", GST_QUERY_TYPE_NAME(query));
+
+  return GST_BASE_SRC_CLASS (parent_class)->query (base, query);
+}
+
+static gboolean
+gst_{{ element.name | all_lower_case }}_do_seek (GstBaseSrc * base, GstSegment * segment)
+{
+  Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
+  GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "do_seek");
 
   return TRUE;
 }
