@@ -17,3 +17,11 @@
 		filesink location=/dev/null
 	{%- endif -%}
 {%- endmacro -%}
+
+{%- macro testcapsfilter(element) -%}
+	{%- if element.mediatype == 'VIDEO' -%}
+		video/x-raw,width=320,height=240,framerate=25/1 !
+	{%- elif element.mediatype == 'AUDIO' -%}
+		audio/x-raw,rate=48000,channels=2
+	{%- endif -%}
+{%- endmacro -%}
