@@ -108,7 +108,7 @@ gst_{{ element.name | all_lower_case }}_fill (GstBaseSrc * base, guint64 offset,
   GstVideoFrame frame;
   gst_video_frame_map (&frame, &awsomefilter->video_info, buffer, GST_MAP_WRITE);
 
-  // fill &frame with video-data here (eg.for RGBx, need to check caps
+  // fill &frame with video-data here (example given for RGBx, you probably need to check the caps before)
   guint8 *pixels = GST_VIDEO_FRAME_PLANE_DATA (&frame, 0);
   guint stride = GST_VIDEO_FRAME_PLANE_STRIDE (&frame, 0);
   guint pixel_stride = GST_VIDEO_FRAME_COMP_PSTRIDE (&frame, 0);
