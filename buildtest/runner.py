@@ -15,6 +15,7 @@ def run_build_test(plugin_info, keep_directories=False):
 	if keep_directories:
 		temp_dir = TemporaryDirectory(prefix=TEMP_DIR_PREFIX).name
 		run_in_temp_dir(temp_dir, plugin_info)
+		logging.info("Keeping Build-Result in %s", temp_dir)
 	else:
 		with TemporaryDirectory(prefix=TEMP_DIR_PREFIX) as temp_dir:
 			run_in_temp_dir(temp_dir, plugin_info)

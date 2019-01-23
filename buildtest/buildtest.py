@@ -33,7 +33,11 @@ def main(restrict_test_cases, keep_directories):
 
 	else:
 		logging.info("all tests succeeded")
-		sys.exit(0)
+
+
+def print_test_cases():
+	from buildtest.test_cases import test_cases
+	print(" * " + "\n * ".join(test_cases.keys()))
 
 
 if __name__ == '__main__':
@@ -41,10 +45,15 @@ if __name__ == '__main__':
 	logging.basicConfig(level=logging.DEBUG)
 
 	parser = argparse.ArgumentParser(description='Build Test-Cases.')
-	parser.add_argument('--keep', help='keep the temp-directories', action='store_true')
+	parser.add_argument('--keep', '-k', help='keep the temp-directories', action='store_true')
+	parser.add_argument('--list', '-l', help='list available tests', action='store_true')
 	parser.add_argument('test_cases', metavar='TEST', type=str, nargs='*',
 						help='restrict to the specified testcases')
 	args = parser.parse_args()
 	logging.debug("called with %s", args)
+
+	if args.list:
+		print_test_cases()
+		sys.exit(0)
 
 	main(args.test_cases, args.keep)
