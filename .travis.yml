@@ -18,8 +18,8 @@ matrix:
       before_install: cd ui/
       install: npm install
       script:
-        - npm run test
         - npm run lint
+        - npm run test
 
     - language: c
       addons:
