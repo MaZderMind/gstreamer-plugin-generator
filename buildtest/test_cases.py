@@ -105,4 +105,8 @@ test_cases = {
 			)
 		]
 	),
+
+	"no_license": build_plugin_config(
+		license="NONE"
+	),
 }
