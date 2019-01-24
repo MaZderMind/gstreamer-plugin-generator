@@ -4,7 +4,7 @@
 #define _GST_{{ element.name | upper_snake_case }}_H_
 
 #include <gst/base/gstpushsrc.h>
-#include <gst/video/gstvideometa.h>
+{% include 'boilerplate/src/src_impl/_include.h.j2' %}
 
 G_BEGIN_DECLS
 #define GST_TYPE_{{ element.name | upper_snake_case }}           (gst_{{ element.name | all_lower_case }}_get_type())
@@ -20,7 +20,7 @@ typedef struct _Gst{{ element.name | pascal_case }}Class Gst{{ element.name | pa
 struct _Gst{{ element.name | pascal_case }}
 {
   GstPushSrc base_{{ element.name | all_lower_case }};
-  GstVideoInfo video_info;
+  {% include 'boilerplate/src/src_impl/_declaration.h.j2' %}
 
   {% include 'boilerplate/src/properties/_declaration.h.j2' %}
 };

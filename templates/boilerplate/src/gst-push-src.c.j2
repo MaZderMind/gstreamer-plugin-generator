@@ -26,8 +26,8 @@ G_DEFINE_TYPE (Gst{{ element.name | pascal_case }}, gst_{{ element.name | all_lo
 {% include 'boilerplate/src/_base_methods_declaration.c.j2' %}
 
 /* GstPushSrc member methods */
-static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstPushSrc * base, GstCaps * caps);
-static GstFlowReturn gst_{{ element.name | all_lower_case }}_fill (GstPushSrc * base, guint64 offset, guint size, GstBuffer *buffer);
+static gboolean gst_{{ element.name | all_lower_case }}_set_caps (GstBaseSrc * base, GstCaps * caps);
+static GstFlowReturn gst_{{ element.name | all_lower_case }}_fill (GstPushSrc * base, GstBuffer *buffer);
 
 static void
 gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_case }}Class * klass)
@@ -40,8 +40,10 @@ gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_
 
   {% include 'boilerplate/src/signals/_install_signals.c.j2' %}
 
-  GstPushSrcClass *src_class = GST_BASE_SRC_CLASS (klass);
-  src_class->set_caps = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_set_caps);
+  GstBaseSrcClass *base_src_class = GST_BASE_SRC_CLASS (klass);
+  base_src_class->set_caps = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_set_caps);
+
+  GstPushSrcClass *src_class = GST_PUSH_SRC_CLASS (klass);
   src_class->fill = GST_DEBUG_FUNCPTR (gst_{{ element.name | all_lower_case }}_fill);
 
   GST_DEBUG_CATEGORY_INIT (gst_{{ element.name | all_lower_case }}_debug, "{{ element.name | all_lower_case }}", 0, "{{ element.name | escape_quotes }}");
@@ -58,23 +60,23 @@ gst_{{ element.name | all_lower_case }}_class_init (Gst{{ element.name | pascal_
 {% include 'boilerplate/src/_base_methods_implementation.c.j2' %}
 
 static gboolean
-gst_{{ element.name | all_lower_case }}_set_caps (GstPushSrc * base, GstCaps * caps)
+gst_{{ element.name | all_lower_case }}_set_caps (GstBaseSrc * base, GstCaps * caps)
 {
   Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "set_caps caps=%" GST_PTR_FORMAT, caps);
 
-  gst_video_info_from_caps (&awsomefilter->video_info, caps);
+  {% include 'boilerplate/src/src_impl/_set_caps.c.j2' %}
 
   return TRUE;
 }
 
 static GstFlowReturn
-gst_{{ element.name | all_lower_case }}_fill (GstPushSrc * base, guint64 offset, guint size, GstBuffer *buffer)
+gst_{{ element.name | all_lower_case }}_fill (GstPushSrc * base, GstBuffer *buffer)
 {
   Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "fill");
 
-  {% include 'boilerplate/src/_src_fill_impl.c.j2' %}
+  {% include 'boilerplate/src/src_impl/_fill.c.j2' %}
 
   return GST_FLOW_OK;
 }

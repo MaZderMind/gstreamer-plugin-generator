@@ -4,14 +4,20 @@ WEIRED_CHARS_STRING = "foo \t bar \n\n\n moo ¡“¶¢]|{}≠¿¥€ quotes \"\'
 TEST_NAME = 'Test'
 
 test_cases = {
-	"default_GstBaseTransform": build_plugin_config(elements=[
-		build_element_config(archetype="GstBaseTransform"),
+	"GstBaseTransform": build_plugin_config(elements=[
+		build_element_config(mediatype='VIDEO', name="Video", archetype="GstBaseTransform"),
+		build_element_config(mediatype='AUDIO', name="Audio", archetype="GstBaseTransform"),
+		build_element_config(mediatype='OTHER', name="Other", archetype="GstBaseTransform"),
 	]),
-	"default_GstBaseSrc": build_plugin_config(elements=[
-		build_element_config(archetype="GstBaseSrc"),
+	"GstBaseSrc": build_plugin_config(elements=[
+		build_element_config(mediatype='VIDEO', name="Video", archetype="GstBaseSrc"),
+		build_element_config(mediatype='AUDIO', name="Audio", archetype="GstBaseSrc"),
+		build_element_config(mediatype='OTHER', name="Other", archetype="GstBaseSrc"),
 	]),
-	"default_GstPushSrc": build_plugin_config(elements=[
-		build_element_config(archetype="GstPushSrc"),
+	"GstPushSrc": build_plugin_config(elements=[
+		build_element_config(mediatype='VIDEO', name="Video", archetype="GstPushSrc"),
+		build_element_config(mediatype='AUDIO', name="Audio", archetype="GstPushSrc"),
+		build_element_config(mediatype='OTHER', name="Other", archetype="GstPushSrc"),
 	]),
 
 	"multiple_elements": build_plugin_config(
@@ -46,14 +52,6 @@ test_cases = {
 			build_property_config(type='FLAGS', name='FLAGS-Property'),
 		]),
 	]),
-
-	"media_types": build_plugin_config(
-		elements=[
-			build_element_config(mediatype='VIDEO', name="Video"),
-			build_element_config(mediatype='AUDIO', name="Audio"),
-			build_element_config(mediatype='OTHER', name="Other"),
-		]
-	),
 
 	"same_name": build_plugin_config(
 		name=TEST_NAME,

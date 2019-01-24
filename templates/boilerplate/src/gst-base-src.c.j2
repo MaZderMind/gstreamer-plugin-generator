@@ -69,7 +69,7 @@ gst_{{ element.name | all_lower_case }}_set_caps (GstBaseSrc * base, GstCaps * c
   Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "set_caps caps=%" GST_PTR_FORMAT, caps);
 
-  gst_video_info_from_caps (&awsomefilter->video_info, caps);
+  {% include 'boilerplate/src/src_impl/_set_caps.c.j2' %}
 
   return TRUE;
 }
@@ -105,7 +105,7 @@ gst_{{ element.name | all_lower_case }}_fill (GstBaseSrc * base, guint64 offset,
   Gst{{ element.name | pascal_case }} *{{ element.name | all_lower_case }} = GST_{{ element.name | upper_snake_case }} (base);
   GST_DEBUG_OBJECT ({{ element.name | all_lower_case }}, "create");
 
-  {% include 'boilerplate/src/_src_fill_impl.c.j2' %}
+  {% include 'boilerplate/src/src_impl/_fill.c.j2' %}
 
   return GST_FLOW_OK;
 }

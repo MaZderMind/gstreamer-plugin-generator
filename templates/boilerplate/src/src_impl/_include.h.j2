@@ -1,0 +1,6 @@
+{# @formatter:off #}
+{% if element.mediatype == 'VIDEO' %}
+  #include <gst/video/video.h>
+{% elif element.mediatype == 'AUDIO' %}
+  #include <gst/audio/audio.h>
+{% endif %}

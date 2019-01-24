@@ -1,0 +1,7 @@
+{# @formatter:off #}
+{% if element.mediatype == 'VIDEO' %}
+  GstVideoInfo video_info;
+{% elif element.mediatype == 'AUDIO' %}
+  GstAudioInfo audio_info;
+  gint8 counter;
+{% endif %}

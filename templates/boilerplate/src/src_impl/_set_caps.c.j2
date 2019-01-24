@@ -1,0 +1,6 @@
+{# @formatter:off #}
+{% if element.mediatype == 'VIDEO' %}
+  gst_video_info_from_caps (&{{ element.name | all_lower_case }}->video_info, caps);
+{% elif element.mediatype == 'AUDIO' %}
+  gst_audio_info_from_caps (&audio->audio_info, caps);
+{% endif %}

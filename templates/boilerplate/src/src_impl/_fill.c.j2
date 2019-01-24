@@ -1,4 +1,5 @@
 {# @formatter:off #}
+{% if element.mediatype == 'VIDEO' %}
   GstVideoFrame frame;
   gst_video_frame_map (&frame, &{{ element.name | all_lower_case }}->video_info, buffer, GST_MAP_WRITE);
 
@@ -18,3 +19,27 @@
   }
 
   gst_video_frame_unmap (&frame);
+{% elif element.mediatype == 'AUDIO' %}
+  GstMapInfo map;
+  gst_buffer_map (buffer, &map, GST_MAP_WRITE);
+
+  // assuming S16LE / 1 Channel
+  guint num_samples = map.size / sizeof(gint16);
+  for(guint sample_idx = 0; sample_idx < num_samples; sample_idx++) {
+    // pointer to sample
+    gint16 *sample_ptr = ((gint16*) map.data) + sample_idx;
+
+    // fill with sawtooth ramp (multiply gint8 to gint16 by bit-shifting)
+    *sample_ptr = (audio->counter << 8);
+    audio->counter++;
+  }
+
+  gst_buffer_unmap (buffer, &map);
+{% else %}
+  GstMapInfo map;
+  gst_buffer_map (buffer, &map, GST_MAP_WRITE);
+
+  memset (map.data, 0x42, map.size);
+
+  gst_buffer_unmap (buffer, &map);
+{% endif %}
