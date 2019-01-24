@@ -3,4 +3,6 @@
   #include <gst/video/video.h>
 {% elif element.mediatype == 'AUDIO' %}
   #include <gst/audio/audio.h>
+{% else %}
+  #include <string.h>
 {% endif %}
