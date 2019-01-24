@@ -1,5 +1,6 @@
 gstreamer-plugin-generator
 ==========================
+[![Build Status](https://travis-ci.org/MaZderMind/gstreamer-plugin-generator.svg?branch=master)](https://travis-ci.org/MaZderMind/gstreamer-plugin-generator)
 
 Setting up Dev-Env
 ------------------
