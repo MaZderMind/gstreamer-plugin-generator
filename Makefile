@@ -1,4 +1,10 @@
-default: run-tmux
+default: tar
+
+tar: clean ui-prod
+	tar -czf dist.tar *.py lib static templates
+
+clean:
+	rm -rf static/ui __pycache__ **/__pycache__
 
 create-virtualenv:
 	virtualenv -ppython3 env

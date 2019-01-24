@@ -35,3 +35,6 @@ docs/_build/
 /.idea
 /ui/node_modules
 /static/ui
+
+# Build result
+/dist.tar
