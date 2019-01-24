@@ -22,7 +22,7 @@ def main(restrict_test_cases, keep_directories):
 
 		logging.debug("starting build-test for %s", name)
 		try:
-			run_build_test(config, keep_directories)
+			run_build_test(name, config, keep_directories)
 		except Exception as e:
 			failed = True
 			logging.error("failed test %s:\n%s", name, e)
