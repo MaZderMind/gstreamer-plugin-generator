@@ -16,9 +16,6 @@ install-dependencies:
 install-build-dependencies:
 	apt install -y build-essential autoconf pkg-config libtool python3 python3-pip gstreamer1.0-tools libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev
 
-test:
-	cd ui/ && npm run test
-
 ui-prod:
 	cd ui/ && npm run build-prod
 
@@ -52,7 +49,7 @@ build-test-docker:
 build-test-docker-shell:
 	./buildtest/run-in-docker.sh --shell
 
-test-all:
+test:
 	make ui-test ui-lint backend-test build-test
 
 run-tmux:
@@ -63,4 +60,4 @@ run-tmux:
 list-phony:
 	@perl -ne 'push @a, $$1 if m/^([\w\d-]+):\s/; END { print ".PHONY: ", join(" ", @a), "\n" }' Makefile
 
-.PHONY: create-virtualenv install-dependencies test ui-prod ui-run backend-run run-tmux list-phony
+.PHONY: default tar clean create-virtualenv install-dependencies install-build-dependencies ui-prod ui-run ui-test ui-lint ui-test-watch backend-run backend-test build-test build-test-docker build-test-docker-shell test run-tmux list-phony
