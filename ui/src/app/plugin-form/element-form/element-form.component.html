@@ -91,19 +91,20 @@
 
     <h2>Signals</h2>
     <div class="form-group row">
-      <label for="{{ 'signals' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Signals</label>
+      <label for="{{ 'signals' + index }}" class="col-lg-2 col-sm-12 col-form-label">Signals</label>
       <div class="col-lg-10 col-sm-12">
         <tag-input
-          name="signals"
+          name="{{ 'signals' + index }}"
           [(ngModel)]="element.signals"
           [separatorKeyCodes]="[32]"
-          inputId="{{ 'signals' | lastId }}"
+          inputId="{{ 'signals' + index }}"
           [addOnBlur]="true"
           [addOnPaste]="true"
           secondaryPlaceholder="Signals"
           placeholder="+ Signal"
           [modelAsStrings]="true"
           [animationDuration]="{enter: '0ms', leave: '0ms'}"
+          [allowDupes]="false"
           theme='bootstrap'
         >
         </tag-input>
