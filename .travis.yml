@@ -20,5 +20,8 @@ matrix:
         - npm run lint
 
     - language: c
-      install: make install-build-dependencies
+      addons:
+        apt:
+          update: true
+      install: sudo make install-build-dependencies
       script: ./buildtest/buildtest.py
