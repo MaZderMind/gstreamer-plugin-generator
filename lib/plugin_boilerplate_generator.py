@@ -62,7 +62,7 @@ def generate_plugin_boilerplate(plugin_info):
 		yield 'test-scripts/inspect-%s.sh' % element_identitfier, \
 			  render('boilerplate/test-scripts/inspect.sh.j2', context), True
 
-		known_archetypes = ['GstBaseTransform', 'GstBaseSrc', 'GstPushSrc']
+		known_archetypes = ['GstBaseTransform', 'GstBaseSrc', 'GstPushSrc', 'GstBaseSink']
 		if element['archetype'] in known_archetypes:
 			archetype_identifier = kebab_case(element['archetype'])
 			yield 'src/%s.h' % element_identitfier, render('boilerplate/src/%s.h.j2' % archetype_identifier, context)

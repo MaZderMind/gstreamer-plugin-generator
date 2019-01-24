@@ -19,6 +19,11 @@ test_cases = {
 		build_element_config(mediatype='AUDIO', name="Audio", archetype="GstPushSrc"),
 		build_element_config(mediatype='OTHER', name="Other", archetype="GstPushSrc"),
 	]),
+	"GstBaseSink": build_plugin_config(elements=[
+		build_element_config(mediatype='VIDEO', name="Video", archetype="GstBaseSink"),
+		build_element_config(mediatype='AUDIO', name="Audio", archetype="GstBaseSink"),
+		build_element_config(mediatype='OTHER', name="Other", archetype="GstBaseSink"),
+	]),
 
 	"multiple_elements": build_plugin_config(
 		elements=[
