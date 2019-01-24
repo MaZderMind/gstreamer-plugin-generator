@@ -1,0 +1,24 @@
+matrix:
+  include:
+    - language: python
+      python:
+        - "3.4"
+        - "3.5"
+        - "3.6"
+        - "3.7-dev"
+      install: pip install -r requirements.txt
+      script: python -m unittest discover -p '*_test.py'
+
+    - language: node_js
+      addons:
+        chrome: stable
+      node_js: 10
+      before_install: cd ui/
+      install: npm install
+      script:
+        - npm run test
+        - npm run lint
+
+    - language: c
+      install: make install-build-dependencies
+      script: ./buildtest/buildtest.py
