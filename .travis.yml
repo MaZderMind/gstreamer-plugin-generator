@@ -10,15 +10,15 @@ matrix:
       install: pip install -r requirements.txt
       script: python -m unittest discover -p '*_test.py'
 
-    #    - language: node_js
-    #      addons:
-    #        chrome: stable
-    #      node_js: 10
-    #      before_install: cd ui/
-    #      install: npm install
-    #      script:
-    #        - npm run test
-    #        - npm run lint
+    - language: node_js
+      addons:
+        chrome: stable
+      node_js: 10
+      before_install: cd ui/
+      install: npm install
+      script:
+        - npm run test
+        - npm run lint
 
     - language: c
       addons:

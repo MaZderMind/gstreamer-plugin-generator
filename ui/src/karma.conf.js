@@ -42,7 +42,7 @@ module.exports = function(config) {
     logLevel: config.LOG_INFO,
     autoWatch: true,
     browsers: ['ChromeCustom'],
-    singleRun: false,
+    singleRun: true,
 
     // reporter options
     mochaReporter: {
