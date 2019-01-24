@@ -8,6 +8,7 @@ import {KebabCasePipe} from 'src/app/utils/case.pipe';
 import {ControlContainer, FormsModule, NgForm} from '@angular/forms';
 import {TagInputModule} from 'ngx-chips';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 
 describe('PropertyFormComponent', () => {
   let component: PropertyFormComponent;
@@ -19,6 +20,7 @@ describe('PropertyFormComponent', () => {
         PropertyFormComponent,
         NewIdPipe, LastIdPipe,
         KebabCasePipe,
+        UniqueNameValidator,
       ],
       imports: [
         FormsModule,

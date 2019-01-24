@@ -1,7 +1,8 @@
-import {License} from './license';
-import {Element} from './element';
+import {License} from 'src/app/model/license';
+import {Element} from 'src/app/model/element';
+import {NameAware} from 'src/app/validator/name-aware';
 
-export class Plugin {
+export class Plugin implements NameAware {
   name = '';
   description = '';
 
@@ -31,5 +32,9 @@ export class Plugin {
     if (this.elements.length === 0) {
       this.elements.push(new Element());
     }
+  }
+
+  getName(): string {
+    return this.name;
   }
 }

@@ -14,6 +14,9 @@ export class PropertyFormComponent implements OnInit {
   @Input()
   property: Property;
 
+  @Input()
+  properties: Property[];
+
   readonly types = PropertyType.PROPERTY_TYPES;
 
   constructor() {

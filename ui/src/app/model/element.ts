@@ -1,8 +1,9 @@
-import {Archetype} from './archetype';
-import {Property} from './property';
+import {Archetype} from 'src/app/model/archetype';
+import {Property} from 'src/app/model/property';
+import {NameAware} from 'src/app/validator/name-aware';
 
 
-export class Element {
+export class Element implements NameAware {
   archetype: Archetype = Archetype.byName('GstBaseTransform');
   classifications: string[] = [];
 
@@ -25,5 +26,9 @@ export class Element {
       this.signals = element.signals;
       this.mediatype = element.mediatype;
     }
+  }
+
+  getName(): string {
+    return this.name;
   }
 }

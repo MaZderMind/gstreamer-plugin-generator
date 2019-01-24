@@ -23,12 +23,14 @@ import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     PluginFormComponent,
     PreventDefaultDirective,
+    UniqueNameValidator,
 
     ElementFormComponent,
     NewIdPipe,

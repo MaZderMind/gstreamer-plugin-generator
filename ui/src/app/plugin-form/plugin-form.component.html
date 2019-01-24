@@ -104,7 +104,11 @@
       <ng-container *ngIf="element.name">– {{ element.name }}</ng-container>
     </div>
     <div class="card-body">
-      <app-element-form [element]="element" [index]="elementIndex"></app-element-form>
+      <app-element-form
+        [element]="element"
+        [elements]="plugin.elements"
+        [index]="elementIndex"
+      ></app-element-form>
     </div>
   </div>
 

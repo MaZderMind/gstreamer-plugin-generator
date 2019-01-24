@@ -9,6 +9,7 @@ import {MockComponent} from 'ng2-mock-component';
 import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import {TagInputModule} from 'ngx-chips';
+import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 
 describe('ElementFormComponent', () => {
   let component: ElementFormComponent;
@@ -20,10 +21,11 @@ describe('ElementFormComponent', () => {
         ElementFormComponent,
         NewIdPipe, LastIdPipe,
         AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
+        UniqueNameValidator,
 
         MockComponent({selector: 'app-gst-base-transform-form', inputs: ['element']}),
         MockComponent({selector: 'app-classification-selector', inputs: ['element']}),
-        MockComponent({selector: 'app-property-form', inputs: ['property']}),
+        MockComponent({selector: 'app-property-form', inputs: ['property', 'properties']}),
         MockComponent({selector: 'app-pad-form', inputs: ['direction']}),
       ],
       imports: [

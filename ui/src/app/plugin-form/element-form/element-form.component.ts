@@ -20,6 +20,9 @@ export class ElementFormComponent implements OnInit {
   @Input()
   element: Element;
 
+  @Input()
+  elements: Element[];
+
   @ViewChild('identifier')
   identifier: NgModel;
 

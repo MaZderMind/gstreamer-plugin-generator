@@ -12,6 +12,8 @@
           required
           [(ngModel)]="element.name"
           placeholder="Some Video-Tool"
+          placeholder="Some Video-Tool"
+          appUniqueName [uniqueInList]="elements"
         >
       </div>
     </div>
@@ -126,6 +128,7 @@
     <div class="card-body">
       <app-property-form
         [property]="property"
+        [properties]="element.properties"
       ></app-property-form>
     </div>
   </div>
