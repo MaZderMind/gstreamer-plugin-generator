@@ -24,6 +24,7 @@ import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
+import {UniqueItemsValidator} from 'src/app/validator/unique-items-validator.directive';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.direc
     PluginFormComponent,
     PreventDefaultDirective,
     UniqueNameValidator,
+    UniqueItemsValidator,
 
     ElementFormComponent,
     NewIdPipe,
