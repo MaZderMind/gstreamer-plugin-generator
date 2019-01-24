@@ -1,3 +1,5 @@
+default: run-tmux
+
 create-virtualenv:
 	virtualenv -ppython3 env
 
