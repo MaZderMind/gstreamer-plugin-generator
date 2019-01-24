@@ -8,6 +8,7 @@ from lib.string_utils import pascal_case
 class StreamFile(object):
 	def __init__(self):
 		self.buf = bytearray()
+		self.pos = 0
 
 	def __enter__(self):
 		return self
@@ -20,6 +21,7 @@ class StreamFile(object):
 
 	def write(self, data):
 		self.buf.extend(data)
+		self.pos += len(data)
 		return len(data)
 
 	def stream(self):
@@ -28,6 +30,9 @@ class StreamFile(object):
 
 	def flush(self):
 		pass
+
+	def tell(self):
+		return self.pos
 
 	def close(self):
 		if len(self.buf) != 0:

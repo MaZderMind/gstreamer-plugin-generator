@@ -14,7 +14,7 @@ def main(restrict_test_cases, keep_directories):
 
 	logging.debug("starting build-test")
 
-	failed = False
+	failed = []
 	for name, config in test_cases.items():
 		if len(restrict_test_cases) > 0 and name not in restrict_test_cases:
 			logging.debug("skipping build-test for %s", name)
@@ -24,11 +24,11 @@ def main(restrict_test_cases, keep_directories):
 		try:
 			run_build_test(name, config, keep_directories)
 		except Exception as e:
-			failed = True
+			failed.append(name)
 			logging.error("failed test %s:\n%s", name, e)
 
-	if failed:
-		logging.error("failed at least one test, failing the build-suite")
+	if len(failed) > 0:
+		logging.error("failed at least one test, failing the build-suite. Failed tests: \n * " + "\n * ".join(failed))
 		sys.exit(42)
 
 	else:

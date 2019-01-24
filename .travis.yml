@@ -1,0 +1,31 @@
+dist: xenial
+matrix:
+  include:
+    - language: python
+      python: "3.4"
+      script: python -m unittest discover -p '*_test.py'
+    - language: python
+      python: "3.5"
+      script: python -m unittest discover -p '*_test.py'
+    - language: python
+      python: "3.6"
+      script: python -m unittest discover -p '*_test.py'
+
+    - language: node_js
+      addons:
+        chrome: stable
+      node_js: 10
+      before_install: cd ui/
+      install: npm install
+      script:
+        - npm run lint
+        - npm run test
+
+    - language: c
+      addons:
+        apt:
+          update: true
+      install:
+        - sudo make install-build-dependencies
+        - sudo -H pip3 install -r requirements.txt
+      script: python3 ./buildtest/buildtest.py
