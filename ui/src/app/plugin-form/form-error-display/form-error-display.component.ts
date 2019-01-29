@@ -35,7 +35,9 @@ export class FormErrorDisplayComponent implements OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
   }
 
   private updateErrorList(form: NgForm) {

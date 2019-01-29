@@ -3,7 +3,7 @@ import {Element} from 'src/app/model/element';
 import {ElementFormComponent} from './element-form.component';
 import {NewIdPipe} from 'src/app/utils/id-pipe/new-id-pipe';
 import {LastIdPipe} from 'src/app/utils/id-pipe/last-id-pipe';
-import {ControlContainer, FormsModule, NgForm} from '@angular/forms';
+import {FormsModule, NgForm} from '@angular/forms';
 import {AllLowerCasePipe, LowerSnakeCasePipe, PascalCasePipe, UpperSnakeCasePipe} from 'src/app/utils/case.pipe';
 import {MockComponent} from 'ng2-mock-component';
 import {Ng2TrackScrollModule} from 'ng2-track-scroll';
@@ -25,7 +25,7 @@ describe('ElementFormComponent', () => {
 
         MockComponent({selector: 'app-gst-base-transform-form', inputs: ['element']}),
         MockComponent({selector: 'app-classification-selector', inputs: ['element']}),
-        MockComponent({selector: 'app-property-form', inputs: ['property', 'properties']}),
+        MockComponent({selector: 'app-property-form', inputs: ['property', 'properties', 'index']}),
         MockComponent({selector: 'app-pad-form', inputs: ['direction']}),
       ],
       imports: [
@@ -35,11 +35,9 @@ describe('ElementFormComponent', () => {
         NoopAnimationsModule,
       ],
       providers: [
-        ControlContainer,
         NgForm,
       ],
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {

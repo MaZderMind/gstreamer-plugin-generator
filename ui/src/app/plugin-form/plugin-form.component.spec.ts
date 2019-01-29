@@ -20,11 +20,11 @@ describe('PluginFormComponent', () => {
         AllLowerCasePipe, PascalCasePipe, UpperSnakeCasePipe, LowerSnakeCasePipe,
         UniqueNameValidator,
 
-        MockComponent({selector: 'app-element-form', inputs: ['element', 'elements', 'index']})
+        MockComponent({selector: 'app-element-form', inputs: ['element', 'elements', 'index']}),
+        MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
       ],
       imports: [FormsModule],
-    })
-      .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
