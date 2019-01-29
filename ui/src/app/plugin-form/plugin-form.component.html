@@ -9,7 +9,7 @@
         <div class="col-lg-10 col-sm-12">
           <input
             type="text" class="form-control"
-            id="{{ 'name' | lastId }}" name="mame"
+            id="{{ 'name' | lastId }}" name="Name"
             [(ngModel)]="plugin.name"
             required
             placeholder="Fancy Video Tools"
@@ -30,7 +30,7 @@
           <textarea
             class="form-control"
             rows="4"
-            id="{{ 'description' | lastId }}" name="{{ 'description' | lastId }}"
+            id="{{ 'description' | lastId }}" name="Description"
             [(ngModel)]="plugin.description"
             placeholder="Fancy Video Tools is a set of Tools intended to produce fancy results."
           ></textarea>
@@ -42,7 +42,7 @@
         <div class="col-lg-4 col-sm-12 mb-3 mb-lg-0">
           <input
             type="text" class="form-control"
-            id="{{ 'author' | lastId }}" name="author"
+            id="{{ 'author' | lastId }}" name="Author"
             [(ngModel)]="plugin.author"
             required
             placeholder="Jane Doe"
@@ -53,7 +53,7 @@
         <div class="col-lg-4 col-sm-12">
           <input
             type="text" class="form-control"
-            id="{{ 'authorEmail' | lastId }}" name="authorEmail"
+            id="{{ 'authorEmail' | lastId }}" name="Author E-Mail"
             [(ngModel)]="plugin.authorEmail"
             required
             placeholder="jane.doe@example.com"
@@ -65,7 +65,7 @@
       <div class="form-group row">
         <label for="{{ 'license' | newId }}" class="col-lg-2 col-sm-12 col-form-label">License</label>
         <div class="col-lg-3 col-sm-12">
-          <select class="form-control" id="{{ 'license' | lastId }}" name="license" [(ngModel)]="plugin.license">
+          <select class="form-control" id="{{ 'license' | lastId }}" name="License" [(ngModel)]="plugin.license">
             <option *ngFor="let license of licenses" [ngValue]="license">{{ license.name }}</option>
           </select>
         </div>
@@ -80,7 +80,7 @@
         <div class="col-lg-10 col-sm-12">
           <input
             type="text" class="form-control"
-            id="{{ 'url' | lastId }}" name="url"
+            id="{{ 'url' | lastId }}" name="URL"
             [(ngModel)]="plugin.url"
             required
             placeholder="https://github.com/…"
@@ -122,9 +122,12 @@
 
   <div class="row mb-3">
     <div class="col">
+      <app-form-error-display [form]="pluginForm"></app-form-error-display>
+
       <button
         type="button"
-        class="btn btn-primary"
+        class="btn btn-primary mt-3"
+        [class.disabled]="!pluginForm.valid"
         (click)="onGenerateClicked();"
         appPreventDefault
       >

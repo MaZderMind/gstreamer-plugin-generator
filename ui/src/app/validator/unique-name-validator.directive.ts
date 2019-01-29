@@ -27,7 +27,7 @@ export class UniqueNameValidator implements Validator, DoCheck {
     if (this.uniqueInList && controlValue != null) {
       if (this.uniqueInList.filter(nameAware => nameAware.getName() === controlValue).length > 1) {
         return {
-          'unique': 'Value is not unique'
+          'uniqueName': 'Value is not unique'
         };
       }
     }

@@ -1,4 +1,4 @@
-<div ngModelGroup="element">
+<div ngModelGroup="Element #{{ index + 1 }}">
   <div
     [trackScrollConfig]="{ position: 'top' }"
     trackScroll (trackScrollEnter)="enterElement()" [attr.id]="elementId()"
@@ -8,7 +8,7 @@
       <div class="col-lg-10 col-sm-12">
         <input
           type="text" class="form-control"
-          id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
+          id="{{ 'name' | lastId }}" name="Name"
           required
           [(ngModel)]="element.name"
           placeholder="Some Video-Tool"
@@ -31,7 +31,7 @@
         <textarea
           class="form-control"
           rows="4"
-          id="{{ 'description' | lastId }}" name="{{ 'description' | lastId }}"
+          id="{{ 'description' | lastId }}" name="Description"
           [(ngModel)]="element.description"
           placeholder="Some Video-Tool doing some Video-Processing."
         ></textarea>
@@ -54,7 +54,7 @@
         <select
           required
           class="form-control"
-          id="{{ 'archetype' | lastId }}" name="{{ 'archetype' | lastId }}"
+          id="{{ 'archetype' | lastId }}" name="Archetype"
           [(ngModel)]="element.archetype"
         >
           <option *ngFor="let archetype of archetypes" [ngValue]="archetype">{{ archetype.displayName }}</option>
@@ -81,7 +81,7 @@
         <select
           required
           class="form-control"
-          id="{{ 'mediatype' | lastId }}" name="{{ 'mediatype' | lastId }}"
+          id="{{ 'mediatype' | lastId }}" name="Mediatype"
           [(ngModel)]="element.mediatype"
         >
           <option *ngFor="let mediatype of ['AUDIO', 'VIDEO', 'OTHER']" [ngValue]="mediatype">{{ mediatype }}</option>
@@ -94,7 +94,7 @@
       <label for="{{ 'signals' + index }}" class="col-lg-2 col-sm-12 col-form-label">Signals</label>
       <div class="col-lg-10 col-sm-12">
         <tag-input
-          name="{{ 'signals' + index }}"
+          name="Signals"
           [(ngModel)]="element.signals"
           [separatorKeyCodes]="[32]"
           inputId="{{ 'signals' + index }}"
@@ -106,6 +106,7 @@
           [animationDuration]="{enter: '0ms', leave: '0ms'}"
           [allowDupes]="false"
           theme='bootstrap'
+          appUniqueItems
         >
         </tag-input>
       </div>
@@ -128,6 +129,7 @@
     </div>
     <div class="card-body">
       <app-property-form
+        [index]="propertyIndex"
         [property]="property"
         [properties]="element.properties"
       ></app-property-form>
