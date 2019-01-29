@@ -1,0 +1,12 @@
+<div class="card border-warning">
+  <div class="card-header bg-warning">Problems with the entered Information</div>
+  <div class="card-body">
+    <ul>
+      <li *ngFor="let error of errors">
+        <strong class="text-secondary" *ngIf="error.path.length > 0">{{ error.path.join(' / ') }} / </strong>
+        <strong>{{ error.element }}</strong>:
+        <span>{{ error.message }}</span>
+      </li>
+    </ul>
+  </div>
+</div>

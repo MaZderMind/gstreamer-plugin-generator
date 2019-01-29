@@ -22,7 +22,7 @@ export class UniqueItemsValidator implements Validator {
     console.log('UniqueItemsValidator', strArray, lowerArray, hasDuplicates);
     if (hasDuplicates) {
       return {
-        'unique': 'has Non-Unique items',
+        'uniqueItems': 'has Non-Unique items',
       };
     }
 

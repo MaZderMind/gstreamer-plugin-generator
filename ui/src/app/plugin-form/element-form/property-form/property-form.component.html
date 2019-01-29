@@ -1,11 +1,11 @@
-<div ngModelGroup="property">
+<div ngModelGroup="Property #{{ index + 1 }}">
 
   <div class="form-group row">
     <label for="{{ 'name' | newId }}" class="col-lg-2 col-sm-12 col-form-label">Property Name</label>
     <div class="col-lg-10 col-sm-12">
       <input
         type="text" class="form-control"
-        id="{{ 'name' | lastId }}" name="{{ 'name' | lastId }}"
+        id="{{ 'name' | lastId }}" name="Name"
         required
         [(ngModel)]="property.name"
         placeholder="Some Property"
@@ -25,7 +25,7 @@
         <textarea
           class="form-control"
           rows="2"
-          id="{{ 'description' | lastId }}" name="{{ 'description' | lastId }}"
+          id="{{ 'description' | lastId }}" name="Description"
           [(ngModel)]="property.description"
           placeholder="Some Property allows changing some Aspect of the Processing."
         ></textarea>
@@ -37,7 +37,7 @@
     <div class="col-lg-10 col-sm-12">
       <select
         class="form-control"
-        id="{{ 'type' | lastId }}" name="{{ 'type' | lastId }}"
+        id="{{ 'type' | lastId }}" name="Type"
         required
         [(ngModel)]="property.type"
       >
@@ -50,7 +50,7 @@
     <label for="{{ 'enum_items' + index }}" class="col-lg-2 col-sm-12 col-form-label">Enumeration-Items</label>
     <div class="col-lg-10 col-sm-12">
       <tag-input
-        name="{{ 'enum_items' + index }}"
+        name="Enum-Items"
         [(ngModel)]="property.enumItems"
         [separatorKeyCodes]="[32]"
         inputId="{{ 'enum_items' + index }}"

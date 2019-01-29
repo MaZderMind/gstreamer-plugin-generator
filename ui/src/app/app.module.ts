@@ -25,6 +25,7 @@ import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 import {UniqueItemsValidator} from 'src/app/validator/unique-items-validator.directive';
+import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-error-display.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import {UniqueItemsValidator} from 'src/app/validator/unique-items-validator.dir
     ClassificationSelectorComponent,
     PropertyFormComponent,
     NavigationComponent,
+    FormErrorDisplayComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,10 @@
 @import "variables";
 
 @mixin bootstrap4-form-validation-for-angular($state, $color) {
+  form.is-submitted tag-input.ng-#{$state} .bootstrap.ng2-tag-input {
+    border-color: $color;
+  }
+
   .form-control .ng-touched:#{$state},
   .form-control.ng-touched.ng-#{$state},
   .form-control.ng-dirty.ng-#{$state},
