@@ -1,11 +1,12 @@
 import {Archetype} from 'src/app/model/archetype';
 import {Property} from 'src/app/model/property';
 import {NameAware} from 'src/app/validator/name-aware';
+import {Classification} from 'src/app/model/classification';
 
 
 export class Element implements NameAware {
   archetype: Archetype = Archetype.byName('GstBaseTransform');
-  classifications: string[] = [];
+  classifications: Classification[] = [];
 
   name = '';
   description = '';
@@ -17,7 +18,8 @@ export class Element implements NameAware {
   constructor(element?: Element) {
     if (element) {
       this.archetype = Archetype.fromJson(element.archetype);
-      this.classifications = element.classifications ? element.classifications : [];
+      this.classifications = element.classifications ?
+        element.classifications.map(classification => Classification.fromJson(classification)) : [];
 
       this.name = element.name;
       this.description = element.description;

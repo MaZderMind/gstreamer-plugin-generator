@@ -61,6 +61,7 @@ export class PluginFormComponent implements AfterContentChecked {
     this.generate.emit(this.plugin);
   }
 
+  // TODO wozu?
   ngAfterContentChecked(): void {
     this.changed.emit(this.plugin);
   }
