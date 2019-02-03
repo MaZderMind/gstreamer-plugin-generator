@@ -16,6 +16,8 @@ describe('AppComponent', () => {
         MockComponent({selector: 'app-reset-form-button'}),
         MockComponent({selector: 'app-upload-button'}),
         MockComponent({selector: 'app-report-error', inputs: ['plugin']}),
+        MockComponent({selector: 'app-github-banner'}),
+        MockComponent({selector: 'app-legal'}),
       ],
     }).compileComponents();
   }));

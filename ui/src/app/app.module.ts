@@ -29,6 +29,8 @@ import {ModalModule} from 'ngx-bootstrap';
 import {ResetFormButtonComponent} from 'src/app/management-buttons/reset-form-button/reset-form-button.component';
 import {UploadButtonComponent} from 'src/app/management-buttons/upload-button/upload-button.component';
 import {ReportErrorComponent} from './report-error/report-error.component';
+import {GithubBannerComponent} from './github-banner/github-banner.component';
+import {LegalComponent} from './legal/legal.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +55,8 @@ import {ReportErrorComponent} from './report-error/report-error.component';
     ResetFormButtonComponent,
     UploadButtonComponent,
     ReportErrorComponent,
+    GithubBannerComponent,
+    LegalComponent,
   ],
   imports: [
     BrowserModule,
