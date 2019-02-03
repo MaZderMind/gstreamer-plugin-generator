@@ -1,0 +1,30 @@
+<a
+  appPreventDefault
+  href
+  (click)="show()"
+  *ngIf="!visible"
+>
+  Report an error
+</a>
+
+<div *ngIf="visible" class="card border-orange">
+  <div class="card-header">Report an Error</div>
+  <div class="card-body">
+    <p>All Plugins generated from this form are <strong>expected to compile and run</strong> out of the box. All invalid
+      configurations shouls be denied by this form. If you find a combination that does not compile our run out-of-the
+      box, please use the button below to report an issue at GitHub which contains the internal representation of tthe
+      Generator.</p>
+
+    <a
+      [href]="reportIssueUrl()"
+      target="_blank"
+      class="btn btn-orange text-white mb-3"
+    >
+      <i class="fab fa-github"></i>
+      Create an Issue
+    </a>
+
+    <h3>Internal representation</h3>
+    <pre>{{ plugin | json }}</pre>
+  </div>
+</div>

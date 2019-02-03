@@ -15,6 +15,7 @@ describe('AppComponent', () => {
         MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
         MockComponent({selector: 'app-reset-form-button'}),
         MockComponent({selector: 'app-upload-button'}),
+        MockComponent({selector: 'app-report-error', inputs: ['plugin']}),
       ],
     }).compileComponents();
   }));

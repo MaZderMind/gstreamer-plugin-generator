@@ -33,7 +33,10 @@
     </div>
   </div>
 
-  <pre>{{ plugin | json }}</pre>
+  <app-report-error
+    #reportErrorComponent
+    [plugin]="plugin"
+  ></app-report-error>
 </div>
 
 <div class="legal text-center text-secondary small border-top mt-5">

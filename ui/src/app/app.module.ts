@@ -28,6 +28,7 @@ import {ConfirmDialogComponent} from 'src/app/confirm-dialog/confirm-dialog.comp
 import {ModalModule} from 'ngx-bootstrap';
 import {ResetFormButtonComponent} from 'src/app/management-buttons/reset-form-button/reset-form-button.component';
 import {UploadButtonComponent} from 'src/app/management-buttons/upload-button/upload-button.component';
+import {ReportErrorComponent} from './report-error/report-error.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import {UploadButtonComponent} from 'src/app/management-buttons/upload-button/up
     ConfirmDialogComponent,
     ResetFormButtonComponent,
     UploadButtonComponent,
+    ReportErrorComponent,
   ],
   imports: [
     BrowserModule,

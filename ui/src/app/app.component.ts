@@ -3,6 +3,7 @@ import {Plugin} from 'src/app/model/plugin';
 import {GenerateZipService} from 'src/app/service/generate-zip.service';
 import {StoreService} from 'src/app/service/store.service';
 import {PluginFormComponent} from 'src/app/plugin-form/plugin-form.component';
+import {ReportErrorComponent} from 'src/app/report-error/report-error.component';
 
 @Component({
   selector: 'app-root',
@@ -14,6 +15,9 @@ export class AppComponent implements OnInit {
 
   @ViewChild('pluginFormComponent')
   pluginFormComponent: PluginFormComponent;
+
+  @ViewChild('reportErrorComponent')
+  reportErrorComponent: ReportErrorComponent;
 
   constructor(
     private generateZipService: GenerateZipService,
@@ -46,6 +50,8 @@ export class AppComponent implements OnInit {
   resetForm() {
     this.plugin = new Plugin();
     this.storeChangedData();
+
+    this.reportErrorComponent.hide();
   }
 
   setPluginData(pluginData: Plugin) {
