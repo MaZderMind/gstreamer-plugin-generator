@@ -77,4 +77,8 @@ export class FormErrorDisplayComponent implements OnDestroy {
     return FormErrorDisplayComponent.ERROR_DESCRIPTIONS.hasOwnProperty(erroKey) ?
       FormErrorDisplayComponent.ERROR_DESCRIPTIONS[erroKey] : erroKey;
   }
+
+  get hasErrors(): boolean {
+    return this.errors && this.errors.length > 0;
+  }
 }
