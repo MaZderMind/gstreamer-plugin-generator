@@ -18,8 +18,6 @@ import {
 } from 'src/app/utils/case.pipe';
 import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
 import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
-import {NavigationComponent} from 'src/app/navigation/navigation.component';
-import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
@@ -45,7 +43,6 @@ import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-e
     KebabCasePipe,
     ClassificationSelectorComponent,
     PropertyFormComponent,
-    NavigationComponent,
     FormErrorDisplayComponent,
   ],
   imports: [
@@ -53,7 +50,6 @@ import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-e
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    Ng2TrackScrollModule.forRoot(),
     CustomFormsModule,
     TagInputModule,
   ],

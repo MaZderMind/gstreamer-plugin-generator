@@ -26,7 +26,6 @@
     "core-js": "^2.5.4",
     "karma-mocha-reporter": "^2.2.5",
     "ng2-mock-component": "^0.1.1",
-    "ng2-track-scroll": "^1.1.5",
     "ngx-chips": "^2.0.0-beta.0",
     "ngx-custom-validators": "^7.0.0",
     "rxjs": "~6.3.3",
