@@ -13,6 +13,8 @@ describe('AppComponent', () => {
         AppComponent,
         MockComponent({selector: 'app-plugin-form', inputs: ['plugin']}),
         MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
+        MockComponent({selector: 'app-reset-form-button'}),
+        MockComponent({selector: 'app-upload-button'}),
       ],
     }).compileComponents();
   }));

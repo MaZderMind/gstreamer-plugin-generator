@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Plugin} from './model/plugin';
+import {Plugin} from 'src/app/model/plugin';
 import {GenerateZipService} from 'src/app/service/generate-zip.service';
 import {StoreService} from 'src/app/service/store.service';
 import {PluginFormComponent} from 'src/app/plugin-form/plugin-form.component';
@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
 
   onGenerateClicked() {
     this.pluginFormComponent.revealControlValidity = true;
+
     if (this.pluginFormComponent.valid) {
       this.generateZipService.generateZip(this.plugin);
     }
@@ -42,5 +43,15 @@ export class AppComponent implements OnInit {
 
   storeChangedData() {
     this.storeService.store(this.plugin);
+  }
+
+  resetForm() {
+    this.plugin = new Plugin();
+    this.storeChangedData();
+  }
+
+  setPluginData(pluginData: Plugin) {
+    this.plugin = pluginData;
+    this.storeChangedData();
   }
 }

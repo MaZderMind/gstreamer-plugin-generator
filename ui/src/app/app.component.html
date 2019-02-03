@@ -20,6 +20,10 @@
       >
         <i class="fa fa-download"></i> Generate
       </button>
+
+
+      <app-reset-form-button (reset)="resetForm()"></app-reset-form-button>
+      <app-upload-button (upload)="setPluginData($event)"></app-upload-button>
     </div>
   </div>
 

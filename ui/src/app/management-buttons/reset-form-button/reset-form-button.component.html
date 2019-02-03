@@ -1,0 +1,21 @@
+<app-confirm-dialog
+  #resetConfirmDialog
+  title="Reset complete form"
+  positiveAnswer="Reset form"
+  negativeAnswer="Do not reset"
+  positiveBtnClass="danger"
+  [closeAfterClick]="true"
+  (positiveButtonClick)="resetForm()"
+>
+  <p>Are you sure you want to reset all entered information and completely reset the form?</p>
+  <p>You can always restore a generated Plugin by uploading the <code>plugin.json</code></p>
+</app-confirm-dialog>
+
+<button
+  type="button"
+  class="btn btn-danger ml-3"
+  (click)="resetConfirmDialog.show()"
+  appPreventDefault
+>
+  <i class="fa fa-exclamation-triangle"></i> Reset Form
+</button>
