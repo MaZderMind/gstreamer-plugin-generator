@@ -19,7 +19,6 @@ export class UniqueItemsValidator implements Validator {
     // check if any item has an indexOf that is not equal to it's own position (that would be an earlier duplicate)
     const hasDuplicates = lowerArray.some((search, index) => lowerArray.indexOf(search) !== index);
 
-    console.log('UniqueItemsValidator', strArray, lowerArray, hasDuplicates);
     if (hasDuplicates) {
       return {
         'uniqueItems': 'has Non-Unique items',

@@ -18,7 +18,6 @@ export class StoreService {
   load(): Plugin {
     try {
       const jsonString = localStorage.getItem(StoreService.STORE_KEY);
-      console.log('jsonString ', jsonString);
 
       const json = JSON.parse(jsonString);
 

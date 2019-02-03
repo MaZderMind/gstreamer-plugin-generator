@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let plugin = this.storeService.load();
-    console.log('load', plugin);
     if (!plugin) {
       plugin = new Plugin();
     }
