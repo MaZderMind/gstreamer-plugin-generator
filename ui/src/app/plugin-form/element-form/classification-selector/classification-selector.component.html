@@ -1,22 +1,18 @@
-<tag-input
+<select
+  class="form-control"
   name="Classification"
   [(ngModel)]="element.classifications"
-  [separatorKeyCodes]="[32]"
-  [inputId]="id"
-  [addOnBlur]="true"
-  [addOnPaste]="true"
-  secondaryPlaceholder="Select Classifications"
-  placeholder="+ Classification"
-  [modelAsStrings]="true"
-  [animationDuration]="{enter: '0ms', leave: '0ms'}"
-  theme='bootstrap'
-  [onlyFromAutocomplete]="true"
+  [id]="id"
+  multiple
 >
-  <tag-input-dropdown
-    [autocompleteItems]="classifications"
-    [showDropdownIfEmpty]="true"
-  ></tag-input-dropdown>
-</tag-input>
+  <option
+    *ngFor="let classification of classifications"
+    [ngValue]="classification"
+  >
+    {{ classification }}
+  </option>
+</select>
+
 
 <p class="mt-2">
   <i class="fa fa-info-circle"></i> The Classification is used by pther program to sort, search and find plugins. See
