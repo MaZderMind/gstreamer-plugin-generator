@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Plugin} from './model/plugin';
 import {GenerateZipService} from 'src/app/service/generate-zip.service';
 import {StoreService} from 'src/app/service/store.service';
+import {PluginFormComponent} from 'src/app/plugin-form/plugin-form.component';
 
 @Component({
   selector: 'app-root',
@@ -10,6 +11,9 @@ import {StoreService} from 'src/app/service/store.service';
 })
 export class AppComponent implements OnInit {
   plugin: Plugin;
+
+  @ViewChild('pluginFormComponent')
+  pluginFormComponent: PluginFormComponent;
 
   constructor(
     private generateZipService: GenerateZipService,
@@ -29,8 +33,11 @@ export class AppComponent implements OnInit {
     this.plugin = plugin;
   }
 
-  generateZip() {
-    this.generateZipService.generateZip(this.plugin);
+  onGenerateClicked() {
+    this.pluginFormComponent.revealControlValidity = true;
+    if (this.pluginFormComponent.valid) {
+      this.generateZipService.generateZip(this.plugin);
+    }
   }
 
   storeChangedData() {

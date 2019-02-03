@@ -4,10 +4,30 @@
   <p>Generate the Skeleton of a GStreamer Plugin.</p>
 
   <app-plugin-form
+    #pluginFormComponent
     [plugin]="plugin"
-    (generate)="generateZip()"
     (changed)="storeChangedData()"
   ></app-plugin-form>
+
+  <div class="row mb-3">
+    <div class="col">
+      <button
+        type="button"
+        [class.disabled]="!pluginFormComponent.valid"
+        class="btn btn-primary"
+        (click)="onGenerateClicked();"
+        appPreventDefault
+      >
+        <i class="fa fa-download"></i> Generate
+      </button>
+    </div>
+  </div>
+
+  <div class="row mb-3">
+    <div class="col">
+      <app-form-error-display [form]="pluginFormComponent.pluginForm"></app-form-error-display>
+    </div>
+  </div>
 
   <pre>{{ plugin | json }}</pre>
 </div>

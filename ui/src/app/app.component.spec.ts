@@ -12,6 +12,7 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MockComponent({selector: 'app-plugin-form', inputs: ['plugin']}),
+        MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
       ],
     }).compileComponents();
   }));

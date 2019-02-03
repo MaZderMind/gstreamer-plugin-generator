@@ -119,20 +119,4 @@
       </a>
     </div>
   </div>
-
-  <div class="row mb-3">
-    <div class="col">
-      <app-form-error-display [form]="pluginForm"></app-form-error-display>
-
-      <button
-        type="button"
-        class="btn btn-primary mt-3"
-        [class.disabled]="!pluginForm.valid"
-        (click)="onGenerateClicked();"
-        appPreventDefault
-      >
-        <i class="fa fa-download"></i> Generate
-      </button>
-    </div>
-  </div>
 </form>

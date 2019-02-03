@@ -16,9 +16,6 @@ export class PluginFormComponent implements AfterContentChecked {
   plugin: Plugin;
 
   @Output()
-  generate = new EventEmitter<Plugin>();
-
-  @Output()
   changed = new EventEmitter<Plugin>();
 
   @ViewChild('pluginForm')
@@ -46,19 +43,8 @@ export class PluginFormComponent implements AfterContentChecked {
     return this.plugin.elements.length > 1;
   }
 
-  revealInvalidControls() {
-    this.revealControlValidity = true;
-  }
-
-  onGenerateClicked() {
-    this.revealInvalidControls();
-    if (this.pluginForm.valid) {
-      this.triggerDownload();
-    }
-  }
-
-  private triggerDownload() {
-    this.generate.emit(this.plugin);
+  get valid(): boolean {
+    return this.pluginForm.valid;
   }
 
   // TODO wozu?
