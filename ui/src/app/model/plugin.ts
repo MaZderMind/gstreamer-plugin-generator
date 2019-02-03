@@ -26,6 +26,8 @@ export class Plugin implements NameAware {
       this.url = plugin.url;
       this.elements = plugin.elements ? plugin.elements.map(element => new Element(element)) : [];
     }
+
+    this.addElementIfEmpty();
   }
 
   addElementIfEmpty() {

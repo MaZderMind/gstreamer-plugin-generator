@@ -28,8 +28,6 @@ export class AppComponent implements OnInit {
       plugin = new Plugin();
     }
 
-    plugin.addElementIfEmpty();
-
     this.plugin = plugin;
   }
 
