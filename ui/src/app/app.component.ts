@@ -1,7 +1,9 @@
-import {Component, OnInit} from '@angular/core';
-import {Plugin} from './model/plugin';
+import {Component, OnInit, ViewChild} from '@angular/core';
+import {Plugin} from 'src/app/model/plugin';
 import {GenerateZipService} from 'src/app/service/generate-zip.service';
 import {StoreService} from 'src/app/service/store.service';
+import {PluginFormComponent} from 'src/app/plugin-form/plugin-form.component';
+import {ReportErrorComponent} from 'src/app/report-error/report-error.component';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +13,12 @@ import {StoreService} from 'src/app/service/store.service';
 export class AppComponent implements OnInit {
   plugin: Plugin;
 
+  @ViewChild('pluginFormComponent')
+  pluginFormComponent: PluginFormComponent;
+
+  @ViewChild('reportErrorComponent')
+  reportErrorComponent: ReportErrorComponent;
+
   constructor(
     private generateZipService: GenerateZipService,
     private storeService: StoreService
@@ -19,21 +27,34 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     let plugin = this.storeService.load();
-    console.log('load', plugin);
     if (!plugin) {
       plugin = new Plugin();
     }
 
-    plugin.addElementIfEmpty();
-
     this.plugin = plugin;
   }
 
-  generateZip() {
-    this.generateZipService.generateZip(this.plugin);
+  onGenerateClicked() {
+    this.pluginFormComponent.revealControlValidity = true;
+
+    if (this.pluginFormComponent.valid) {
+      this.generateZipService.generateZip(this.plugin);
+    }
   }
 
   storeChangedData() {
     this.storeService.store(this.plugin);
+  }
+
+  resetForm() {
+    this.plugin = new Plugin();
+    this.storeChangedData();
+
+    this.reportErrorComponent.hide();
+  }
+
+  setPluginData(pluginData: Plugin) {
+    this.plugin = pluginData;
+    this.storeChangedData();
   }
 }

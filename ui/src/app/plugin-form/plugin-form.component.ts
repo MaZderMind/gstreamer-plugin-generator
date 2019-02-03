@@ -4,7 +4,6 @@ import {License} from 'src/app/model/license';
 import {Element} from 'src/app/model/element';
 import {removeElement} from 'src/app/utils/removeElement';
 import {NgForm, NgModel} from '@angular/forms';
-import {NavigationService} from 'src/app/navigation/navigation.service';
 
 @Component({
   selector: 'app-plugin-form',
@@ -15,9 +14,6 @@ export class PluginFormComponent implements AfterContentChecked {
 
   @Input()
   plugin: Plugin;
-
-  @Output()
-  generate = new EventEmitter<Plugin>();
 
   @Output()
   changed = new EventEmitter<Plugin>();
@@ -31,9 +27,6 @@ export class PluginFormComponent implements AfterContentChecked {
   licenses: License[] = License.LICENSES;
 
   revealControlValidity = false;
-
-  constructor(private navigationService: NavigationService) {
-  }
 
   addElement() {
     this.plugin.elements.push(new Element());
@@ -50,26 +43,12 @@ export class PluginFormComponent implements AfterContentChecked {
     return this.plugin.elements.length > 1;
   }
 
-  revealInvalidControls() {
-    this.revealControlValidity = true;
+  get valid(): boolean {
+    return this.pluginForm.valid;
   }
 
-  onGenerateClicked() {
-    this.revealInvalidControls();
-    if (this.pluginForm.valid) {
-      this.triggerDownload();
-    }
-  }
-
-  private triggerDownload() {
-    this.generate.emit(this.plugin);
-  }
-
+  // TODO wozu?
   ngAfterContentChecked(): void {
     this.changed.emit(this.plugin);
-  }
-
-  enterPlugin() {
-    this.navigationService.enter('plugin');
   }
 }

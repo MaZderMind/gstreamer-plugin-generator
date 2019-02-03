@@ -1,0 +1,29 @@
+<div class="modal fade" bsModal #modal="bs-modal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{ title }}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <ng-content></ng-content>
+
+        <div class="float-right">
+          <button
+            *ngIf="showNegative"
+            class="btn btn-{{ negativeBtnClass }} mr-3"
+            (click)="negativeButtonClicked()"
+          >{{ negativeAnswer }}</button>
+          <button
+            *ngIf="showPositive"
+            class="btn btn-{{ positiveBtnClass }}"
+            (click)="positiveButtonClicked()"
+          >{{ positiveAnswer }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

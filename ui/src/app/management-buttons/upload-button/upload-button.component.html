@@ -1,0 +1,26 @@
+<app-confirm-dialog
+  #invalidJsonDialog
+  title="Invalid Plugin-Description"
+  negativeAnswer="Cancel"
+  [closeAfterClick]="true"
+  [showPositive]="false"
+>
+  <p>The uploaded file could not be read or is not valid.</p>
+</app-confirm-dialog>
+
+<button
+  type="button"
+  class="btn btn-outline-primary ml-3 float-right"
+  (click)="fileUpload.click()"
+  appPreventDefault
+>
+  <i class="fa fa-upload mr-1"></i> <code>plugin.json</code> hochladen
+</button>
+
+<input
+  class="d-none"
+  type="file"
+  #fileUpload
+  accept="application/json, *.json"
+  (change)="onFilesSelected()"
+>

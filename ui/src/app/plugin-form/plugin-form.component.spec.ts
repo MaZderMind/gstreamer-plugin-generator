@@ -21,7 +21,6 @@ describe('PluginFormComponent', () => {
         UniqueNameValidator,
 
         MockComponent({selector: 'app-element-form', inputs: ['element', 'elements', 'index']}),
-        MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
       ],
       imports: [FormsModule],
     }).compileComponents();

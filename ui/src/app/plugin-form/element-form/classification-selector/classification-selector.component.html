@@ -1,25 +1,34 @@
-<tag-input
+<select
+  class="form-control"
   name="Classification"
   [(ngModel)]="element.classifications"
-  [separatorKeyCodes]="[32]"
-  [inputId]="id"
-  [addOnBlur]="true"
-  [addOnPaste]="true"
-  secondaryPlaceholder="Select Classifications"
-  placeholder="+ Classification"
-  [modelAsStrings]="true"
-  [animationDuration]="{enter: '0ms', leave: '0ms'}"
-  theme='bootstrap'
-  [onlyFromAutocomplete]="true"
+  [id]="id"
+  multiple
 >
-  <tag-input-dropdown
-    [autocompleteItems]="classifications"
-    [showDropdownIfEmpty]="true"
-  ></tag-input-dropdown>
-</tag-input>
+  <optgroup
+    *ngFor="let byCategory of classifications"
+    [label]="byCategory.category"
+  >
+    <option
+      *ngFor="let classification of byCategory.classifications"
+      [ngValue]="classification"
+    >
+      {{ classification.name }}
+    </option>
+  </optgroup>
+</select>
+
+<div class="card border-info py-3" *ngIf="element.classifications.length">
+  <ul class="m-0">
+    <li *ngFor="let classification of element.classifications">
+      <strong>{{ classification.name }}</strong> – {{ classification.description }}
+    </li>
+  </ul>
+</div>
+
 
 <p class="mt-2">
-  <i class="fa fa-info-circle"></i> The Classification is used by pther program to sort, search and find plugins. See
+  <i class="fa fa-info-circle"></i> The Classification is used by other program to sort, search and find plugins. See
   <a href="https://gstreamer.freedesktop.org/documentation/design/draft-klass.html" target="_blank">Element Klass
     definition</a> for an in-depth explanation of each Class.
 </p>

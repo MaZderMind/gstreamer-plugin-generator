@@ -1,5 +1,5 @@
 <form #pluginForm="ngForm" [class.is-submitted]="revealControlValidity ">
-  <div class="card border-primary mb-3" trackScroll (trackScrollEnter)="enterPlugin()" id="plugin">
+  <div class="card border-primary mb-3" id="plugin">
     <div class="card-header bg-primary text-white">
       Plugin Information
     </div>
@@ -117,22 +117,6 @@
       <a href (click)="addElement()" appPreventDefault>
         <i class="fa fa-plus-circle"></i> Add Element
       </a>
-    </div>
-  </div>
-
-  <div class="row mb-3">
-    <div class="col">
-      <app-form-error-display [form]="pluginForm"></app-form-error-display>
-
-      <button
-        type="button"
-        class="btn btn-primary mt-3"
-        [class.disabled]="!pluginForm.valid"
-        (click)="onGenerateClicked();"
-        appPreventDefault
-      >
-        <i class="fa fa-download"></i> Generate
-      </button>
     </div>
   </div>
 </form>

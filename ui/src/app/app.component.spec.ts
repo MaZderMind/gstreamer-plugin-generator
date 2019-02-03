@@ -12,7 +12,12 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         MockComponent({selector: 'app-plugin-form', inputs: ['plugin']}),
-        MockComponent({selector: 'app-navigation', inputs: ['plugin']}),
+        MockComponent({selector: 'app-form-error-display', inputs: ['form']}),
+        MockComponent({selector: 'app-reset-form-button'}),
+        MockComponent({selector: 'app-upload-button'}),
+        MockComponent({selector: 'app-report-error', inputs: ['plugin']}),
+        MockComponent({selector: 'app-github-banner'}),
+        MockComponent({selector: 'app-legal'}),
       ],
     }).compileComponents();
   }));

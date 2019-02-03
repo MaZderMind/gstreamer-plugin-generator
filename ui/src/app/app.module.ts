@@ -18,14 +18,19 @@ import {
 } from 'src/app/utils/case.pipe';
 import {ClassificationSelectorComponent} from './plugin-form/element-form/classification-selector/classification-selector.component';
 import {PropertyFormComponent} from './plugin-form/element-form/property-form/property-form.component';
-import {NavigationComponent} from 'src/app/navigation/navigation.component';
-import {Ng2TrackScrollModule} from 'ng2-track-scroll';
 import {CustomFormsModule} from 'ngx-custom-validators';
 import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 import {UniqueItemsValidator} from 'src/app/validator/unique-items-validator.directive';
 import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-error-display.component';
+import {ConfirmDialogComponent} from 'src/app/confirm-dialog/confirm-dialog.component';
+import {ModalModule} from 'ngx-bootstrap';
+import {ResetFormButtonComponent} from 'src/app/management-buttons/reset-form-button/reset-form-button.component';
+import {UploadButtonComponent} from 'src/app/management-buttons/upload-button/upload-button.component';
+import {ReportErrorComponent} from './report-error/report-error.component';
+import {GithubBannerComponent} from './github-banner/github-banner.component';
+import {LegalComponent} from './legal/legal.component';
 
 @NgModule({
   declarations: [
@@ -45,17 +50,22 @@ import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-e
     KebabCasePipe,
     ClassificationSelectorComponent,
     PropertyFormComponent,
-    NavigationComponent,
     FormErrorDisplayComponent,
+    ConfirmDialogComponent,
+    ResetFormButtonComponent,
+    UploadButtonComponent,
+    ReportErrorComponent,
+    GithubBannerComponent,
+    LegalComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpClientModule,
-    Ng2TrackScrollModule.forRoot(),
     CustomFormsModule,
     TagInputModule,
+    ModalModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],
