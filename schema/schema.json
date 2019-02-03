@@ -1,0 +1,174 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"$id": "http://example.com/root.json",
+	"type": "object",
+	"required": [
+		"name",
+		"description",
+		"author",
+		"authorEmail",
+		"license",
+		"url",
+		"elements"
+	],
+	"properties": {
+		"name": {
+			"$id": "#/properties/name",
+			"type": "string",
+			"minLength": 1
+		},
+		"description": {
+			"$id": "#/properties/description",
+			"type": "string",
+			"minLength": 1
+		},
+		"author": {
+			"$id": "#/properties/author",
+			"type": "string",
+			"minLength": 1
+		},
+		"authorEmail": {
+			"$id": "#/properties/authorEmail",
+			"type": "string",
+			"minLength": 1
+		},
+		"license": {
+			"$id": "#/properties/license",
+			"type": "string",
+			"title": "The License Schema",
+			"default": "",
+			"enum": [
+				"LGPL",
+				"NONE"
+			]
+		},
+		"url": {
+			"$id": "#/properties/url",
+			"type": "string",
+			"format": "uri"
+		},
+		"elements": {
+			"$id": "#/properties/elements",
+			"type": "array",
+			"items": {
+				"$id": "#/properties/elements/items",
+				"type": "object",
+				"required": [
+					"archetype",
+					"classifications",
+					"name",
+					"description",
+					"properties",
+					"signals",
+					"mediatype"
+				],
+				"properties": {
+					"archetype": {
+						"$id": "#/properties/elements/items/properties/archetype",
+						"type": "string",
+						"enum": [
+							"GstBaseSrc",
+							"GstPushSrc",
+							"GstBaseSink",
+							"GstBaseTransform"
+						]
+					},
+					"classifications": {
+						"$id": "#/properties/elements/items/properties/classifications",
+						"type": "array",
+						"items": {
+							"$id": "#/properties/elements/items/properties/classifications/items",
+							"type": "string",
+							"minLength": 1
+						}
+					},
+					"name": {
+						"$id": "#/properties/elements/items/properties/name",
+						"type": "string",
+						"minLength": 1
+					},
+					"description": {
+						"$id": "#/properties/elements/items/properties/description",
+						"type": "string",
+						"minLength": 1
+					},
+					"properties": {
+						"$id": "#/properties/elements/items/properties/properties",
+						"type": "array",
+						"items": {
+							"$id": "#/properties/elements/items/properties/properties/items",
+							"type": "object",
+							"required": [
+								"name",
+								"description",
+								"enumItems",
+								"type"
+							],
+							"properties": {
+								"name": {
+									"$id": "#/properties/elements/items/properties/properties/items/properties/name",
+									"type": "string",
+									"minLength": 1
+								},
+								"description": {
+									"$id": "#/properties/elements/items/properties/properties/items/properties/description",
+									"type": "string",
+									"minLength": 1
+								},
+								"enumItems": {
+									"$id": "#/properties/elements/items/properties/properties/items/properties/enumItems",
+									"type": "array",
+									"items": {
+										"$id": "#/properties/elements/items/properties/properties/items/properties/enumItems/items",
+										"type": "string",
+										"minLength": 1
+									}
+								},
+								"type": {
+									"$id": "#/properties/elements/items/properties/properties/items/properties/type",
+									"type": "string",
+									"enum": [
+										"STRING",
+										"BOOLEAN",
+										"CHAR",
+										"UCHAR",
+										"INT",
+										"UINT",
+										"LONG",
+										"ULONG",
+										"INT64",
+										"UINT64",
+										"FLOAT",
+										"DOUBLE",
+										"ENUM",
+										"FLAGS"
+									]
+								}
+							}
+						}
+					},
+					"signals": {
+						"$id": "#/properties/elements/items/properties/signals",
+						"type": "array",
+						"items": {
+							"$id": "#/properties/elements/items/properties/signals/items",
+							"type": "string",
+							"minLength": 1
+						}
+					},
+					"mediatype": {
+						"$id": "#/properties/elements/items/properties/mediatype",
+						"type": "string",
+						"title": "The Mediatype Schema",
+						"enum": [
+							"AUDIO",
+							"VIDEO",
+							"OTHER"
+						]
+					}
+				}
+			}
+		}
+	}
+}
