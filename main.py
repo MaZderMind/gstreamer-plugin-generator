@@ -4,6 +4,7 @@ import re
 
 from flask import Flask, render_template, Response, stream_with_context, request
 
+from lib.generate_request_logger import log_generate_request
 from lib.json_schema_validation import validate, JsonValidationError
 from lib.plugin_zip_generator import plugin_zip_generator
 from lib.string_utils import pascal_case
@@ -21,6 +22,7 @@ def generate():
 	plugin_info = request.json or json.loads(request.form['json'])
 	validate(plugin_info)
 
+	log_generate_request(request, plugin_info)
 	filename = re.sub(r'/[^a-zA-Z0-9]/g', '', pascal_case(plugin_info['name'])) + ".zip"
 
 	generator = stream_with_context(plugin_zip_generator(plugin_info))
