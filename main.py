@@ -36,4 +36,4 @@ def validation_error(jsonValidationError):
 		'error/jsonschema.html',
 		json=jsonValidationError.original_json,
 		error=str(jsonValidationError.validation_error),
-		report_issue_url=jsonValidationError.report_issue_url)
+		report_issue_url=jsonValidationError.report_issue_url), 400
