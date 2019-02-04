@@ -13,7 +13,7 @@ class TestValidation(unittest.TestCase):
 			schema_dict = json.load(fp)
 			validate(json_dict, schema_dict)
 
-	def test_minimal_json_Validates(self):
+	def test_minimal_json_validates(self):
 		self.validate({
 			"author": "Test",
 			"authorEmail": "Test",
@@ -26,6 +26,34 @@ class TestValidation(unittest.TestCase):
 					"mediatype": "OTHER",
 					"name": "Test",
 					"properties": [],
+					"signals": []
+				}
+			],
+			"license": "LGPL",
+			"name": "Test",
+			"url": "Test"
+		})
+
+	def test_minimal_json_with_propety_validates(self):
+		self.validate({
+			"author": "Test",
+			"authorEmail": "Test",
+			"description": "",
+			"elements": [
+				{
+					"archetype": "GstBaseTransform",
+					"classifications": [],
+					"description": "",
+					"mediatype": "OTHER",
+					"name": "Test",
+					"properties": [
+						{
+							"description": "",
+							"enumItems": [],
+							"name": "Test",
+							"type": "STRING"
+						}
+					],
 					"signals": []
 				}
 			],
