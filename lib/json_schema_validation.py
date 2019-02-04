@@ -1,11 +1,13 @@
 import json
+import os.path
 import textwrap
 import urllib.parse
 
 from jsonschema import ValidationError
 from jsonschema.validators import validator_for
 
-with open('schema/schema.json') as fp:
+json_schema_file = os.path.join(os.path.dirname(__file__), '../schema/schema.json')
+with open(json_schema_file) as fp:
 	plugin_schema = json.load(fp)
 
 cls = validator_for(plugin_schema)

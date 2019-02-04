@@ -37,3 +37,7 @@ def validation_error(jsonValidationError):
 		json=jsonValidationError.original_json,
 		error=str(jsonValidationError.validation_error),
 		report_issue_url=jsonValidationError.report_issue_url), 400
+
+
+if __name__ == '__main__':
+	app.run('localhost', 5000)
