@@ -13,5 +13,8 @@ export class ClassificationSelectorComponent {
   @Input()
   element: Element;
 
+  @Input()
+  id: string;
+
   classifications = Classification.getClassificationsByCategory();
 }
