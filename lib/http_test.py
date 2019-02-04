@@ -1,7 +1,7 @@
 import json
 import unittest
 
-from lib.test_plugin_info import test_plugin_info
+from buildtest.builder import build_plugin_config
 from main import app
 
 app.config['TESTING'] = True
@@ -17,15 +17,15 @@ class TestPluginZipGenerator(unittest.TestCase):
 		self.assertEqual(len(data), int(response.headers['Content-Length']))
 
 	def test_generate_json_post(self):
-		response = test_client.post('/generate', json=test_plugin_info)
+		response = test_client.post('/generate', json=build_plugin_config())
 		data = response.data
 		self.assertEqual(response.headers['Content-Type'], 'application/zip')
-		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=Ebur128LoudnessMeter.zip')
+		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=AwsomePlugin.zip')
 		self.assertGreater(len(data), 0)
 
 	def test_generate_json_arg(self):
-		response = test_client.post('/generate', data={'json': json.dumps(test_plugin_info)})
+		response = test_client.post('/generate', data={'json': json.dumps(build_plugin_config())})
 		data = response.data
 		self.assertEqual(response.headers['Content-Type'], 'application/zip')
-		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=Ebur128LoudnessMeter.zip')
+		self.assertEqual(response.headers['Content-Disposition'], 'attachment; filename=AwsomePlugin.zip')
 		self.assertGreater(len(data), 0)
