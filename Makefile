@@ -1,7 +1,10 @@
 default: tar
 
 tar: clean ui-prod
-	tar -czf dist.tar *.py lib static templates
+	tar -czf dist.tar.gz main.py main.wsgi requirements.txt schema lib static templates
+
+deploy: tar
+	cat dist.tar.gz | ssh mazdermind@mazdermind.de /var/www/mazdermind.de/gstreamer/deploy.sh
 
 clean:
 	rm -rf static/ui __pycache__ **/__pycache__
