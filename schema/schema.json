@@ -20,8 +20,7 @@
 		},
 		"description": {
 			"$id": "#/properties/description",
-			"type": "string",
-			"minLength": 1
+			"type": "string"
 		},
 		"author": {
 			"$id": "#/properties/author",
@@ -45,8 +44,7 @@
 		},
 		"url": {
 			"$id": "#/properties/url",
-			"type": "string",
-			"format": "uri"
+			"type": "string"
 		},
 		"elements": {
 			"$id": "#/properties/elements",
@@ -90,8 +88,7 @@
 					},
 					"description": {
 						"$id": "#/properties/elements/items/properties/description",
-						"type": "string",
-						"minLength": 1
+						"type": "string"
 					},
 					"properties": {
 						"$id": "#/properties/elements/items/properties/properties",
