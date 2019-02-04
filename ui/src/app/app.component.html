@@ -10,11 +10,11 @@
   ></app-plugin-form>
 
   <div class="row mb-3">
-    <div class="col">
+    <div class="col d-flex flex-wrap">
       <button
         type="button"
         [class.disabled]="!pluginFormComponent.valid"
-        class="btn btn-primary"
+        class="btn btn-primary mr-3 mb-3"
         (click)="onGenerateClicked();"
         appPreventDefault
       >
@@ -22,8 +22,14 @@
       </button>
 
 
-      <app-reset-form-button (reset)="resetForm()"></app-reset-form-button>
-      <app-upload-button (upload)="setPluginData($event)"></app-upload-button>
+      <app-reset-form-button
+        (reset)="resetForm()"
+        class="mr-3 mb-3"
+      ></app-reset-form-button>
+      <app-upload-button
+        (upload)="setPluginData($event)"
+        class="ml-sm-auto mb-3"
+      ></app-upload-button>
     </div>
   </div>
 
