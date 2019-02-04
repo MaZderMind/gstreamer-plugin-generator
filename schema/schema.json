@@ -110,8 +110,7 @@
 								},
 								"description": {
 									"$id": "#/properties/elements/items/properties/properties/items/properties/description",
-									"type": "string",
-									"minLength": 1
+									"type": "string"
 								},
 								"enumItems": {
 									"$id": "#/properties/elements/items/properties/properties/items/properties/enumItems",
