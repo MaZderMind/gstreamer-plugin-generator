@@ -1,4 +1,5 @@
 import json
+import os
 from datetime import datetime
 
 from jinja2 import Environment, FileSystemLoader
@@ -7,7 +8,7 @@ from lib.string_utils import all_lower_case, upper_snake_case, pascal_case, quot
 	lower_snake_case, kebab_case, escape_comment_for_c
 
 env = Environment(
-	loader=FileSystemLoader('templates'),
+	loader=FileSystemLoader(os.path.join(os.path.dirname(__file__), '../templates')),
 	keep_trailing_newline=True,
 	trim_blocks=True,
 	lstrip_blocks=True,
