@@ -4,6 +4,7 @@ import re
 
 from flask import Flask, render_template, Response, stream_with_context, request
 
+from lib.json_schema_validation import validate, JsonValidationError
 from lib.plugin_zip_generator import plugin_zip_generator
 from lib.string_utils import pascal_case
 
@@ -18,7 +19,7 @@ def root():
 @app.route('/generate', methods=['POST'])
 def generate():
 	plugin_info = request.json or json.loads(request.form['json'])
-	# validate plugin_info
+	validate(plugin_info)
 
 	filename = re.sub(r'/[^a-zA-Z0-9]/g', '', pascal_case(plugin_info['name'])) + ".zip"
 
@@ -27,3 +28,12 @@ def generate():
 	response.headers['Content-Type'] = 'application/zip'
 	response.headers['Content-Disposition'] = 'attachment; filename=' + filename
 	return response
+
+
+@app.errorhandler(JsonValidationError)
+def validation_error(jsonValidationError):
+	return render_template(
+		'error/jsonschema.html',
+		json=jsonValidationError.original_json,
+		error=str(jsonValidationError.validation_error),
+		report_issue_url=jsonValidationError.report_issue_url), 400

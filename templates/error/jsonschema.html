@@ -1,0 +1,25 @@
+{% extends 'error/_error.html' %}
+
+{% block error %}
+	<h1>Unprocessable Input received</h1>
+
+	<p>All Inpout generated from the web-form are <strong>expected to be processable</strong> All invalid
+		configurations shouls be denied by the form. If you got to this page through the form, you might have found a
+		combination that is not processable. Please use the button below to report an issue at GitHub which contains the
+		internal representation of the Generator.</p>
+
+	<a
+		href="{{ report_issue_url }}"
+		target="_blank"
+		class="btn btn-orange text-white mb-3"
+	>
+		<i class="fab fa-github"></i>
+		Create an Issue
+	</a>
+
+	<h3>Validation-Error</h3>
+	<pre>{{ error }}</pre>
+
+	<h3>Internal representation</h3>
+	<pre>{{ json | tojson(indent=2) }}</pre>
+{% endblock %}

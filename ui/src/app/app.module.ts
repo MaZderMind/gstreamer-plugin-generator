@@ -23,7 +23,7 @@ import {TagInputModule} from 'ngx-chips';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {UniqueNameValidator} from 'src/app/validator/unique-name-validator.directive';
 import {UniqueItemsValidator} from 'src/app/validator/unique-items-validator.directive';
-import {FormErrorDisplayComponent} from './plugin-form/form-error-display/form-error-display.component';
+import {FormErrorDisplayComponent} from './form-error-display/form-error-display.component';
 import {ConfirmDialogComponent} from 'src/app/confirm-dialog/confirm-dialog.component';
 import {ModalModule} from 'ngx-bootstrap';
 import {ResetFormButtonComponent} from 'src/app/management-buttons/reset-form-button/reset-form-button.component';

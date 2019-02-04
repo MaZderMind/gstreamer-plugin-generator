@@ -14,9 +14,9 @@ export class ReportErrorComponent {
 
   reportIssueUrl() {
     const body = encodeURIComponent(this.buildIssueBody());
-    const subject = encodeURIComponent(this.buildIssueSubject());
+    const title = encodeURIComponent(this.buildIssueTitle());
     return `https://github.com/MaZderMind/gstreamer-plugin-generator/issues/new?` +
-      `title=${subject}&labels=build-problem&body=${body}`;
+      `title=${title}&labels=build-problem&body=${body}`;
   }
 
   show() {
@@ -37,7 +37,7 @@ export class ReportErrorComponent {
       '```';
   }
 
-  private buildIssueSubject() {
+  private buildIssueTitle() {
     return `Build-Problem with plugin "${this.plugin.name}"`;
   }
 }

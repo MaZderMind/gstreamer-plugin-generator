@@ -2,14 +2,14 @@ import unittest
 from io import BytesIO
 from zipfile import ZipFile
 
+from buildtest.builder import build_plugin_config
 from lib.plugin_zip_generator import plugin_zip_generator
-from lib.test_plugin_info import test_plugin_info
 
 
 class TestPluginZipGenerator(unittest.TestCase):
 	def test_generates_valid_zip_file(self):
 		zipdata = BytesIO()
-		zip_generator = plugin_zip_generator(test_plugin_info)
+		zip_generator = plugin_zip_generator(build_plugin_config())
 		for zipdata_part in zip_generator:
 			zipdata.write(zipdata_part)
 
