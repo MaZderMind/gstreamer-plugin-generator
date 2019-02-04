@@ -13,7 +13,7 @@ export class Element implements NameAware {
 
   properties: Property[] = [];
   signals: string[] = [];
-  mediatype = 'OTHER';
+  mediatype = 'VIDEO';
 
   constructor(element?: Element) {
     if (element) {
