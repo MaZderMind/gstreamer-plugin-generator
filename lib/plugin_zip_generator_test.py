@@ -1,4 +1,5 @@
 import unittest
+
 from io import BytesIO
 from zipfile import ZipFile
 
@@ -18,3 +19,7 @@ class TestPluginZipGenerator(unittest.TestCase):
 		parsed_zip = ZipFile(zipdata, 'r')
 		self.assertIsNone(parsed_zip.testzip())
 		self.assertGreater(len(parsed_zip.infolist()), 0)
+
+		for info in parsed_zip.infolist():
+			octal_perms = '%o' % (info.external_attr >> 16)
+			self.assertIn(octal_perms, ['660', '770'])
