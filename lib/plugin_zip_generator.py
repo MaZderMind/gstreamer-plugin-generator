@@ -1,4 +1,5 @@
 import time
+
 from zipfile import ZipFile, ZIP_DEFLATED, ZipInfo
 
 from lib.plugin_boilerplate_generator import generate_plugin_boilerplate
@@ -48,15 +49,20 @@ def plugin_zip_generator(plugin_info):
 	rootdir = pascal_case(plugin_info['name'])
 	with StreamFile() as stream_file:
 		with ZipFile(stream_file, "w", ZIP_DEFLATED) as zipfile:
-			for file in generate_plugin_boilerplate(plugin_info):
+			for generator_yield in generate_plugin_boilerplate(plugin_info):
+				filename = generator_yield[0]
 				zip_info = ZipInfo(
-					rootdir + '/' + file[0],
+					rootdir + '/' + filename,
 					date_time=time.localtime(time.time())[:6])
 
-				if len(file) > 2 and file[2]:
-					zip_info.external_attr = 0o700 << 16  # executable
+				file_permissions = 0o700 if should_be_executable(generator_yield) else 0o600
+				zip_info.external_attr = file_permissions << 16
 
-				zipfile.writestr(zip_info, file[1])
+				zipfile.writestr(zip_info, generator_yield[1])
 				yield from stream_file.stream()
 
 		yield from stream_file.stream()
+
+
+def should_be_executable(generator_yield):
+	return len(generator_yield) > 2 and generator_yield[2]
