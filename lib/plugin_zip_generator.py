@@ -55,7 +55,7 @@ def plugin_zip_generator(plugin_info):
 					rootdir + '/' + filename,
 					date_time=time.localtime(time.time())[:6])
 
-				file_permissions = 0o700 if should_be_executable(generator_yield) else 0o600
+				file_permissions = 0o770 if should_be_executable(generator_yield) else 0o660
 				zip_info.external_attr = file_permissions << 16
 
 				zipfile.writestr(zip_info, generator_yield[1])

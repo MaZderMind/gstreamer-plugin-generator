@@ -22,4 +22,4 @@ class TestPluginZipGenerator(unittest.TestCase):
 
 		for info in parsed_zip.infolist():
 			octal_perms = '%o' % (info.external_attr >> 16)
-			self.assertIn(octal_perms, ['600', '700'])
+			self.assertIn(octal_perms, ['660', '770'])
