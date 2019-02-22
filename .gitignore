@@ -37,4 +37,5 @@ docs/_build/
 /static/ui
 
 # Build result
+/dist.tar
 /dist.tar.gz

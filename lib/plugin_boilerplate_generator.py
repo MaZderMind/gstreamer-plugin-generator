@@ -47,7 +47,6 @@ def generate_plugin_boilerplate(plugin_info):
 	yield 'configure.ac', render('boilerplate/configure.ac.j2', context)
 	yield 'autogen.sh', render('boilerplate/autogen.sh.j2', context), True
 
-	yield '.gitmodules', render('boilerplate/gitmodules.j2', context)
 	yield '.gitignore', render('boilerplate/gitignore.j2', context)
 
 	if plugin_info['license'] == 'LGPL':
